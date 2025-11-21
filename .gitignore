@@ -1,0 +1,66 @@
+# ---- Build outputs ----
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+*.dll
+*.exe
+*.pdb
+
+# ---- VS user-specific ----
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ---- NuGet ----
+packages/
+*.nupkg
+# Include if you use package restore
+!**/packages/build/
+
+# ---- .NET ----
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ---- Windows / OS ----
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ---- Logs / Cache ----
+*.log
+*.tlog
+*.cache
+*.tmp
+
+# ---- Publish profiles ----
+*.pubxml
+*.publishsettings
+
+# ---- Resharper / Rider ----
+_ReSharper*/
+*.DotSettings.user
+.idea/
+
+# ---- Visual Studio Code ----
+.vscode/
+
+# ---- Auto-generated files (WinForms) ----
+*.Designer.cs
+*.resx
+
+# ---- Others ----
+*.dbmdl
+*.jfm
+*.opendb
+*.pidb
+*.svclog
+*.orig
+*.bak

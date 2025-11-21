@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36623.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory System with POS for UMVC Canteen", "Inventory System with POS for UMVC Canteen.csproj", "{3FE32CA8-58BF-4C60-9D25-BCF5B891CE80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FE32CA8-58BF-4C60-9D25-BCF5B891CE80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FE32CA8-58BF-4C60-9D25-BCF5B891CE80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FE32CA8-58BF-4C60-9D25-BCF5B891CE80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FE32CA8-58BF-4C60-9D25-BCF5B891CE80}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C1F5296-CBBE-4A4E-BEA3-6D73FCB53BF5}
+	EndGlobalSection
+EndGlobal
