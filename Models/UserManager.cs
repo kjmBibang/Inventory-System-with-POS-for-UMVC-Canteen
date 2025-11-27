@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
 {
-    internal class UserManager
+     class UserManager
     {
+        private string databaseConnection { get; set; }
+
+        public User Login(string username, string password) {
+            return null;
+        }
     }
 }
