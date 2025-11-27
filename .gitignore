@@ -52,10 +52,6 @@ _ReSharper*/
 # ---- Visual Studio Code ----
 .vscode/
 
-# ---- Auto-generated files (WinForms) ----
-*.Designer.cs
-*.resx
-
 # ---- Others ----
 *.dbmdl
 *.jfm
