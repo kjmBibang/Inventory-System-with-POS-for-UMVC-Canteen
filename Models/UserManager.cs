@@ -9,7 +9,23 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
     {
 
         private string databaseConnection = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UMVC-CanteenDB;Integrated Security=True;TrustServerCertificate=True;";
-
+        /*
+        public void AdminInsertion()
+        {
+            using (SqlConnection conn = new SqlConnection(databaseConnection))
+            {
+                conn.Open();
+                string query = @"INSERT INTO users VALUES(
+                                 'CSH01','cashier',@PasswordHash,2 );";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@PasswordHash", BCrypt.Net.BCrypt.HashPassword("cashier123"));
+                    cmd.CommandTimeout = 30;
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        */
         public User Login(string username, string password)
 
         {

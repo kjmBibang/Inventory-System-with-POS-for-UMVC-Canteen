@@ -39,7 +39,22 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         private void btnLogin_Click(object sender, EventArgs e)
         {
             
-            userManager.Login(txtUsername.Text,txtPassword.Text);
+            userManager.Login(txtblankUsername.Text,txtblankPassword.Text);
+        }
+
+        private void txtWelcome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtLogin_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
