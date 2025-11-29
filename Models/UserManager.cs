@@ -5,11 +5,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
 {
     public class UserManager
     {
-        private string connectionString = "Server=localhost;Database=UMVCCanteen;Integrated Security=true;";
+        private string databaseConnection = "Server=localhost;Database=UMVCCanteen;Integrated Security=true;";
 
         public User Login(string username, string password)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(databaseConnection))
             {
                 conn.Open();
 
