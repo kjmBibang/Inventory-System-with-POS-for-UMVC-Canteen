@@ -1,14 +1,19 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 using BCrypt.Net;
 
 namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
 {
     public class UserManager
     {
-        private string databaseConnection = "Server=localhost;Database=UMVCCanteen;Integrated Security=true;";
+
+        private string databaseConnection = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UMVC-CanteenDB;Integrated Security=True;TrustServerCertificate=True;";
 
         public User Login(string username, string password)
+
         {
+            
             using (SqlConnection conn = new SqlConnection(databaseConnection))
             {
                 conn.Open();
@@ -16,11 +21,12 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
                 string query = @"SELECT u.UserID, u.Username, u.PasswordHash, u.RoleID, r.RoleName 
                            FROM Users u 
                            INNER JOIN Roles r ON u.RoleID = r.RoleID 
-                           WHERE u.Username = @username";
+                           WHERE u.Username = @Username";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    cmd.CommandTimeout = 30;
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
@@ -33,20 +39,24 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
 
                             if (BCrypt.Net.BCrypt.Verify(password, passwordHash))
                             {
-                                if (roleName == "Admin")
+                                if (roleName == "admin")
                                 {
+                                    MessageBox.Show("new admin");
                                     return new Admin(userId, dbUsername, passwordHash, roleId);
                                 }
-                                else if (roleName == "Cashier")
+                                else if (roleName == "cashier")
                                 {
+                                    MessageBox.Show("new cashier");
                                     return new Cashier(userId, dbUsername, passwordHash, roleId);
                                 }
                             }
                         }
                     }
                 }
-            }
 
+            }
+            
+            MessageBox.Show("Wrong credentials");
             return null;
         }
     }
