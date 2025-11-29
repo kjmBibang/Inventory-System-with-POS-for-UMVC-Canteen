@@ -1,30 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
 {
-    abstract class User
+    public abstract class User
     {
-        protected string userID { get; set; }
-        protected string username { get; set; } 
-        protected string passwordHash { get; set; }
-        protected int roleID { get; set; }
+        protected string UserID { get; }
+        protected string Username { get; }
+        protected string PasswordHash { get; }
+        protected int RoleID { get; }
 
-        public User(string userID, string username, string passwordHash, int roleID)
+        protected User(string userID, string username, string passwordHash, int roleID)
         {
-           
+            UserID = userID;
+            Username = username;
+            PasswordHash = passwordHash;
+            RoleID = roleID;
         }
+
         public string GetUsername()
         {
-            return username;
-        }
-        public string GetUserID()
-        {
-            return userID;
+            return Username;
         }
 
+        public string GetUserID()
+        {
+            return UserID;
+        }
     }
 }
