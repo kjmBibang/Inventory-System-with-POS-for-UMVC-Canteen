@@ -68,10 +68,10 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Cashier.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="LoginForm.resx">
