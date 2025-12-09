@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Inventory_System_with_POS_for_UMVC_Canteen.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,16 @@ using System.Threading.Tasks;
 
 namespace Inventory_System_with_POS_for_UMVC_Canteen.Helpers
 {
-    internal class BCryptHelper
+    class BCryptHelper : ISecurityHelper
     {
+        public string HashPassword(string password)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(password);
+        }
+
+        public void VerifyPasswrod(string plainPassword, string hashPassword)
+        {
+            BCrypt.Net.BCrypt.Verify(plainPassword, hashPassword);
+        }
     }
 }

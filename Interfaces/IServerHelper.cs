@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Inventory_System_with_POS_for_UMVC_Canteen.Interfaces
 {
-    internal interface IServerHelper
+    interface IServerHelper
     {
+        string GetConnectionString();
     }
 }
