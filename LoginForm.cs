@@ -1,4 +1,5 @@
-﻿using Inventory_System_with_POS_for_UMVC_Canteen.Models;
+﻿using Inventory_System_with_POS_for_UMVC_Canteen.Data;
+using Inventory_System_with_POS_for_UMVC_Canteen.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,10 +15,14 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
     
     public partial class LoginForm : Form
     {
-        UserManager userManager = new UserManager();
+        UserRepository userRepository= new UserRepository();
+        UserManager userManager;
         public LoginForm()
+
         {
+
             InitializeComponent();
+            userManager = new UserManager(userRepository);
         }
 
         private void picboxPASS_Click(object sender, EventArgs e)
@@ -38,8 +43,34 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            
-            userManager.Login(txtUsername.Text,txtPassword.Text);
+
+            User user = userManager.Login(txtUsername.Text, txtPassword.Text);
+            if (user != null)
+            {
+                if (user is Admin admin)
+                {
+                    AdminForm adminform = new AdminForm(admin);
+                    adminform.Show();
+                    
+                    this.Hide();
+                }
+                else if (user is Cashier cashier)
+                {
+                    CashierForm cashierForm = new CashierForm(cashier);
+                    cashierForm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Unkown role");
+                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password");
+            }
+
         }
 
         private void txtWelcome_TextChanged(object sender, EventArgs e)

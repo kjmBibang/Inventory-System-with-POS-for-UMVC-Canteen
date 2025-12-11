@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Inventory_System_with_POS_for_UMVC_Canteen.Helpers
 {
     class BCryptHelper : ISecurityHelper
@@ -14,9 +15,10 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Helpers
             return BCrypt.Net.BCrypt.HashPassword(password);
         }
 
-        public void VerifyPasswrod(string plainPassword, string hashPassword)
+        public bool VerifyPassword(string plainPassword, string hashPassword)
         {
-            BCrypt.Net.BCrypt.Verify(plainPassword, hashPassword);
+            return BCrypt.Net.BCrypt.Verify(plainPassword, hashPassword);
         }
+        
     }
 }

@@ -5,11 +5,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
     public abstract class User
     {
         protected string userID { get; }
-        protected string username { get; }
-        protected string passwordHash { get; }
+        public string username { get; }
+        private string passwordHash { get; set; }
         protected int roleID { get; }
 
-        protected User(string userID, string username, string passwordHash, int roleID)
+        protected User(string userID, string username, int roleID)
         {
             this.userID = userID;
             this.username = username;
@@ -17,14 +17,6 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
             this.roleID = roleID;
         }
 
-        public string GetUsername()
-        {
-            return username;
-        }
-
-        public string GetUserID()
-        {
-            return userID;
-        }
+        
     }
 }

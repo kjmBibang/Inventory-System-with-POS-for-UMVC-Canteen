@@ -9,6 +9,6 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Interfaces
     interface ISecurityHelper
     {
         string HashPassword (string password);
-        void VerifyPasswrod(string plainPassword, string hashPassword);
+        bool VerifyPassword(string plainPassword, string hashPassword);
     }
 }
