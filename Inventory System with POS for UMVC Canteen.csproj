@@ -63,14 +63,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CashierForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CashierForm.Designer.cs">
+      <DependentUpon>CashierForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Helpers\BCryptHelper.cs" />
     <Compile Include="Helpers\SQLHelper.cs" />
     <Compile Include="Interfaces\ISecurityHelper.cs" />
     <Compile Include="Interfaces\IServerHelper.cs" />
-    <Compile Include="Interfaces\ISQLContext.cs" />
-    <Compile Include="Interfaces\IUserManager.cs" />
-    <Compile Include="Interfaces\IUserManagerHelper.cs" />
-    <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +92,12 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CashierForm.resx">
+      <DependentUpon>CashierForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
