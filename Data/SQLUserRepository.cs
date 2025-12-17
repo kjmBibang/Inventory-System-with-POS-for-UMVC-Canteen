@@ -7,18 +7,17 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
 {
-    public class UserRepository
+    public class SQLUserRepository : IUserRepository
     {
         private IServerHelper SQLhelper;
         private ISecurityHelper bcryptHelper = new BCryptHelper();
-        public UserRepository()
+        public SQLUserRepository()
         {
             SQLhelper = new SQLHelper();
-            
+
         }
 
         public User AuthenticateUser(string username, string password)
@@ -55,7 +54,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
                                 if (roleId == 1)
                                 {
 
-                                    
+
                                     return new Admin(userId, dbUsername, roleId);
                                 }
 
