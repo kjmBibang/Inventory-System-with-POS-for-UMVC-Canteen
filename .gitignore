@@ -60,3 +60,4 @@ _ReSharper*/
 *.svclog
 *.orig
 *.bak
+App.config
