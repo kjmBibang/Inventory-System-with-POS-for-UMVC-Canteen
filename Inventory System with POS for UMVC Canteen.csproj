@@ -92,6 +92,10 @@
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Cashier.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductCategory.cs" />
+    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\TransactionItem.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
