@@ -11,22 +11,16 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
 {
     public class UserManager
     {
-
-
+        IUserRepository _repo;
         
-        UserRepository userRepository;
-        
-        public UserManager(UserRepository userRepository)
+        public UserManager(IUserRepository userRepository)
         {
-            
-            this.userRepository = userRepository;
-            
+
+            _repo = userRepository;
         }
         public User Login(string username, string password)
-
         {
-
-            return userRepository.AuthenticateUser(username, password);
+            return _repo.AuthenticateUser(username, password);
         }
     }
 }
