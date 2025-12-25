@@ -80,7 +80,7 @@
     <Compile Include="Data\MockDBUserRepository.cs" />
     <Compile Include="Data\SQLTransactionRepository.cs" />
     <Compile Include="Data\SQLUserRepository.cs" />
-    <Compile Include="Data\SQProductRepository.cs" />
+    <Compile Include="Data\SQLProductRepository.cs" />
     <Compile Include="Helpers\BCryptHelper.cs" />
     <Compile Include="Helpers\MockDBHelper.cs" />
     <Compile Include="Helpers\SQLHelper.cs" />
