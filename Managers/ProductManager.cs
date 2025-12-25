@@ -18,7 +18,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
         {
             return null;
         }
-        public TransactionItem ProductSnapshot(Product quantity) 
+        public TransactionItem ProductSnapshot(Product product, int quantity) 
         {
             return null;
         }
