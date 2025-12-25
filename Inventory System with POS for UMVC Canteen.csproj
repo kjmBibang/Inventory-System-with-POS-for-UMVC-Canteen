@@ -75,13 +75,6 @@
     <Compile Include="CashierForm.Designer.cs">
       <DependentUpon>CashierForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\MockDBUserRepository.cs" />
-    <Compile Include="Data\SQLUserRepository.cs" />
-    <Compile Include="Helpers\BCryptHelper.cs" />
-    <Compile Include="Helpers\MockDBHelper.cs" />
-    <Compile Include="Helpers\SQLHelper.cs" />
-    <Compile Include="Interfaces\ISecurityHelper.cs" />
-    <Compile Include="Interfaces\IServerHelper.cs" />
     <Compile Include="Data\MockDBProductRepository.cs" />
     <Compile Include="Data\MockDBTransactionRepository.cs" />
     <Compile Include="Data\MockDBUserRepository.cs" />
@@ -107,9 +100,6 @@
     <Compile Include="Models\Cashier.cs" />
     <Compile Include="Managers\ProductManager.cs" />
     <Compile Include="Managers\TransactionManager.cs" />
-    <Compile Include="Managers\UserManager.cs" />
-    <Compile Include="Models\Admin.cs" />
-    <Compile Include="Models\Cashier.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\Transaction.cs" />

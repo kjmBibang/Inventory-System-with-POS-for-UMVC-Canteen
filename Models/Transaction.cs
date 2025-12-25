@@ -13,12 +13,5 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
         private decimal totalAmount { get; set; }
         private List<TransactionItem> items { get; set; }
 
-        public Transaction(int transactionID, DateTime transactionDate, decimal totalAmount, List<TransactionItem> items)
-        {
-            this.transactionID = transactionID;
-            this.transactionDate = transactionDate;
-            this.totalAmount = totalAmount;
-            this.items = items;
-        }
     }
 }
