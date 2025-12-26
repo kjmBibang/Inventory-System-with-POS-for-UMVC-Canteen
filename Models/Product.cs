@@ -15,8 +15,9 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
         private decimal unitCost { get; set; }
         private decimal unitPrice { get; set; }
         private int categoryID { get; set; }
+        private int stock { get; set; }
 
-        public Product(int productID, int prodcutBarcode, string productName, decimal unitCost, decimal unitPrice, int categoryID)
+        public Product(int productID, int prodcutBarcode, string productName, decimal unitCost, decimal unitPrice, int categoryID, int stock)
         {
             this.productID = productID;
             this.productBarcode = prodcutBarcode;
@@ -24,6 +25,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
             this.unitCost = unitCost;
             this.unitPrice = unitPrice;
             this.categoryID = categoryID;
+            this.stock = stock;
         }
 
     }
