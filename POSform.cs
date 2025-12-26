@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Inventory_System_with_POS_for_UMVC_Canteen
 {
-    public partial class Dashboard : Form
+    public partial class POSform : Form
     {
         private TextBox _activeTextBox;
 
@@ -19,7 +19,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             _activeTextBox = sender as TextBox;
         }
 
-        public Dashboard()
+        public POSform()
         {
             InitializeComponent();
 
@@ -185,5 +185,30 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         
 
     }
-}
+
+        private void DGVSales_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void lblQuantity_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSubtotal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTotal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCash_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
