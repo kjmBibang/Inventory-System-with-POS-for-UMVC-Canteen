@@ -612,6 +612,7 @@
             this.lblCashierName.TabIndex = 65;
             this.lblCashierName.TabStop = false;
             this.lblCashierName.Text = "CASHIER 1";
+            this.lblCashierName.TextChanged += new System.EventHandler(this.lblCashierName_TextChanged);
             // 
             // btnCashierIn
             // 

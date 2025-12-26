@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Inventory_System_with_POS_for_UMVC_Canteen.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             _activeTextBox = sender as TextBox;
         }
 
-        public POSform()
+        public POSform(User user)
         {
             InitializeComponent();
 
@@ -43,6 +44,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             btnNumber9.Click += NumberButton_Click;
             btnDecimal.Click += NumberButton_Click;
             btnClear.Click += btnClear_Click;
+            lblCashierName.Text = user.username;
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
@@ -53,6 +55,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             txtTotal.Text = "0";
             txtCash.Text = "0";
             txtChange.Text = "0";
+            
         }
         private void NumberButton_Click(object sender, EventArgs e)
         {
@@ -76,7 +79,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                     _activeTextBox.Text += input;
             }
         }
-
+        
 
 
         private void btnNumber1_Click(object sender, EventArgs e)
@@ -207,6 +210,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         }
 
         private void lblCash_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCashierName_TextChanged(object sender, EventArgs e)
         {
 
         }
