@@ -23,18 +23,36 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             lblWelcome.Text = $"Welcome {cashier.username}";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+      /* private void button1_Click(object sender, EventArgs e)
         {
             loginForm.Show();
             this.Hide();
-        }
+        }*/
 
         private void CashierForm_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void btnPOSModule_Click(object sender, EventArgs e)
+    /*    private void btnPOSModule_Click(object sender, EventArgs e)
+        {
+            posForm = new POSform(cashier);
+            posForm.Show();
+            this.Hide();
+        }*/
+
+        private void lblWelcome_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            loginForm.Show();
+            this.Hide();
+        }
+
+        private void btnPOSModule_Click_1(object sender, EventArgs e)
         {
             posForm = new POSform(cashier);
             posForm.Show();
