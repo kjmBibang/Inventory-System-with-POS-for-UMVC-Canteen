@@ -31,6 +31,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
+            this.btnPOSModule = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -61,11 +62,22 @@
             this.lblWelcome.TabIndex = 2;
             this.lblWelcome.Text = "label2";
             // 
+            // btnPOSModule
+            // 
+            this.btnPOSModule.Location = new System.Drawing.Point(519, 212);
+            this.btnPOSModule.Name = "btnPOSModule";
+            this.btnPOSModule.Size = new System.Drawing.Size(152, 23);
+            this.btnPOSModule.TabIndex = 3;
+            this.btnPOSModule.Text = "Open POS Module";
+            this.btnPOSModule.UseVisualStyleBackColor = true;
+            this.btnPOSModule.Click += new System.EventHandler(this.btnPOSModule_Click);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnPOSModule);
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
@@ -82,5 +94,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblWelcome;
+        private System.Windows.Forms.Button btnPOSModule;
     }
 }

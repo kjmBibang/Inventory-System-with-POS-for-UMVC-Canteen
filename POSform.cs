@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Inventory_System_with_POS_for_UMVC_Canteen.Helpers;
+using Inventory_System_with_POS_for_UMVC_Canteen.Interfaces;
+using Inventory_System_with_POS_for_UMVC_Canteen.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,7 +14,7 @@ using System.Windows.Forms;
 
 namespace Inventory_System_with_POS_for_UMVC_Canteen
 {
-    public partial class Dashboard : Form
+    public partial class POSform : Form
     {
         private TextBox _activeTextBox;
 
@@ -19,11 +23,12 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             _activeTextBox = sender as TextBox;
         }
 
-        public Dashboard()
+        public POSform(User user)
         {
             InitializeComponent();
+            txtBarcode.KeyDown += txtBarcode_KeyDown; //mao ni need for txtBarcode_keydown()
 
-            
+
             txtBarcode.Enter += TextBox_Enter;
             txtQuantity.Enter += TextBox_Enter;
             txtSubtotal.Enter += TextBox_Enter;
@@ -43,6 +48,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             btnNumber9.Click += NumberButton_Click;
             btnDecimal.Click += NumberButton_Click;
             btnClear.Click += btnClear_Click;
+            lblCashierName.Text = user.username;
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
@@ -53,6 +59,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             txtTotal.Text = "0";
             txtCash.Text = "0";
             txtChange.Text = "0";
+            
         }
         private void NumberButton_Click(object sender, EventArgs e)
         {
@@ -76,7 +83,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                     _activeTextBox.Text += input;
             }
         }
-
+        
 
 
         private void btnNumber1_Click(object sender, EventArgs e)
@@ -185,5 +192,111 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         
 
     }
-}
+
+        private void DGVSales_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void lblQuantity_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSubtotal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTotal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCash_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCashierName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBarcode_KeyDown(object sender, KeyEventArgs e)// stores barcode as string when user enters
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string barcode = txtBarcode.Text.Trim();
+                LoadProductByBarcode(barcode);
+                e.SuppressKeyPress = true; // prevents beep
+            }
+        }
+        private void AddProductToGrid(string barcode, string productName, decimal price)
+        {
+            int quantity = 1;
+            decimal subtotal = price * quantity;
+
+            dgvSales.Rows.Add(
+                barcode,          // Barcode column
+                productName,      // Product column
+                price,            // Price column
+                quantity,         // Quantity column
+                subtotal          // Subtotal column
+            );
+
+            UpdateTotal();
+        }
+        private void UpdateTotal()
+        {
+            decimal total = 0;
+
+            foreach (DataGridViewRow row in dgvSales.Rows)
+            {
+                if (row.Cells["subtotalColumn"].Value != null)
+                {
+                    total += Convert.ToDecimal(row.Cells["subtotalColumn"].Value);
+                }
+            }
+
+            txtTotal.Text = total.ToString("0.00");
+        }
+
+        IServerHelper serverHelper = new SQLHelper();
+        private void LoadProductByBarcode(string barcode)
+        {
+
+            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                string query = @"
+            SELECT Barcode, ProductName, Price
+            FROM Products
+            WHERE Barcode = @Barcode";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Barcode", barcode);
+                    con.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            AddProductToGrid(
+                                reader["Barcode"].ToString(),
+                                reader["ProductName"].ToString(),
+                                Convert.ToDecimal(reader["Price"])
+                            );
+                        }
+                        else
+                        {
+                            MessageBox.Show("Product not found");
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
 }

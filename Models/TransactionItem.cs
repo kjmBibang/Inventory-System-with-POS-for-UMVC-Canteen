@@ -14,5 +14,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
         private decimal unitPrice { get; set; }
         private int quantity { get; set; }
         private decimal subTotal { get; set; }
+
+        private string barcode { get; set; }
+        private string productName { get; set; }
     }
 }
