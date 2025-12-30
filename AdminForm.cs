@@ -42,5 +42,20 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             posForm.Show();
             this.Hide();
         }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInventory_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

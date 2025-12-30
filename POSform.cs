@@ -26,12 +26,16 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         public POSform(User user)
         {
             InitializeComponent();
-            txtBarcode.KeyDown += txtBarcode_KeyDown; //mao ni need for txtBarcode_keydown()
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+            //txtBarcode.KeyDown += txtBarcode_KeyDown; //mao ni need for txtBarcode_keydown()
+
+            
+
 
 
             txtBarcode.Enter += TextBox_Enter;
             txtQuantity.Enter += TextBox_Enter;
-            txtSubtotal.Enter += TextBox_Enter;
             txtTotal.Enter += TextBox_Enter;
             txtCash.Enter += TextBox_Enter;
             txtChange.Enter += TextBox_Enter;
@@ -55,7 +59,6 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
             txtBarcode.Text = "0";
             txtQuantity.Text = "0";
-            txtSubtotal.Text = "0";
             txtTotal.Text = "0";
             txtCash.Text = "0";
             txtChange.Text = "0";
@@ -163,11 +166,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
 
         }
-        private void txtSubtotal_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
+       
         private void txtTotal_TextChanged(object sender, EventArgs e)
         {
             
@@ -203,10 +202,6 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
         }
 
-        private void lblSubtotal_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void lblTotal_TextChanged(object sender, EventArgs e)
         {
@@ -223,80 +218,87 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
         }
 
-        private void txtBarcode_KeyDown(object sender, KeyEventArgs e)// stores barcode as string when user enters
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                string barcode = txtBarcode.Text.Trim();
-                LoadProductByBarcode(barcode);
-                e.SuppressKeyPress = true; // prevents beep
-            }
-        }
-        private void AddProductToGrid(string barcode, string productName, decimal price)
-        {
-            int quantity = 1;
-            decimal subtotal = price * quantity;
-
-            dgvSales.Rows.Add(
-                barcode,          // Barcode column
-                productName,      // Product column
-                price,            // Price column
-                quantity,         // Quantity column
-                subtotal          // Subtotal column
-            );
-
-            UpdateTotal();
-        }
-        private void UpdateTotal()
-        {
-            decimal total = 0;
-
-            foreach (DataGridViewRow row in dgvSales.Rows)
-            {
-                if (row.Cells["subtotalColumn"].Value != null)
-                {
-                    total += Convert.ToDecimal(row.Cells["subtotalColumn"].Value);
-                }
-            }
-
-            txtTotal.Text = total.ToString("0.00");
+            
         }
 
-        IServerHelper serverHelper = new SQLHelper();
-        private void LoadProductByBarcode(string barcode)
-        {
 
-            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
-            {
-                string query = @"
-            SELECT Barcode, ProductName, Price
-            FROM Products
-            WHERE Barcode = @Barcode";
 
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@Barcode", barcode);
-                    con.Open();
+        /* private void txtBarcode_KeyDown(object sender, KeyEventArgs e)// stores barcode as string when user enters
+         {
+             if (e.KeyCode == Keys.Enter)
+             {
+                 string barcode = txtBarcode.Text.Trim();
+                 LoadProductByBarcode(barcode);
+                 e.SuppressKeyPress = true; // prevents beep
+             }
+         }
+         private void AddProductToGrid(string barcode, string productName, decimal price)
+         {
+             int quantity = 1;
+             decimal subtotal = price * quantity;
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            AddProductToGrid(
-                                reader["Barcode"].ToString(),
-                                reader["ProductName"].ToString(),
-                                Convert.ToDecimal(reader["Price"])
-                            );
-                        }
-                        else
-                        {
-                            MessageBox.Show("Product not found");
-                        }
-                    }
-                }
-            }
-        }
+             dgvSales.Rows.Add(
+                 barcode,          // Barcode column
+                 productName,      // Product column
+                 price,            // Price column
+                 quantity,         // Quantity column
+                 subtotal          // Subtotal column
+             );
 
+             UpdateTotal();
+         }
+         private void UpdateTotal()
+         {
+             decimal total = 0;
+
+             foreach (DataGridViewRow row in dgvSales.Rows)
+             {
+                 if (row.Cells["subtotalColumn"].Value != null)
+                 {
+                     total += Convert.ToDecimal(row.Cells["subtotalColumn"].Value);
+                 }
+             }
+
+             txtTotal.Text = total.ToString("0.00");
+         }
+
+         IServerHelper serverHelper = new SQLHelper();
+         private void LoadProductByBarcode(string barcode)
+         {
+
+             using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+             {
+                 string query = @"
+             SELECT Barcode, ProductName, Price
+             FROM Products
+             WHERE Barcode = @Barcode";
+
+                 using (SqlCommand cmd = new SqlCommand(query, con))
+                 {
+                     cmd.Parameters.AddWithValue("@Barcode", barcode);
+                     con.Open();
+
+                     using (SqlDataReader reader = cmd.ExecuteReader())
+                     {
+                         if (reader.Read())
+                         {
+                             AddProductToGrid(
+                                 reader["Barcode"].ToString(),
+                                 reader["ProductName"].ToString(),
+                                 Convert.ToDecimal(reader["Price"])
+                             );
+                         }
+                         else
+                         {
+                             MessageBox.Show("Product not found");
+                         }
+                     }
+                 }
+             }
+         }
+        */
 
     }
 }
