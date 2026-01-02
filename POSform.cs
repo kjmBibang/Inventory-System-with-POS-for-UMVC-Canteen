@@ -28,7 +28,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
-            //txtBarcode.KeyDown += txtBarcode_KeyDown; //mao ni need for txtBarcode_keydown()
+            txtBarcode.KeyDown += txtBarcode_KeyDown; //mao ni need for txtBarcode_keydown()
+            
 
             
 
@@ -224,8 +225,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         }
 
 
-
-        /* private void txtBarcode_KeyDown(object sender, KeyEventArgs e)// stores barcode as string when user enters
+        private void txtBarcode_KeyDown(object sender, KeyEventArgs e)// stores barcode as string when user enters
          {
              if (e.KeyCode == Keys.Enter)
              {
@@ -265,6 +265,70 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
          }
 
          IServerHelper serverHelper = new SQLHelper();
+        private void ReduceStock(string barcode)
+        {
+            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                string query = @"
+        UPDATE Products
+        SET Stock = Stock - 1
+        WHERE Barcode = @Barcode";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Barcode", barcode);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void LoadProductByBarcode(string barcode)
+        {
+            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                string query = @"
+        SELECT Barcode, ProductName, Price, Stock
+        FROM Products
+        WHERE Barcode = @Barcode";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Barcode", barcode);
+                    con.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int stock = Convert.ToInt32(reader["Stock"]);
+
+                            if (stock <= 0)
+                            {
+                                MessageBox.Show("Out of stock");
+                                return;
+                            }
+
+                            // add to grid
+                            AddProductToGrid(
+                                reader["Barcode"].ToString(),
+                                reader["ProductName"].ToString(),
+                                Convert.ToDecimal(reader["Price"])
+                            );
+
+                            // reduce stock
+                            ReduceStock(barcode);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Product not found");
+                        }
+                    }
+                }
+            }
+        }
+
+
          private void LoadProductByBarcode(string barcode)
          {
 
@@ -298,7 +362,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                  }
              }
          }
-        */
+        
 
     }
 }
