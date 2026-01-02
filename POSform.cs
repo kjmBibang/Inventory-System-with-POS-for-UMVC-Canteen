@@ -1,6 +1,7 @@
 ﻿using Inventory_System_with_POS_for_UMVC_Canteen.Helpers;
 using Inventory_System_with_POS_for_UMVC_Canteen.Interfaces;
 using Inventory_System_with_POS_for_UMVC_Canteen.Models;
+using Inventory_System_with_POS_for_UMVC_Canteen.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
     public partial class POSform : Form
     {
         private TextBox _activeTextBox;
+        private SQLProductRepository productRepository;
 
         private void TextBox_Enter(object sender, EventArgs e)
         {
@@ -29,11 +31,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             txtBarcode.KeyDown += txtBarcode_KeyDown; //mao ni need for txtBarcode_keydown()
-            
 
-            
-
-
+            productRepository = new SQLProductRepository();
 
             txtBarcode.Enter += TextBox_Enter;
             txtQuantity.Enter += TextBox_Enter;
@@ -63,7 +62,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             txtTotal.Text = "0";
             txtCash.Text = "0";
             txtChange.Text = "0";
-            
+
         }
         private void NumberButton_Click(object sender, EventArgs e)
         {
@@ -87,246 +86,126 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                     _activeTextBox.Text += input;
             }
         }
-        
 
 
-        private void btnNumber1_Click(object sender, EventArgs e)
-        {
-            
-               
-            
-        }
 
-        private void btnNumber2_Click(object sender, EventArgs e)
-        {
-            
-               
-        }
+        private void btnNumber1_Click(object sender, EventArgs e) { }
 
-        private void btnNumber3_Click(object sender, EventArgs e)
-        {
-            
-              
-            
-        }
+        private void btnNumber2_Click(object sender, EventArgs e) { }
 
-        private void btnNumber4_Click(object sender, EventArgs e)
-        {
-            
-               
-            
-        }
+        private void btnNumber3_Click(object sender, EventArgs e) { }
 
-        private void btnNumber5_Click(object sender, EventArgs e)
-        {
-            
-               
-        }
+        private void btnNumber4_Click(object sender, EventArgs e) { }
 
-        private void btnNumber6_Click(object sender, EventArgs e)
-        {
-            
-              
-            
-        }
+        private void btnNumber5_Click(object sender, EventArgs e) { }
 
-        private void btnNumber7_Click(object sender, EventArgs e)
-        {
-            
-                
-            
-        }
+        private void btnNumber6_Click(object sender, EventArgs e) { }
 
-        private void btnNumber8_Click(object sender, EventArgs e)
-        {
-            
-                
-            
-        }
+        private void btnNumber7_Click(object sender, EventArgs e) { }
 
-        private void btnNumber9_Click(object sender, EventArgs e)
-        {
-            
-                
-            
-        }
+        private void btnNumber8_Click(object sender, EventArgs e) { }
 
-        private void btnNumber0_Click(object sender, EventArgs e)
-        {
-            
-                
-            
-        }
+        private void btnNumber9_Click(object sender, EventArgs e) { }
 
-        private void txtBarcode_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
+        private void btnNumber0_Click(object sender, EventArgs e) { }
 
-        private void txtQuantity_TextChanged(object sender, EventArgs e)
-        {
+        private void txtBarcode_TextChanged(object sender, EventArgs e) { }
 
-        }
-       
-        private void txtTotal_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
+        private void txtQuantity_TextChanged(object sender, EventArgs e) { }
 
-        private void txtCash_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
+        private void txtTotal_TextChanged(object sender, EventArgs e) { }
 
-        private void txtChange_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
+        private void txtCash_TextChanged(object sender, EventArgs e) { }
+        private void txtChange_TextChanged(object sender, EventArgs e) { }
+        private void DGVSales_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+
+        private void lblQuantity_TextChanged(object sender, EventArgs e) { }
+
+
+        private void lblTotal_TextChanged(object sender, EventArgs e) { }
+
+        private void lblCash_TextChanged(object sender, EventArgs e) { }
+
+        private void lblCashierName_TextChanged(object sender, EventArgs e) { }
+
+        private void btnBack_Click(object sender, EventArgs e) { }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-        
+
             if (_activeTextBox == null) return;
 
             _activeTextBox.Text = "0";
-        
 
-    }
-
-        private void DGVSales_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
         }
-
-        private void lblQuantity_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void lblTotal_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblCash_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblCashierName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-
 
         private void txtBarcode_KeyDown(object sender, KeyEventArgs e)// stores barcode as string when user enters
-         {
-             if (e.KeyCode == Keys.Enter)
-             {
-                 string barcode = txtBarcode.Text.Trim();
-                 LoadProductByBarcode(barcode);
-                 e.SuppressKeyPress = true; // prevents beep
-             }
-         }
-         private void AddProductToGrid(string barcode, string productName, decimal price)
-         {
-             int quantity = 1;
-             decimal subtotal = price * quantity;
-
-             dgvSales.Rows.Add(
-                 barcode,          // Barcode column
-                 productName,      // Product column
-                 price,            // Price column
-                 quantity,         // Quantity column
-                 subtotal          // Subtotal column
-             );
-
-             UpdateTotal();
-         }
-         private void UpdateTotal()
-         {
-             decimal total = 0;
-
-             foreach (DataGridViewRow row in dgvSales.Rows)
-             {
-                 if (row.Cells["subtotalColumn"].Value != null)
-                 {
-                     total += Convert.ToDecimal(row.Cells["subtotalColumn"].Value);
-                 }
-             }
-
-             txtTotal.Text = total.ToString("0.00");
-         }
-
-         IServerHelper serverHelper = new SQLHelper();
-        private void ReduceStock(string barcode)
         {
-            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            if (e.KeyCode == Keys.Enter)
             {
-                string query = @"
-        UPDATE Products
-        SET Stock = Stock - 1
-        WHERE Barcode = @Barcode";
+                string barcode = txtBarcode.Text.Trim();
+                LoadProductByBarcode(barcode);
+                e.SuppressKeyPress = true; // prevents beep
+            }
+        }
 
-                using (SqlCommand cmd = new SqlCommand(query, con))
+        private void AddProductToGrid(string barcode, string productName, decimal price)
+        {
+            int quantity = 1;
+            decimal subtotal = price * quantity;
+
+            dgvSales.Rows.Add(
+                barcode,          // Barcode column
+                productName,      // Product column
+                price,            // Price column
+                quantity,         // Quantity column
+                subtotal          // Subtotal column
+            );
+
+            UpdateTotal();
+        }
+
+        private void UpdateTotal()
+        {
+            decimal total = 0;
+
+            foreach (DataGridViewRow row in dgvSales.Rows)
+            {
+                if (row.Cells["subtotalColumn"].Value != null)
                 {
-                    cmd.Parameters.AddWithValue("@Barcode", barcode);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
+                    total += Convert.ToDecimal(row.Cells["subtotalColumn"].Value);
                 }
             }
+
+            txtTotal.Text = total.ToString("0.00");
         }
 
         private void LoadProductByBarcode(string barcode)
         {
-            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            Product product = productRepository.LoadProductByBarcode(barcode);
+
+            if (product == null)
             {
-                string query = @"
-        SELECT Barcode, ProductName, Price, Stock
-        FROM Products
-        WHERE Barcode = @Barcode";
-
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@Barcode", barcode);
-                    con.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            int stock = Convert.ToInt32(reader["Stock"]);
-
-                            if (stock <= 0)
-                            {
-                                MessageBox.Show("Out of stock");
-                                return;
-                            }
-
-                            // add to grid
-                            AddProductToGrid(
-                                reader["Barcode"].ToString(),
-                                reader["ProductName"].ToString(),
-                                Convert.ToDecimal(reader["Price"])
-                            );
-
-                            // reduce stock
-                            ReduceStock(barcode);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Product not found");
-                        }
-                    }
-                }
+                MessageBox.Show("Product not found");
+                return;
             }
+
+            if (product.stock <= 0)
+            {
+                MessageBox.Show("Out of stock");
+                return;
+            }
+
+            // add to grid
+            AddProductToGrid(
+                product.productBarcode,
+                product.productName,
+                product.unitPrice
+            );
+
+            // reduce stock
+            productRepository.ReduceStock(barcode);
         }
     }
 }
