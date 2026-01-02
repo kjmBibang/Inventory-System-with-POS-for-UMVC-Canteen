@@ -13,6 +13,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
         public ProductManager(IProductRepository productRepo) 
         { 
                
+        
         }
         public string GetIDFromBarcode(string barcode)
         {

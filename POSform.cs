@@ -29,6 +29,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             txtBarcode.KeyDown += txtBarcode_KeyDown; //mao ni need for txtBarcode_keydown()
+            
 
             
 
@@ -224,7 +225,6 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         }
 
 
-
         private void txtBarcode_KeyDown(object sender, KeyEventArgs e)// stores barcode as string when user enters
          {
              if (e.KeyCode == Keys.Enter)
@@ -329,6 +329,40 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         }
 
 
+         private void LoadProductByBarcode(string barcode)
+         {
+
+             using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+             {
+                 string query = @"
+             SELECT Barcode, ProductName, Price
+             FROM Products
+             WHERE Barcode = @Barcode";
+
+                 using (SqlCommand cmd = new SqlCommand(query, con))
+                 {
+                     cmd.Parameters.AddWithValue("@Barcode", barcode);
+                     con.Open();
+
+                     using (SqlDataReader reader = cmd.ExecuteReader())
+                     {
+                         if (reader.Read())
+                         {
+                             AddProductToGrid(
+                                 reader["Barcode"].ToString(),
+                                 reader["ProductName"].ToString(),
+                                 Convert.ToDecimal(reader["Price"])
+                             );
+                         }
+                         else
+                         {
+                             MessageBox.Show("Product not found");
+                         }
+                     }
+                 }
+             }
+         }
+        
 
     }
 }
