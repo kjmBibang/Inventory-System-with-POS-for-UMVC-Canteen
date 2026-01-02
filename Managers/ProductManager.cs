@@ -10,7 +10,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
 {
     public class ProductManager
     {
-        private readonly IProductRepository _productRepository;
+        private IProductRepository _productRepository;
 
         public ProductManager(IProductRepository productRepo)
         {

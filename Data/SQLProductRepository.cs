@@ -19,7 +19,10 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
         {
             return null;
         }
+        public void UpdateStock(string id)
+        {
 
+        }
         public void ReduceStock(string barcode)
         {
             using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
