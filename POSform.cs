@@ -225,6 +225,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         }
 
 
+
         private void txtBarcode_KeyDown(object sender, KeyEventArgs e)// stores barcode as string when user enters
          {
              if (e.KeyCode == Keys.Enter)
@@ -327,8 +328,5 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                 }
             }
         }
-
-        
-
     }
 }
