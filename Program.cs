@@ -16,7 +16,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UserManagementForm());
+            Application.Run(new LoginForm());
         }
     }
 }
