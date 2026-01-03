@@ -30,12 +30,12 @@
         {
             this.btnReports = new System.Windows.Forms.Button();
             this.btnInventory = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.Panel = new System.Windows.Forms.Panel();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.btnPOSModule = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnReports
@@ -58,14 +58,14 @@
             this.btnInventory.Text = "Inventory";
             this.btnInventory.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // Panel
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.lblWelcome);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1346, 538);
-            this.panel1.TabIndex = 9;
+            this.Panel.BackColor = System.Drawing.Color.White;
+            this.Panel.Controls.Add(this.lblWelcome);
+            this.Panel.Location = new System.Drawing.Point(12, 12);
+            this.Panel.Name = "Panel";
+            this.Panel.Size = new System.Drawing.Size(1346, 538);
+            this.Panel.TabIndex = 9;
             // 
             // lblWelcome
             // 
@@ -123,15 +123,15 @@
             this.Controls.Add(this.btnPOSModule);
             this.Controls.Add(this.btnReports);
             this.Controls.Add(this.btnInventory);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.Panel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CashierForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CashierForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.CashierForm_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Panel.ResumeLayout(false);
+            this.Panel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -140,7 +140,7 @@
 
         private System.Windows.Forms.Button btnReports;
         private System.Windows.Forms.Button btnInventory;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel Panel;
         private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.Button btnPOSModule;
         private System.Windows.Forms.Button btnLogOut;

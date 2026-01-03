@@ -15,6 +15,13 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         public UserManagementForm()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void UserManagementForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
