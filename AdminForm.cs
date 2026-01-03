@@ -20,6 +20,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         public AdminForm(Admin admin)
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             this.admin = admin;
             lblWelcome.Text = $"Welcome {admin.username}";
         }
