@@ -29,12 +29,6 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             txtBarcode.KeyDown += txtBarcode_KeyDown; //mao ni need for txtBarcode_keydown()
-            
-
-            
-
-
-
             txtBarcode.Enter += TextBox_Enter;
             txtQuantity.Enter += TextBox_Enter;
             txtTotal.Enter += TextBox_Enter;
@@ -87,101 +81,35 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                     _activeTextBox.Text += input;
             }
         }
-        
+        private void btnNumber1_Click(object sender, EventArgs e){}
 
+        private void btnNumber2_Click(object sender, EventArgs e){}
 
-        private void btnNumber1_Click(object sender, EventArgs e)
-        {
-            
-               
-            
-        }
+        private void btnNumber3_Click(object sender, EventArgs e){}
 
-        private void btnNumber2_Click(object sender, EventArgs e)
-        {
-            
-               
-        }
+        private void btnNumber4_Click(object sender, EventArgs e){}
 
-        private void btnNumber3_Click(object sender, EventArgs e)
-        {
-            
-              
-            
-        }
+        private void btnNumber5_Click(object sender, EventArgs e){}
 
-        private void btnNumber4_Click(object sender, EventArgs e)
-        {
-            
-               
-            
-        }
+        private void btnNumber6_Click(object sender, EventArgs e){}
 
-        private void btnNumber5_Click(object sender, EventArgs e)
-        {
-            
-               
-        }
+        private void btnNumber7_Click(object sender, EventArgs e){}
 
-        private void btnNumber6_Click(object sender, EventArgs e)
-        {
-            
-              
-            
-        }
+        private void btnNumber8_Click(object sender, EventArgs e){}
 
-        private void btnNumber7_Click(object sender, EventArgs e)
-        {
-            
-                
-            
-        }
+        private void btnNumber9_Click(object sender, EventArgs e){}
 
-        private void btnNumber8_Click(object sender, EventArgs e)
-        {
-            
-                
-            
-        }
+        private void btnNumber0_Click(object sender, EventArgs e){}
 
-        private void btnNumber9_Click(object sender, EventArgs e)
-        {
-            
-                
-            
-        }
+        private void txtBarcode_TextChanged(object sender, EventArgs e){}
 
-        private void btnNumber0_Click(object sender, EventArgs e)
-        {
-            
-                
-            
-        }
-
-        private void txtBarcode_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtQuantity_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void txtQuantity_TextChanged(object sender, EventArgs e){}
        
-        private void txtTotal_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
+        private void txtTotal_TextChanged(object sender, EventArgs e){}
 
-        private void txtCash_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
+        private void txtCash_TextChanged(object sender, EventArgs e){}
 
-        private void txtChange_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
+        private void txtChange_TextChanged(object sender, EventArgs e){}
 
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -193,38 +121,18 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
     }
 
-        private void DGVSales_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        private void DGVSales_CellContentClick(object sender, DataGridViewCellEventArgs e){}
 
-        }
-
-        private void lblQuantity_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void lblQuantity_TextChanged(object sender, EventArgs e){}
 
 
-        private void lblTotal_TextChanged(object sender, EventArgs e)
-        {
+        private void lblTotal_TextChanged(object sender, EventArgs e){}
 
-        }
+        private void lblCash_TextChanged(object sender, EventArgs e){}
 
-        private void lblCash_TextChanged(object sender, EventArgs e)
-        {
+        private void lblCashierName_TextChanged(object sender, EventArgs e){}
 
-        }
-
-        private void lblCashierName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-
+        private void btnBack_Click(object sender, EventArgs e){}
 
         private void txtBarcode_KeyDown(object sender, KeyEventArgs e)// stores barcode as string when user enters
          {
