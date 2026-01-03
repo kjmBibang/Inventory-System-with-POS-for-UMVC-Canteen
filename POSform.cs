@@ -191,6 +191,54 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
              txtTotal.Text = total.ToString("0.00");
          }
 
-         
+        private void lblTransactionIDPlaceholder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //=================trasnsaction ni diri na flow, subject to change===============
+        private Transaction BuildTransactionFromGrid()
+        {
+            var items = new List<TransactionItem>();
+
+            foreach (DataGridViewRow row in dgvSales.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                items.Add(new TransactionItem(
+                    transactionItemID: 0,
+                    transactionID: 0,
+                    productID: 0, // optional for now
+                    unitPrice: Convert.ToDecimal(row.Cells["unitPriceColumn"].Value),
+                    quantity: Convert.ToInt32(row.Cells["quantityColumn"].Value),
+                    subTotal: Convert.ToDecimal(row.Cells["subtotalColumn"].Value),
+                    barcode: row.Cells["barcodeColumn"].Value.ToString(),
+                    productName: row.Cells["productNameColumn"].Value.ToString()
+                ));
+            }
+
+            return new Transaction(
+                transactionID: 0,
+                transactionDate: DateTime.Now,
+                totalAmount: items.Sum(i => i.subTotal),
+                items,
+                cashierName: lblCashierName.Text
+            );
+        }
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            Transaction transaction = BuildTransactionFromGrid();
+
+            ITransactionRepository repo = new SQLTransactionRepository();
+            TransactionManager manager = new TransactionManager(repo);
+
+            int transactionId = manager.ProcessTransaction(transaction);
+
+            MessageBox.Show($"Transaction #{transactionId} saved!");
+
+            dgvSales.Rows.Clear();
+            txtTotal.Text = "0.00";
+        }
     }
 }
