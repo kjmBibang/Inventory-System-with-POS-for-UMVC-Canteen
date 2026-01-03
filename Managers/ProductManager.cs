@@ -10,9 +10,10 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
 {
     public class ProductManager
     {
+        IProductRepository _repo;
         public ProductManager(IProductRepository productRepo) 
         { 
-        
+            this._repo = productRepo;
         }
         public string GetIDFromBarcode(string barcode)
         {
@@ -21,6 +22,16 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
         public TransactionItem ProductSnapshot(Product product, int quantity) 
         {
             return null;
+        }
+        public Product GetProductFromBarcode(string barcode)
+        {
+            Product product = _repo.LoadProductByBarcode(barcode);
+            
+            return product;
+        }
+        public void ReduceStock(string barcode)
+        {
+            _repo.ReduceStock(barcode);
         }
     }
 }

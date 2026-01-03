@@ -1,5 +1,7 @@
-﻿using Inventory_System_with_POS_for_UMVC_Canteen.Helpers;
+﻿using Inventory_System_with_POS_for_UMVC_Canteen.Data;
+using Inventory_System_with_POS_for_UMVC_Canteen.Helpers;
 using Inventory_System_with_POS_for_UMVC_Canteen.Interfaces;
+using Inventory_System_with_POS_for_UMVC_Canteen.Managers;
 using Inventory_System_with_POS_for_UMVC_Canteen.Models;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
     public partial class POSform : Form
     {
         private TextBox _activeTextBox;
+        IProductRepository _repo = new SQLProductRepository();
+        ProductManager manager;
 
         private void TextBox_Enter(object sender, EventArgs e)
         {
@@ -136,11 +140,25 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
         private void txtBarcode_KeyDown(object sender, KeyEventArgs e)// stores barcode as string when user enters
          {
+            manager = new ProductManager(_repo);
              if (e.KeyCode == Keys.Enter)
              {
                  string barcode = txtBarcode.Text.Trim();
-                 LoadProductByBarcode(barcode);
-                 e.SuppressKeyPress = true; // prevents beep
+                 Product product = manager.GetProductFromBarcode(barcode);
+                if (product == null)
+                {
+                    MessageBox.Show("Product not found");
+                    return;
+                }
+
+                if (product.stock <= 0)
+                {
+                    MessageBox.Show("Out of stock");
+                    return;
+                }
+                AddProductToGrid(product.productBarcode, product.productName, product.unitPrice);
+                manager.ReduceStock(barcode);
+                e.SuppressKeyPress = true; // prevents beep
              }
          }
          private void AddProductToGrid(string barcode, string productName, decimal price)
@@ -173,68 +191,6 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
              txtTotal.Text = total.ToString("0.00");
          }
 
-         IServerHelper serverHelper = new SQLHelper();
-        private void ReduceStock(string barcode)
-        {
-            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
-            {
-                string query = @"
-        UPDATE Products
-        SET Stock = Stock - 1
-        WHERE Barcode = @Barcode";
-
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@Barcode", barcode);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
-
-        private void LoadProductByBarcode(string barcode)
-        {
-            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
-            {
-                string query = @"
-        SELECT Barcode, ProductName, Price, Stock
-        FROM Products
-        WHERE Barcode = @Barcode";
-
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@Barcode", barcode);
-                    con.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            int stock = Convert.ToInt32(reader["Stock"]);
-
-                            if (stock <= 0)
-                            {
-                                MessageBox.Show("Out of stock");
-                                return;
-                            }
-
-                            // add to grid
-                            AddProductToGrid(
-                                reader["Barcode"].ToString(),
-                                reader["ProductName"].ToString(),
-                                Convert.ToDecimal(reader["Price"])
-                            );
-
-                            // reduce stock
-                            ReduceStock(barcode);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Product not found");
-                        }
-                    }
-                }
-            }
-        }
+         
     }
 }
