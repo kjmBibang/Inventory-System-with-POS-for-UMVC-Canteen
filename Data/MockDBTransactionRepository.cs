@@ -10,6 +10,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
 {
     public class MockDBTransactionRepository : ITransactionRepository
     {
+        public int CreateTransaction(Transaction transaction)
+        {
+            throw new NotImplementedException();
+        }
+
         public Transaction GetTransaction()
         {
             return null;

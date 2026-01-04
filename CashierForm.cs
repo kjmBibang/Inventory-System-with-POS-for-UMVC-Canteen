@@ -19,6 +19,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         public CashierForm(Cashier cashier)
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             this.cashier = cashier;
             lblWelcome.Text = $"Welcome {cashier.username}";
         }

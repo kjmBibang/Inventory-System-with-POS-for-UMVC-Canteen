@@ -13,7 +13,5 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Interfaces
         Product LoadProductByBarcode(string barcode);
         void ReduceStock(string barcode);
         void UpdateStock(string id);
-
-
     }
 }
