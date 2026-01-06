@@ -68,6 +68,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             txtSearchbar.TextChanged += txtSearchbar_TextChanged;
             lstboxSuggestion.DoubleClick += lstboxSuggestion_DoubleClick;
 
+            //for quantity change
+            dgvSales.SelectionChanged += dgvSales_SelectionChanged;
+            txtQuantity.KeyDown += txtQuantity_KeyDown;
+            btnEnterQuantity.Click += btnEnterQuantity_Click;
+
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
@@ -441,6 +446,54 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                 txtSearchbar.Clear();
                 lstboxSuggestion.Visible = false;
             }
+        }
+        //=======================QUANTITY BUTTON ni diri======================
+        // [UI] – populate txtQuantity when row selected
+        private void dgvSales_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvSales.CurrentRow != null && !dgvSales.CurrentRow.IsNewRow)
+            {
+                txtQuantity.Text = dgvSales.CurrentRow.Cells["quantityColumn"].Value.ToString();
+                txtQuantity.Focus();
+            }
+        }
+        // [UI] – update selected row quantity from txtQuantity
+        private void btnEnterQuantity_Click(object sender, EventArgs e)
+        {
+            UpdateSelectedRowQuantity();
+        }
+        // [UI] – Enter key in txtQuantity updates quantity
+        private void txtQuantity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                UpdateSelectedRowQuantity();
+                e.SuppressKeyPress = true; // prevent beep
+            }
+        }
+        // [UI] – helper method
+        private void UpdateSelectedRowQuantity()
+        {
+            if (dgvSales.CurrentRow == null || dgvSales.CurrentRow.IsNewRow) return;
+
+            if (!int.TryParse(txtQuantity.Text.Trim(), out int newQty) || newQty <= 0)
+            {
+                MessageBox.Show("Invalid quantity", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Update quantity cell
+            dgvSales.CurrentRow.Cells["quantityColumn"].Value = newQty;
+
+            // Recalculate subtotal for this row
+            decimal unitPrice = Convert.ToDecimal(dgvSales.CurrentRow.Cells["unitPriceColumn"].Value);
+            dgvSales.CurrentRow.Cells["subtotalColumn"].Value = unitPrice * newQty;
+
+            // Update total
+            UpdateTotal();
+
+            // Optional: focus back on barcode for faster workflow
+            txtBarcode.Focus();
         }
 
 
