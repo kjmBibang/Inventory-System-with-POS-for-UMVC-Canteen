@@ -24,7 +24,9 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         ITransactionRepository transactionRepository = new MockDBTransactionRepository();//kini i change pud, hand in hand sila
         private ProductManager productManager;
         private User currentUser;
-        
+        private bool adminAuthorized = false; // per-transaction admin approval
+
+
         TransactionManager manager;
         // Add these fields at the top of your class (near _activeTextBox and productRepository)
         private bool isCheckedOut = false;
@@ -81,8 +83,10 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             txtQuantity.KeyDown += txtQuantity_KeyDown;
             btnEnterQuantity.Click += btnEnterQuantity_Click;
 
-        }
+            InitializeAdminState();
 
+        }
+        
         private void Dashboard_Load(object sender, EventArgs e)
         {
             txtBarcode.Text = "0";
@@ -399,6 +403,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             txtBarcode.Enabled = true;
             txtCash.Enabled = false;
             btnPay.Enabled = false;
+            adminAuthorized = (currentUser.roleID == 1);
+            UpdateAdminUI();
 
             txtBarcode.Focus();
         }
@@ -407,6 +413,42 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         //==========================PRODUCT SEARCHING DIRI=============================================
         private void btnAdmin_Click(object sender, EventArgs e)
         {
+            // Already authorized? Do nothing
+            if (adminAuthorized)
+                return;
+
+            // Only cashiers need approval
+            if (currentUser.roleID == 2)
+            {
+                using (var authForm = new AdminAuthorizationForm())
+                {
+                    if (authForm.ShowDialog() == DialogResult.OK)
+                    {
+                        if (authForm.AuthorizedAdmin != null &&
+                            authForm.AuthorizedAdmin.roleID == 1)
+                        {
+                            adminAuthorized = true;
+                            UpdateAdminUI();
+
+                            MessageBox.Show(
+                                "Admin authorization granted for this transaction.",
+                                "Authorized",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information
+                            );
+                        }
+                        else
+                        {
+                            MessageBox.Show(
+                                "Invalid admin credentials.",
+                                "Authorization Failed",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error
+                            );
+                        }
+                    }
+                }
+            }
 
         }
 
@@ -533,6 +575,41 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         }
 
         private void lstboxSuggestion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        //==================================VOID REFUN PROCESS AND ADMIN AUTHORIZATION============================
+        //nasa line 412 ang btnAdmin_Click()
+        private void InitializeAdminState()
+        {
+            // If logged-in user is admin, auto-authorize
+            adminAuthorized = (currentUser.roleID == 1);
+            UpdateAdminUI();
+        }
+        private void UpdateAdminUI()
+        {
+            if (adminAuthorized)
+            {
+                btnAdmin.ForeColor = Color.Green;
+                btnAdmin.Text = "ADMIN MODE";
+
+                btnVoidItem.Enabled = true;
+                btnVoidTransaction.Enabled = true;
+                btnRefund.Enabled = true;
+            }
+            else
+            {
+                btnAdmin.ForeColor = Color.Red;
+                btnAdmin.Text = "ADMIN REQUIRED";
+
+                btnVoidItem.Enabled = false;
+                btnVoidTransaction.Enabled = false;
+                btnRefund.Enabled = false;
+            }
+        }
+        
+        private void btnVoidItem_Click(object sender, EventArgs e)
         {
 
         }

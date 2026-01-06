@@ -36,6 +36,7 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
+            this.btnAuthorize = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,13 +91,14 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancel.Location = new System.Drawing.Point(286, 203);
+            this.btnCancel.Location = new System.Drawing.Point(81, 204);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 28);
+            this.btnCancel.Size = new System.Drawing.Size(108, 28);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtUsername
             // 
@@ -127,12 +129,25 @@
             this.lblPassword.TabIndex = 6;
             this.lblPassword.Text = "Password";
             // 
+            // btnAuthorize
+            // 
+            this.btnAuthorize.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAuthorize.Location = new System.Drawing.Point(197, 202);
+            this.btnAuthorize.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAuthorize.Name = "btnAuthorize";
+            this.btnAuthorize.Size = new System.Drawing.Size(157, 30);
+            this.btnAuthorize.TabIndex = 7;
+            this.btnAuthorize.Text = "Authorize";
+            this.btnAuthorize.UseVisualStyleBackColor = true;
+            this.btnAuthorize.Click += new System.EventHandler(this.btnAuthorize_Click_1);
+            // 
             // AdminAuthorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
             this.ClientSize = new System.Drawing.Size(399, 244);
+            this.Controls.Add(this.btnAuthorize);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtUsername);
@@ -162,5 +177,6 @@
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.Button btnAuthorize;
     }
 }
