@@ -15,7 +15,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
     
     public partial class LoginForm : Form
     {
-        IUserRepository userRepository= new SQLUserRepository();
+        IUserRepository userRepository= new MockDBUserRepository();
         UserManager userManager;
         public LoginForm()
 
@@ -84,6 +84,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         }
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginForm_Load_1(object sender, EventArgs e)
         {
 
         }
