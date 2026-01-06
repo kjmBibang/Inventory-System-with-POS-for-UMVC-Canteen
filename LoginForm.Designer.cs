@@ -194,6 +194,7 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
+            this.Load += new System.EventHandler(this.LoginForm_Load_1);
             this.panelColor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picboxUMLOGO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxUSER)).EndInit();
