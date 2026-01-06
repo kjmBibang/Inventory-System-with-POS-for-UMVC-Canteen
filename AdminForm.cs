@@ -59,6 +59,12 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
 
         }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            loginForm.Show();
+            this.Hide();
+        }
     }
 
 

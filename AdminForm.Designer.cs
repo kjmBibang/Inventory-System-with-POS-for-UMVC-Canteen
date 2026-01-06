@@ -41,10 +41,10 @@
             // btnPOSModule
             // 
             this.btnPOSModule.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPOSModule.Location = new System.Drawing.Point(206, 660);
-            this.btnPOSModule.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPOSModule.Location = new System.Drawing.Point(275, 812);
+            this.btnPOSModule.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPOSModule.Name = "btnPOSModule";
-            this.btnPOSModule.Size = new System.Drawing.Size(188, 78);
+            this.btnPOSModule.Size = new System.Drawing.Size(251, 96);
             this.btnPOSModule.TabIndex = 3;
             this.btnPOSModule.Text = "Open POS Module";
             this.btnPOSModule.UseVisualStyleBackColor = true;
@@ -54,9 +54,10 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.lblWelcome);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(16, 15);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1346, 538);
+            this.panel1.Size = new System.Drawing.Size(1795, 662);
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -64,18 +65,20 @@
             // 
             this.lblWelcome.AutoSize = true;
             this.lblWelcome.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcome.Location = new System.Drawing.Point(12, 11);
+            this.lblWelcome.Location = new System.Drawing.Point(16, 14);
+            this.lblWelcome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(81, 17);
+            this.lblWelcome.Size = new System.Drawing.Size(106, 23);
             this.lblWelcome.TabIndex = 7;
             this.lblWelcome.Text = "AdminForm";
             // 
             // btnInventory
             // 
             this.btnInventory.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInventory.Location = new System.Drawing.Point(12, 575);
+            this.btnInventory.Location = new System.Drawing.Point(16, 708);
+            this.btnInventory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Size = new System.Drawing.Size(188, 78);
+            this.btnInventory.Size = new System.Drawing.Size(251, 96);
             this.btnInventory.TabIndex = 5;
             this.btnInventory.Text = "Inventory";
             this.btnInventory.UseVisualStyleBackColor = true;
@@ -84,9 +87,10 @@
             // btnReports
             // 
             this.btnReports.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReports.Location = new System.Drawing.Point(206, 575);
+            this.btnReports.Location = new System.Drawing.Point(275, 708);
+            this.btnReports.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReports.Name = "btnReports";
-            this.btnReports.Size = new System.Drawing.Size(188, 78);
+            this.btnReports.Size = new System.Drawing.Size(251, 96);
             this.btnReports.TabIndex = 6;
             this.btnReports.Text = "Reports";
             this.btnReports.UseVisualStyleBackColor = true;
@@ -95,9 +99,10 @@
             // btnManage
             // 
             this.btnManage.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManage.Location = new System.Drawing.Point(12, 659);
+            this.btnManage.Location = new System.Drawing.Point(16, 811);
+            this.btnManage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnManage.Name = "btnManage";
-            this.btnManage.Size = new System.Drawing.Size(188, 78);
+            this.btnManage.Size = new System.Drawing.Size(251, 96);
             this.btnManage.TabIndex = 7;
             this.btnManage.Text = "Manage Users";
             this.btnManage.UseVisualStyleBackColor = true;
@@ -105,27 +110,28 @@
             // btnLogOut
             // 
             this.btnLogOut.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.Location = new System.Drawing.Point(1260, 687);
-            this.btnLogOut.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLogOut.Location = new System.Drawing.Point(1680, 846);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(99, 51);
+            this.btnLogOut.Size = new System.Drawing.Size(132, 63);
             this.btnLogOut.TabIndex = 14;
             this.btnLogOut.Text = "logout";
             this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // AdminForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1827, 922);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnManage);
             this.Controls.Add(this.btnReports);
             this.Controls.Add(this.btnInventory);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnPOSModule);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminForm";
