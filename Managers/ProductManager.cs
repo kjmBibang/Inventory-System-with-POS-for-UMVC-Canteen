@@ -10,17 +10,39 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
 {
     public class ProductManager
     {
+        IProductRepository _repo;
         public ProductManager(IProductRepository productRepo) 
         { 
-        
+            this._repo = productRepo;
         }
+        // ================= BUSINESS LAYER =================
+        public List<Product> SearchProducts(string keyword)
+        {
+            if (string.IsNullOrWhiteSpace(keyword))
+                return new List<Product>();
+
+            return _repo.SearchProductsByName(keyword);
+        }
+
+        public bool IsProductAvailable(Product product)
+        {
+            return product != null && product.stock > 0;
+        }
+
+        public void ReduceProductStock(string barcode, int quantity)
+        {
+            _repo.ReduceStock(barcode,quantity);
+        }
+
         public string GetIDFromBarcode(string barcode)
         {
-            return null;
+            Product product = _repo.LoadProductByBarcode(barcode);
+            return product?.productBarcode;
         }
-        public TransactionItem ProductSnapshot(Product product, int quantity) 
+
+        /*public TransactionItem ProductSnapshot(Product product, int quantity)
         {
             return null;
-        }
+        }*/
     }
 }

@@ -10,7 +10,9 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Interfaces
      public interface IProductRepository
     {
         Product GetProduct(string id);
+        Product LoadProductByBarcode(string barcode);
+        void ReduceStock(string barcode,int quantity);
         void UpdateStock(string id);
-        
+        List<Product> SearchProductsByName(string name);
     }
 }

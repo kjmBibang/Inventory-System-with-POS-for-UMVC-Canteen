@@ -15,7 +15,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
     
     public partial class LoginForm : Form
     {
-        IUserRepository userRepository= new MockDBUserRepository();
+        IUserRepository userRepository= new SQLUserRepository();
         UserManager userManager;
         public LoginForm()
 

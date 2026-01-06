@@ -15,11 +15,13 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
     {
         private Admin admin;
         LoginForm loginForm = new LoginForm();
-        
+        UserManagementForm userManagementForm;
         POSform posForm;
         public AdminForm(Admin admin)
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             this.admin = admin;
             lblWelcome.Text = $"Welcome {admin.username}";
         }
@@ -57,5 +59,22 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
 
         }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            loginForm.Show();
+            this.Hide();
+        }
+
+        private void btnManage_Click(object sender, EventArgs e)
+        {
+            userManagementForm = new UserManagementForm(admin);
+            userManagementForm.Show();
+            this.Hide();
+        }
     }
+
+
+
+
 }
