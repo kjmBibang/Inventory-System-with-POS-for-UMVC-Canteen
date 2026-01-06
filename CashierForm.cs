@@ -16,6 +16,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         private Cashier cashier;
         LoginForm loginForm = new LoginForm();
         POSform posForm;
+        UserManagementForm userManagementForm;
         public CashierForm(Cashier cashier)
         {
             InitializeComponent();
@@ -58,6 +59,13 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
             posForm = new POSform(cashier);
             posForm.Show();
+            this.Hide();
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            userManagementForm = new UserManagementForm(cashier);
+            userManagementForm.Show();
             this.Hide();
         }
     }

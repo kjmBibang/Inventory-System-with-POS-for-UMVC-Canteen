@@ -147,29 +147,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.Hide(); // hide current POS form
-
-            Form nextForm;
-
-            if (currentUser.roleID == 1) // admin
-            {
-                var admin = new Admin(currentUser.userID, currentUser.username, currentUser.roleID);
-                nextForm = new AdminForm(admin);
-            }
-            else if (currentUser.roleID == 2) // cashier
-            {
-                var cashier = new Cashier(currentUser.userID, currentUser.username, currentUser.roleID);
-                nextForm = new CashierForm(cashier);
-            }
-            else
-            {
-                MessageBox.Show("Unknown role. Cannot navigate back.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Show();
-                return;
-            }
-
-            nextForm.FormClosed += (s, args) => this.Close(); // close POS form when next form is closed
-            nextForm.Show();
+            NavigationHelper.GoBack(this, currentUser);
         }
 
         private void btnClear_Click(object sender, EventArgs e)

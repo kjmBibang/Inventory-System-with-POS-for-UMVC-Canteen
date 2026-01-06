@@ -106,6 +106,7 @@
             this.btnManage.TabIndex = 7;
             this.btnManage.Text = "Manage Users";
             this.btnManage.UseVisualStyleBackColor = true;
+            this.btnManage.Click += new System.EventHandler(this.btnManage_Click);
             // 
             // btnLogOut
             // 
