@@ -22,6 +22,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         private TextBox _activeTextBox;
         private SQLProductRepository productRepository;
         private ProductManager productManager;
+        private User currentUser;
         private void TextBox_Enter(object sender, EventArgs e)
         {
             _activeTextBox = sender as TextBox;
@@ -30,6 +31,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         public POSform(User user)
         {
             InitializeComponent();
+            currentUser = user; // store user for later use
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             txtBarcode.KeyDown += txtBarcode_KeyDown; //mao ni need for txtBarcode_keydown()
@@ -143,7 +145,33 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
         private void lblCashierName_TextChanged(object sender, EventArgs e) { }
 
-        private void btnBack_Click(object sender, EventArgs e) { }
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Hide(); // hide current POS form
+
+            Form nextForm;
+
+            if (currentUser.roleID == 1) // admin
+            {
+                var admin = new Admin(currentUser.userID, currentUser.username, currentUser.roleID);
+                nextForm = new AdminForm(admin);
+            }
+            else if (currentUser.roleID == 2) // cashier
+            {
+                var cashier = new Cashier(currentUser.userID, currentUser.username, currentUser.roleID);
+                nextForm = new CashierForm(cashier);
+            }
+            else
+            {
+                MessageBox.Show("Unknown role. Cannot navigate back.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Show();
+                return;
+            }
+
+            nextForm.FormClosed += (s, args) => this.Close(); // close POS form when next form is closed
+            nextForm.Show();
+        }
+
         private void btnClear_Click(object sender, EventArgs e)
         {
 
@@ -167,21 +195,23 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             }
         }
 
+        // In AddProductToGrid, initialize row Tag with the quantity
         private void AddProductToGrid(string barcode, string productName, decimal price)
         {
             int quantity = 1;
             decimal subtotal = price * quantity;
 
-            dgvSales.Rows.Add(
-                barcode,          // Barcode column
-                productName,      // Product column
-                price,            // Price column
-                quantity,         // Quantity column
-                subtotal          // Subtotal column
-            );
+            var rowIndex = dgvSales.Rows.Add(barcode, productName, price, quantity, subtotal);
+
+            // Store the quantity already deducted from stock in the Tag
+            dgvSales.Rows[rowIndex].Tag = quantity;
+
+            // Reduce stock in DB
+            productRepository.ReduceStock(barcode, quantity);
 
             UpdateTotal();
         }
+
 
         private void UpdateTotal()
         {
@@ -222,7 +252,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             );
 
             // reduce stock
-            productRepository.ReduceStock(barcode);
+            //productRepository.ReduceStock(barcode);
         }      
         private void lblTransactionIDPlaceholder_Click(object sender, EventArgs e)
         {
@@ -482,19 +512,45 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                 return;
             }
 
+            int oldQty = dgvSales.CurrentRow.Tag != null ? (int)dgvSales.CurrentRow.Tag : 0;
+            string barcode = dgvSales.CurrentRow.Cells["barcodeColumn"].Value.ToString();
+
+            int diff = newQty - oldQty; // positive = add more, negative = reduce
+
+            if (diff != 0)
+            {
+                // Update stock
+                if (diff > 0)
+                {
+                    // Check if enough stock is available
+                    Product product = productRepository.LoadProductByBarcode(barcode);
+                    if (product.stock < diff)
+                    {
+                        MessageBox.Show($"Not enough stock. Available: {product.stock}", "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+                // Update DB stock
+                productRepository.ReduceStock(barcode, diff);
+
+                // Update row Tag
+                dgvSales.CurrentRow.Tag = newQty;
+            }
+
             // Update quantity cell
             dgvSales.CurrentRow.Cells["quantityColumn"].Value = newQty;
 
-            // Recalculate subtotal for this row
+            // Recalculate subtotal
             decimal unitPrice = Convert.ToDecimal(dgvSales.CurrentRow.Cells["unitPriceColumn"].Value);
             dgvSales.CurrentRow.Cells["subtotalColumn"].Value = unitPrice * newQty;
 
             // Update total
             UpdateTotal();
 
-            // Optional: focus back on barcode for faster workflow
             txtBarcode.Focus();
         }
+
 
 
 

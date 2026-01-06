@@ -29,9 +29,9 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
             return product != null && product.stock > 0;
         }
 
-        public void ReduceProductStock(string barcode)
+        public void ReduceProductStock(string barcode, int quantity)
         {
-            _repo.ReduceStock(barcode);
+            _repo.ReduceStock(barcode,quantity);
         }
 
         public string GetIDFromBarcode(string barcode)

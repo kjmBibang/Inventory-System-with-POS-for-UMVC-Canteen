@@ -20,7 +20,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
             throw new NotImplementedException();
         }
 
-        public void ReduceStock(string barcode)
+        public void ReduceStock(string barcode, int quantity)
         {
             throw new NotImplementedException();
         }
