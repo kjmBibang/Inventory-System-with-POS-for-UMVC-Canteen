@@ -75,6 +75,7 @@
     <Compile Include="CashierForm.Designer.cs">
       <DependentUpon>CashierForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\NavigationHelper.cs" />
     <Compile Include="InventoryManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>

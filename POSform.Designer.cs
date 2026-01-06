@@ -63,13 +63,18 @@
             this.btnVoidIten = new System.Windows.Forms.Button();
             this.btnRefund = new System.Windows.Forms.Button();
             this.btnPrintReceipt = new System.Windows.Forms.Button();
-            this.btnOpenDrawer = new System.Windows.Forms.Button();
+            this.btnCheckout = new System.Windows.Forms.Button();
             this.btnHold = new System.Windows.Forms.Button();
             this.picboxUSER = new System.Windows.Forms.PictureBox();
             this.lblCashierName = new System.Windows.Forms.TextBox();
             this.CashierOut = new System.Windows.Forms.Button();
             this.btnAdmin = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.lblTransactionIDPlaceholder = new System.Windows.Forms.Label();
+            this.btnEnterQuantity = new System.Windows.Forms.Button();
+            this.lblSearchProduct = new System.Windows.Forms.Label();
+            this.txtSearchbar = new System.Windows.Forms.TextBox();
+            this.lstboxSuggestion = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.picboxUMLOGO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxUSER)).BeginInit();
@@ -78,9 +83,10 @@
             // picboxUMLOGO
             // 
             this.picboxUMLOGO.Image = ((System.Drawing.Image)(resources.GetObject("picboxUMLOGO.Image")));
-            this.picboxUMLOGO.Location = new System.Drawing.Point(22, 36);
+            this.picboxUMLOGO.Location = new System.Drawing.Point(29, 44);
+            this.picboxUMLOGO.Margin = new System.Windows.Forms.Padding(4);
             this.picboxUMLOGO.Name = "picboxUMLOGO";
-            this.picboxUMLOGO.Size = new System.Drawing.Size(80, 70);
+            this.picboxUMLOGO.Size = new System.Drawing.Size(107, 86);
             this.picboxUMLOGO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picboxUMLOGO.TabIndex = 2;
             this.picboxUMLOGO.TabStop = false;
@@ -94,10 +100,11 @@
             this.unitPriceColumn,
             this.quantityColumn,
             this.subtotalColumn});
-            this.dgvSales.Location = new System.Drawing.Point(22, 135);
+            this.dgvSales.Location = new System.Drawing.Point(29, 166);
+            this.dgvSales.Margin = new System.Windows.Forms.Padding(4);
             this.dgvSales.Name = "dgvSales";
             this.dgvSales.RowHeadersWidth = 51;
-            this.dgvSales.Size = new System.Drawing.Size(677, 547);
+            this.dgvSales.Size = new System.Drawing.Size(903, 673);
             this.dgvSales.TabIndex = 10;
             this.dgvSales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVSales_CellContentClick);
             // 
@@ -144,11 +151,12 @@
             this.lblTransactionID.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.lblTransactionID.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTransactionID.ForeColor = System.Drawing.Color.White;
-            this.lblTransactionID.Location = new System.Drawing.Point(1035, 103);
+            this.lblTransactionID.Location = new System.Drawing.Point(1380, 127);
+            this.lblTransactionID.Margin = new System.Windows.Forms.Padding(4);
             this.lblTransactionID.Multiline = true;
             this.lblTransactionID.Name = "lblTransactionID";
             this.lblTransactionID.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTransactionID.Size = new System.Drawing.Size(282, 25);
+            this.lblTransactionID.Size = new System.Drawing.Size(376, 31);
             this.lblTransactionID.TabIndex = 11;
             this.lblTransactionID.TabStop = false;
             this.lblTransactionID.Text = "TRANSACTION ID:";
@@ -161,11 +169,12 @@
             this.lblInvertory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblInvertory.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvertory.ForeColor = System.Drawing.Color.White;
-            this.lblInvertory.Location = new System.Drawing.Point(108, 52);
+            this.lblInvertory.Location = new System.Drawing.Point(144, 64);
+            this.lblInvertory.Margin = new System.Windows.Forms.Padding(4);
             this.lblInvertory.Multiline = true;
             this.lblInvertory.Name = "lblInvertory";
             this.lblInvertory.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblInvertory.Size = new System.Drawing.Size(175, 44);
+            this.lblInvertory.Size = new System.Drawing.Size(233, 54);
             this.lblInvertory.TabIndex = 12;
             this.lblInvertory.TabStop = false;
             this.lblInvertory.Text = "POS Module";
@@ -174,9 +183,10 @@
             // 
             this.txtQuantity.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantity.Location = new System.Drawing.Point(745, 181);
+            this.txtQuantity.Location = new System.Drawing.Point(992, 385);
+            this.txtQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(256, 40);
+            this.txtQuantity.Size = new System.Drawing.Size(207, 49);
             this.txtQuantity.TabIndex = 14;
             this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
@@ -189,11 +199,12 @@
             this.lblTotal.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.lblTotal.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.White;
-            this.lblTotal.Location = new System.Drawing.Point(745, 227);
+            this.lblTotal.Location = new System.Drawing.Point(992, 441);
+            this.lblTotal.Margin = new System.Windows.Forms.Padding(4);
             this.lblTotal.Multiline = true;
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTotal.Size = new System.Drawing.Size(127, 28);
+            this.lblTotal.Size = new System.Drawing.Size(169, 34);
             this.lblTotal.TabIndex = 15;
             this.lblTotal.TabStop = false;
             this.lblTotal.Text = "TOTAL:";
@@ -203,9 +214,10 @@
             // 
             this.txtBarcode.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.txtBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBarcode.Location = new System.Drawing.Point(1035, 135);
+            this.txtBarcode.Location = new System.Drawing.Point(1380, 166);
+            this.txtBarcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(282, 40);
+            this.txtBarcode.Size = new System.Drawing.Size(375, 49);
             this.txtBarcode.TabIndex = 16;
             this.txtBarcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
@@ -218,11 +230,12 @@
             this.lblQuantity.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.lblQuantity.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQuantity.ForeColor = System.Drawing.Color.White;
-            this.lblQuantity.Location = new System.Drawing.Point(745, 145);
+            this.lblQuantity.Location = new System.Drawing.Point(992, 340);
+            this.lblQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.lblQuantity.Multiline = true;
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblQuantity.Size = new System.Drawing.Size(127, 30);
+            this.lblQuantity.Size = new System.Drawing.Size(169, 37);
             this.lblQuantity.TabIndex = 17;
             this.lblQuantity.TabStop = false;
             this.lblQuantity.Text = "QUANTITY:";
@@ -232,9 +245,10 @@
             // 
             this.txtTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(745, 261);
+            this.txtTotal.Location = new System.Drawing.Point(992, 483);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(256, 40);
+            this.txtTotal.Size = new System.Drawing.Size(340, 49);
             this.txtTotal.TabIndex = 19;
             this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTotal.TextChanged += new System.EventHandler(this.txtTotal_TextChanged);
@@ -247,11 +261,12 @@
             this.lblCash.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.lblCash.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCash.ForeColor = System.Drawing.Color.White;
-            this.lblCash.Location = new System.Drawing.Point(745, 307);
+            this.lblCash.Location = new System.Drawing.Point(992, 540);
+            this.lblCash.Margin = new System.Windows.Forms.Padding(4);
             this.lblCash.Multiline = true;
             this.lblCash.Name = "lblCash";
             this.lblCash.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblCash.Size = new System.Drawing.Size(127, 27);
+            this.lblCash.Size = new System.Drawing.Size(169, 33);
             this.lblCash.TabIndex = 20;
             this.lblCash.TabStop = false;
             this.lblCash.Text = "CASH:";
@@ -261,9 +276,10 @@
             // 
             this.txtCash.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCash.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCash.Location = new System.Drawing.Point(745, 340);
+            this.txtCash.Location = new System.Drawing.Point(992, 580);
+            this.txtCash.Margin = new System.Windows.Forms.Padding(4);
             this.txtCash.Name = "txtCash";
-            this.txtCash.Size = new System.Drawing.Size(256, 40);
+            this.txtCash.Size = new System.Drawing.Size(340, 49);
             this.txtCash.TabIndex = 21;
             this.txtCash.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCash.TextChanged += new System.EventHandler(this.txtCash_TextChanged);
@@ -272,9 +288,10 @@
             // 
             this.txtChange.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtChange.Location = new System.Drawing.Point(745, 419);
+            this.txtChange.Location = new System.Drawing.Point(992, 678);
+            this.txtChange.Margin = new System.Windows.Forms.Padding(4);
             this.txtChange.Name = "txtChange";
-            this.txtChange.Size = new System.Drawing.Size(256, 40);
+            this.txtChange.Size = new System.Drawing.Size(340, 49);
             this.txtChange.TabIndex = 36;
             this.txtChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtChange.TextChanged += new System.EventHandler(this.txtChange_TextChanged);
@@ -287,11 +304,12 @@
             this.lblChange.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.lblChange.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChange.ForeColor = System.Drawing.Color.White;
-            this.lblChange.Location = new System.Drawing.Point(745, 386);
+            this.lblChange.Location = new System.Drawing.Point(992, 637);
+            this.lblChange.Margin = new System.Windows.Forms.Padding(4);
             this.lblChange.Multiline = true;
             this.lblChange.Name = "lblChange";
             this.lblChange.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblChange.Size = new System.Drawing.Size(127, 27);
+            this.lblChange.Size = new System.Drawing.Size(169, 33);
             this.lblChange.TabIndex = 35;
             this.lblChange.TabStop = false;
             this.lblChange.Text = "CHANGE:";
@@ -303,9 +321,10 @@
             this.btnNumber4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNumber4.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNumber4.ForeColor = System.Drawing.Color.Black;
-            this.btnNumber4.Location = new System.Drawing.Point(1035, 240);
+            this.btnNumber4.Location = new System.Drawing.Point(1380, 295);
+            this.btnNumber4.Margin = new System.Windows.Forms.Padding(4);
             this.btnNumber4.Name = "btnNumber4";
-            this.btnNumber4.Size = new System.Drawing.Size(90, 53);
+            this.btnNumber4.Size = new System.Drawing.Size(120, 65);
             this.btnNumber4.TabIndex = 57;
             this.btnNumber4.Text = "4";
             this.btnNumber4.UseVisualStyleBackColor = false;
@@ -318,9 +337,10 @@
             this.btnDecimal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDecimal.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDecimal.ForeColor = System.Drawing.Color.Black;
-            this.btnDecimal.Location = new System.Drawing.Point(1227, 358);
+            this.btnDecimal.Location = new System.Drawing.Point(1636, 441);
+            this.btnDecimal.Margin = new System.Windows.Forms.Padding(4);
             this.btnDecimal.Name = "btnDecimal";
-            this.btnDecimal.Size = new System.Drawing.Size(90, 53);
+            this.btnDecimal.Size = new System.Drawing.Size(120, 65);
             this.btnDecimal.TabIndex = 56;
             this.btnDecimal.Text = ".";
             this.btnDecimal.UseVisualStyleBackColor = false;
@@ -332,9 +352,10 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(1131, 358);
+            this.btnClear.Location = new System.Drawing.Point(1508, 441);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(90, 53);
+            this.btnClear.Size = new System.Drawing.Size(120, 65);
             this.btnClear.TabIndex = 55;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -347,9 +368,10 @@
             this.btnNumber0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNumber0.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNumber0.ForeColor = System.Drawing.Color.Black;
-            this.btnNumber0.Location = new System.Drawing.Point(1035, 358);
+            this.btnNumber0.Location = new System.Drawing.Point(1380, 441);
+            this.btnNumber0.Margin = new System.Windows.Forms.Padding(4);
             this.btnNumber0.Name = "btnNumber0";
-            this.btnNumber0.Size = new System.Drawing.Size(90, 53);
+            this.btnNumber0.Size = new System.Drawing.Size(120, 65);
             this.btnNumber0.TabIndex = 54;
             this.btnNumber0.Text = "0";
             this.btnNumber0.UseVisualStyleBackColor = false;
@@ -362,9 +384,10 @@
             this.btnNumber9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNumber9.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNumber9.ForeColor = System.Drawing.Color.Black;
-            this.btnNumber9.Location = new System.Drawing.Point(1227, 299);
+            this.btnNumber9.Location = new System.Drawing.Point(1636, 368);
+            this.btnNumber9.Margin = new System.Windows.Forms.Padding(4);
             this.btnNumber9.Name = "btnNumber9";
-            this.btnNumber9.Size = new System.Drawing.Size(90, 53);
+            this.btnNumber9.Size = new System.Drawing.Size(120, 65);
             this.btnNumber9.TabIndex = 53;
             this.btnNumber9.Text = "9";
             this.btnNumber9.UseVisualStyleBackColor = false;
@@ -377,9 +400,10 @@
             this.btnNumber8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNumber8.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNumber8.ForeColor = System.Drawing.Color.Black;
-            this.btnNumber8.Location = new System.Drawing.Point(1131, 299);
+            this.btnNumber8.Location = new System.Drawing.Point(1508, 368);
+            this.btnNumber8.Margin = new System.Windows.Forms.Padding(4);
             this.btnNumber8.Name = "btnNumber8";
-            this.btnNumber8.Size = new System.Drawing.Size(90, 53);
+            this.btnNumber8.Size = new System.Drawing.Size(120, 65);
             this.btnNumber8.TabIndex = 52;
             this.btnNumber8.Text = "8";
             this.btnNumber8.UseVisualStyleBackColor = false;
@@ -392,9 +416,10 @@
             this.btnNumber7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNumber7.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNumber7.ForeColor = System.Drawing.Color.Black;
-            this.btnNumber7.Location = new System.Drawing.Point(1035, 299);
+            this.btnNumber7.Location = new System.Drawing.Point(1380, 368);
+            this.btnNumber7.Margin = new System.Windows.Forms.Padding(4);
             this.btnNumber7.Name = "btnNumber7";
-            this.btnNumber7.Size = new System.Drawing.Size(90, 53);
+            this.btnNumber7.Size = new System.Drawing.Size(120, 65);
             this.btnNumber7.TabIndex = 51;
             this.btnNumber7.Text = "7";
             this.btnNumber7.UseVisualStyleBackColor = false;
@@ -407,9 +432,10 @@
             this.btnNumber6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNumber6.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNumber6.ForeColor = System.Drawing.Color.Black;
-            this.btnNumber6.Location = new System.Drawing.Point(1227, 240);
+            this.btnNumber6.Location = new System.Drawing.Point(1636, 295);
+            this.btnNumber6.Margin = new System.Windows.Forms.Padding(4);
             this.btnNumber6.Name = "btnNumber6";
-            this.btnNumber6.Size = new System.Drawing.Size(90, 53);
+            this.btnNumber6.Size = new System.Drawing.Size(120, 65);
             this.btnNumber6.TabIndex = 50;
             this.btnNumber6.Text = "6";
             this.btnNumber6.UseVisualStyleBackColor = false;
@@ -422,9 +448,10 @@
             this.btnNumber5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNumber5.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNumber5.ForeColor = System.Drawing.Color.Black;
-            this.btnNumber5.Location = new System.Drawing.Point(1131, 240);
+            this.btnNumber5.Location = new System.Drawing.Point(1508, 295);
+            this.btnNumber5.Margin = new System.Windows.Forms.Padding(4);
             this.btnNumber5.Name = "btnNumber5";
-            this.btnNumber5.Size = new System.Drawing.Size(90, 53);
+            this.btnNumber5.Size = new System.Drawing.Size(120, 65);
             this.btnNumber5.TabIndex = 49;
             this.btnNumber5.Text = "5";
             this.btnNumber5.UseVisualStyleBackColor = false;
@@ -437,9 +464,10 @@
             this.btnNumber3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNumber3.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNumber3.ForeColor = System.Drawing.Color.Black;
-            this.btnNumber3.Location = new System.Drawing.Point(1227, 181);
+            this.btnNumber3.Location = new System.Drawing.Point(1636, 223);
+            this.btnNumber3.Margin = new System.Windows.Forms.Padding(4);
             this.btnNumber3.Name = "btnNumber3";
-            this.btnNumber3.Size = new System.Drawing.Size(90, 53);
+            this.btnNumber3.Size = new System.Drawing.Size(120, 65);
             this.btnNumber3.TabIndex = 48;
             this.btnNumber3.Text = "3";
             this.btnNumber3.UseVisualStyleBackColor = false;
@@ -452,9 +480,10 @@
             this.btnNumber2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNumber2.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNumber2.ForeColor = System.Drawing.Color.Black;
-            this.btnNumber2.Location = new System.Drawing.Point(1131, 181);
+            this.btnNumber2.Location = new System.Drawing.Point(1508, 223);
+            this.btnNumber2.Margin = new System.Windows.Forms.Padding(4);
             this.btnNumber2.Name = "btnNumber2";
-            this.btnNumber2.Size = new System.Drawing.Size(90, 53);
+            this.btnNumber2.Size = new System.Drawing.Size(120, 65);
             this.btnNumber2.TabIndex = 47;
             this.btnNumber2.Text = "2";
             this.btnNumber2.UseVisualStyleBackColor = false;
@@ -467,9 +496,10 @@
             this.btnNumber1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNumber1.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNumber1.ForeColor = System.Drawing.Color.Black;
-            this.btnNumber1.Location = new System.Drawing.Point(1035, 181);
+            this.btnNumber1.Location = new System.Drawing.Point(1380, 223);
+            this.btnNumber1.Margin = new System.Windows.Forms.Padding(4);
             this.btnNumber1.Name = "btnNumber1";
-            this.btnNumber1.Size = new System.Drawing.Size(90, 53);
+            this.btnNumber1.Size = new System.Drawing.Size(120, 65);
             this.btnNumber1.TabIndex = 46;
             this.btnNumber1.Text = "1";
             this.btnNumber1.UseVisualStyleBackColor = false;
@@ -482,12 +512,14 @@
             this.btnPay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPay.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPay.ForeColor = System.Drawing.Color.Black;
-            this.btnPay.Location = new System.Drawing.Point(1035, 438);
+            this.btnPay.Location = new System.Drawing.Point(1380, 539);
+            this.btnPay.Margin = new System.Windows.Forms.Padding(4);
             this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(90, 53);
+            this.btnPay.Size = new System.Drawing.Size(120, 65);
             this.btnPay.TabIndex = 60;
             this.btnPay.Text = "Pay";
             this.btnPay.UseVisualStyleBackColor = false;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // btnVoidIten
             // 
@@ -496,9 +528,10 @@
             this.btnVoidIten.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoidIten.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoidIten.ForeColor = System.Drawing.Color.Black;
-            this.btnVoidIten.Location = new System.Drawing.Point(1131, 438);
+            this.btnVoidIten.Location = new System.Drawing.Point(1508, 539);
+            this.btnVoidIten.Margin = new System.Windows.Forms.Padding(4);
             this.btnVoidIten.Name = "btnVoidIten";
-            this.btnVoidIten.Size = new System.Drawing.Size(90, 53);
+            this.btnVoidIten.Size = new System.Drawing.Size(120, 65);
             this.btnVoidIten.TabIndex = 60;
             this.btnVoidIten.Text = "Void Item";
             this.btnVoidIten.UseVisualStyleBackColor = false;
@@ -510,9 +543,10 @@
             this.btnRefund.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefund.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefund.ForeColor = System.Drawing.Color.Black;
-            this.btnRefund.Location = new System.Drawing.Point(1227, 438);
+            this.btnRefund.Location = new System.Drawing.Point(1636, 539);
+            this.btnRefund.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefund.Name = "btnRefund";
-            this.btnRefund.Size = new System.Drawing.Size(90, 53);
+            this.btnRefund.Size = new System.Drawing.Size(120, 65);
             this.btnRefund.TabIndex = 60;
             this.btnRefund.Text = "Refund";
             this.btnRefund.UseVisualStyleBackColor = false;
@@ -524,26 +558,29 @@
             this.btnPrintReceipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrintReceipt.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrintReceipt.ForeColor = System.Drawing.Color.Black;
-            this.btnPrintReceipt.Location = new System.Drawing.Point(1035, 556);
+            this.btnPrintReceipt.Location = new System.Drawing.Point(1380, 684);
+            this.btnPrintReceipt.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrintReceipt.Name = "btnPrintReceipt";
-            this.btnPrintReceipt.Size = new System.Drawing.Size(282, 53);
+            this.btnPrintReceipt.Size = new System.Drawing.Size(376, 65);
             this.btnPrintReceipt.TabIndex = 60;
             this.btnPrintReceipt.Text = "Print Receipt";
             this.btnPrintReceipt.UseVisualStyleBackColor = false;
             // 
-            // btnOpenDrawer
+            // btnCheckout
             // 
-            this.btnOpenDrawer.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnOpenDrawer.BackColor = System.Drawing.Color.White;
-            this.btnOpenDrawer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenDrawer.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpenDrawer.ForeColor = System.Drawing.Color.Black;
-            this.btnOpenDrawer.Location = new System.Drawing.Point(1035, 497);
-            this.btnOpenDrawer.Name = "btnOpenDrawer";
-            this.btnOpenDrawer.Size = new System.Drawing.Size(90, 53);
-            this.btnOpenDrawer.TabIndex = 60;
-            this.btnOpenDrawer.Text = "Open Drawer";
-            this.btnOpenDrawer.UseVisualStyleBackColor = false;
+            this.btnCheckout.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnCheckout.BackColor = System.Drawing.Color.White;
+            this.btnCheckout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCheckout.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckout.ForeColor = System.Drawing.Color.Black;
+            this.btnCheckout.Location = new System.Drawing.Point(1380, 612);
+            this.btnCheckout.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCheckout.Name = "btnCheckout";
+            this.btnCheckout.Size = new System.Drawing.Size(120, 65);
+            this.btnCheckout.TabIndex = 60;
+            this.btnCheckout.Text = "Checkout";
+            this.btnCheckout.UseVisualStyleBackColor = false;
+            this.btnCheckout.Click += new System.EventHandler(this.btnCheckout_Click);
             // 
             // btnHold
             // 
@@ -552,9 +589,10 @@
             this.btnHold.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHold.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHold.ForeColor = System.Drawing.Color.Black;
-            this.btnHold.Location = new System.Drawing.Point(1227, 497);
+            this.btnHold.Location = new System.Drawing.Point(1636, 612);
+            this.btnHold.Margin = new System.Windows.Forms.Padding(4);
             this.btnHold.Name = "btnHold";
-            this.btnHold.Size = new System.Drawing.Size(90, 53);
+            this.btnHold.Size = new System.Drawing.Size(120, 65);
             this.btnHold.TabIndex = 60;
             this.btnHold.Text = "Hold";
             this.btnHold.UseVisualStyleBackColor = false;
@@ -563,9 +601,10 @@
             // 
             this.picboxUSER.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.picboxUSER.Image = ((System.Drawing.Image)(resources.GetObject("picboxUSER.Image")));
-            this.picboxUSER.Location = new System.Drawing.Point(22, 688);
+            this.picboxUSER.Location = new System.Drawing.Point(29, 847);
+            this.picboxUSER.Margin = new System.Windows.Forms.Padding(4);
             this.picboxUSER.Name = "picboxUSER";
-            this.picboxUSER.Size = new System.Drawing.Size(50, 49);
+            this.picboxUSER.Size = new System.Drawing.Size(67, 60);
             this.picboxUSER.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picboxUSER.TabIndex = 64;
             this.picboxUSER.TabStop = false;
@@ -578,11 +617,12 @@
             this.lblCashierName.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.lblCashierName.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCashierName.ForeColor = System.Drawing.Color.White;
-            this.lblCashierName.Location = new System.Drawing.Point(78, 688);
+            this.lblCashierName.Location = new System.Drawing.Point(104, 847);
+            this.lblCashierName.Margin = new System.Windows.Forms.Padding(4);
             this.lblCashierName.Multiline = true;
             this.lblCashierName.Name = "lblCashierName";
             this.lblCashierName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblCashierName.Size = new System.Drawing.Size(188, 49);
+            this.lblCashierName.Size = new System.Drawing.Size(251, 60);
             this.lblCashierName.TabIndex = 65;
             this.lblCashierName.TabStop = false;
             this.lblCashierName.Text = "CASHIER 1";
@@ -595,9 +635,10 @@
             this.CashierOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CashierOut.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CashierOut.ForeColor = System.Drawing.Color.Black;
-            this.CashierOut.Location = new System.Drawing.Point(827, 497);
+            this.CashierOut.Location = new System.Drawing.Point(1102, 774);
+            this.CashierOut.Margin = new System.Windows.Forms.Padding(4);
             this.CashierOut.Name = "CashierOut";
-            this.CashierOut.Size = new System.Drawing.Size(90, 53);
+            this.CashierOut.Size = new System.Drawing.Size(120, 65);
             this.CashierOut.TabIndex = 60;
             this.CashierOut.Text = "Cashier Out";
             this.CashierOut.UseVisualStyleBackColor = false;
@@ -609,12 +650,14 @@
             this.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdmin.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdmin.ForeColor = System.Drawing.Color.Black;
-            this.btnAdmin.Location = new System.Drawing.Point(923, 497);
+            this.btnAdmin.Location = new System.Drawing.Point(1230, 774);
+            this.btnAdmin.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(90, 53);
+            this.btnAdmin.Size = new System.Drawing.Size(120, 65);
             this.btnAdmin.TabIndex = 60;
-            this.btnAdmin.Text = "Admin";
+            this.btnAdmin.Text = "Admin Permission";
             this.btnAdmin.UseVisualStyleBackColor = false;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
             // btnBack
             // 
@@ -623,27 +666,83 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.Color.Black;
-            this.btnBack.Location = new System.Drawing.Point(731, 497);
+            this.btnBack.Location = new System.Drawing.Point(974, 774);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(90, 53);
+            this.btnBack.Size = new System.Drawing.Size(120, 65);
             this.btnBack.TabIndex = 60;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // lblTransactionIDPlaceholder
+            // 
+            this.lblTransactionIDPlaceholder.AutoSize = true;
+            this.lblTransactionIDPlaceholder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransactionIDPlaceholder.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblTransactionIDPlaceholder.Location = new System.Drawing.Point(1647, 137);
+            this.lblTransactionIDPlaceholder.Name = "lblTransactionIDPlaceholder";
+            this.lblTransactionIDPlaceholder.Size = new System.Drawing.Size(53, 20);
+            this.lblTransactionIDPlaceholder.TabIndex = 66;
+            this.lblTransactionIDPlaceholder.Text = "label1";
+            this.lblTransactionIDPlaceholder.Click += new System.EventHandler(this.lblTransactionIDPlaceholder_Click);
+            // 
+            // btnEnterQuantity
+            // 
+            this.btnEnterQuantity.Location = new System.Drawing.Point(1207, 385);
+            this.btnEnterQuantity.Name = "btnEnterQuantity";
+            this.btnEnterQuantity.Size = new System.Drawing.Size(125, 49);
+            this.btnEnterQuantity.TabIndex = 67;
+            this.btnEnterQuantity.Text = "Enter Quantity";
+            this.btnEnterQuantity.UseVisualStyleBackColor = true;
+            this.btnEnterQuantity.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lblSearchProduct
+            // 
+            this.lblSearchProduct.AutoSize = true;
+            this.lblSearchProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearchProduct.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblSearchProduct.Location = new System.Drawing.Point(992, 141);
+            this.lblSearchProduct.Name = "lblSearchProduct";
+            this.lblSearchProduct.Size = new System.Drawing.Size(130, 20);
+            this.lblSearchProduct.TabIndex = 68;
+            this.lblSearchProduct.Text = "Search Product:";
+            // 
+            // txtSearchbar
+            // 
+            this.txtSearchbar.Location = new System.Drawing.Point(992, 165);
+            this.txtSearchbar.Name = "txtSearchbar";
+            this.txtSearchbar.Size = new System.Drawing.Size(340, 22);
+            this.txtSearchbar.TabIndex = 69;
+            this.txtSearchbar.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // lstboxSuggestion
+            // 
+            this.lstboxSuggestion.FormattingEnabled = true;
+            this.lstboxSuggestion.ItemHeight = 16;
+            this.lstboxSuggestion.Location = new System.Drawing.Point(992, 217);
+            this.lstboxSuggestion.Name = "lstboxSuggestion";
+            this.lstboxSuggestion.Size = new System.Drawing.Size(340, 116);
+            this.lstboxSuggestion.TabIndex = 70;
+            // 
             // POSform
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1827, 922);
+            this.Controls.Add(this.lstboxSuggestion);
+            this.Controls.Add(this.txtSearchbar);
+            this.Controls.Add(this.lblSearchProduct);
+            this.Controls.Add(this.btnEnterQuantity);
+            this.Controls.Add(this.lblTransactionIDPlaceholder);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAdmin);
             this.Controls.Add(this.CashierOut);
             this.Controls.Add(this.lblCashierName);
             this.Controls.Add(this.picboxUSER);
             this.Controls.Add(this.btnHold);
-            this.Controls.Add(this.btnOpenDrawer);
+            this.Controls.Add(this.btnCheckout);
             this.Controls.Add(this.btnPrintReceipt);
             this.Controls.Add(this.btnRefund);
             this.Controls.Add(this.btnVoidIten);
@@ -673,6 +772,7 @@
             this.Controls.Add(this.lblTransactionID);
             this.Controls.Add(this.dgvSales);
             this.Controls.Add(this.picboxUMLOGO);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "POSform";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
@@ -717,7 +817,7 @@
         private System.Windows.Forms.Button btnVoidIten;
         private System.Windows.Forms.Button btnRefund;
         private System.Windows.Forms.Button btnPrintReceipt;
-        private System.Windows.Forms.Button btnOpenDrawer;
+        private System.Windows.Forms.Button btnCheckout;
         private System.Windows.Forms.Button btnHold;
         private System.Windows.Forms.PictureBox picboxUSER;
         private System.Windows.Forms.TextBox lblCashierName;
@@ -729,5 +829,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotalColumn;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label lblTransactionIDPlaceholder;
+        private System.Windows.Forms.Button btnEnterQuantity;
+        private System.Windows.Forms.Label lblSearchProduct;
+        private System.Windows.Forms.TextBox txtSearchbar;
+        private System.Windows.Forms.ListBox lstboxSuggestion;
     }
 }
