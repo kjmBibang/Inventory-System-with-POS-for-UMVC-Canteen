@@ -28,23 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.btnUpdateUser = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.userIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usernameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passwordColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvUsers
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 15);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1456, 892);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.userIDColumn,
+            this.usernameColumn,
+            this.passwordColumn,
+            this.roleColumn});
+            this.dgvUsers.Location = new System.Drawing.Point(16, 15);
+            this.dgvUsers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvUsers.Name = "dgvUsers";
+            this.dgvUsers.RowHeadersWidth = 51;
+            this.dgvUsers.Size = new System.Drawing.Size(1456, 892);
+            this.dgvUsers.TabIndex = 0;
+            this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnAddUser
             // 
@@ -91,6 +101,34 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // userIDColumn
+            // 
+            this.userIDColumn.HeaderText = "User ID";
+            this.userIDColumn.MinimumWidth = 6;
+            this.userIDColumn.Name = "userIDColumn";
+            this.userIDColumn.Width = 125;
+            // 
+            // usernameColumn
+            // 
+            this.usernameColumn.HeaderText = "Username";
+            this.usernameColumn.MinimumWidth = 6;
+            this.usernameColumn.Name = "usernameColumn";
+            this.usernameColumn.Width = 125;
+            // 
+            // passwordColumn
+            // 
+            this.passwordColumn.HeaderText = "Password";
+            this.passwordColumn.MinimumWidth = 6;
+            this.passwordColumn.Name = "passwordColumn";
+            this.passwordColumn.Width = 125;
+            // 
+            // roleColumn
+            // 
+            this.roleColumn.HeaderText = "Role";
+            this.roleColumn.MinimumWidth = 6;
+            this.roleColumn.Name = "roleColumn";
+            this.roleColumn.Width = 125;
+            // 
             // UserManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -101,24 +139,28 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnUpdateUser);
             this.Controls.Add(this.btnAddUser);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvUsers);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UserManagementForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserManagementForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.UserManagementForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.Button btnUpdateUser;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userIDColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usernameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passwordColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roleColumn;
     }
 }

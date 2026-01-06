@@ -33,5 +33,10 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
             NavigationHelper.GoBack(this, currentUser);
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)//dgvUsers ni
+        {
+
+        }
     }
 }

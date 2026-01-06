@@ -20,9 +20,15 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
     public partial class POSform : Form
     {
         private TextBox _activeTextBox;
-        private SQLProductRepository productRepository;
+        private IProductRepository productRepository = new MockDBProductRepository();//kung i change nimo ang repo i change pud sa ubos
+        ITransactionRepository transactionRepository = new SQLTransactionRepository();//kini i change pud, hand in hand sila
         private ProductManager productManager;
         private User currentUser;
+        
+        TransactionManager manager;
+        // Add these fields at the top of your class (near _activeTextBox and productRepository)
+        private bool isCheckedOut = false;
+        private decimal cashReceived = 0;
         private void TextBox_Enter(object sender, EventArgs e)
         {
             _activeTextBox = sender as TextBox;
@@ -239,9 +245,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
         //=================trasnsaction ni diri na flow, subject to change===============
 
-        // Add these fields at the top of your class (near _activeTextBox and productRepository)
-        private bool isCheckedOut = false;
-        private decimal cashReceived = 0;
+        
 
         private Transaction BuildTransactionFromGrid()
         {
@@ -356,8 +360,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             {
                 Transaction transaction = BuildTransactionFromGrid();
 
-                ITransactionRepository repo = new SQLTransactionRepository();
-                TransactionManager manager = new TransactionManager(repo);
+                manager = new TransactionManager(transactionRepository);
 
                 int transactionId = manager.ProcessTransaction(transaction);
 
