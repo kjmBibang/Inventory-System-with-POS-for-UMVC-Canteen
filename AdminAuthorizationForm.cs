@@ -16,5 +16,10 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
             InitializeComponent();
         }
+
+        private void txtAuthorizationKey_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
