@@ -21,7 +21,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
     {
         private TextBox _activeTextBox;
         private IProductRepository productRepository = new MockDBProductRepository();//kung i change nimo ang repo i change pud sa ubos
-        ITransactionRepository transactionRepository = new SQLTransactionRepository();//kini i change pud, hand in hand sila
+        ITransactionRepository transactionRepository = new MockDBTransactionRepository();//kini i change pud, hand in hand sila
         private ProductManager productManager;
         private User currentUser;
         
@@ -42,7 +42,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             this.WindowState = FormWindowState.Maximized;
             txtBarcode.KeyDown += txtBarcode_KeyDown; //mao ni need for txtBarcode_keydown()
 
-            productRepository = new SQLProductRepository();
+            
 
             txtBarcode.Enter += TextBox_Enter;
             txtQuantity.Enter += TextBox_Enter;
