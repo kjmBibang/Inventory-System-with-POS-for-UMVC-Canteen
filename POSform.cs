@@ -21,7 +21,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
     {
         private TextBox _activeTextBox;
         private SQLProductRepository productRepository;
-
+        private ProductManager productManager;
         private void TextBox_Enter(object sender, EventArgs e)
         {
             _activeTextBox = sender as TextBox;
@@ -58,6 +58,16 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
             btnPay.Enabled = false;
             txtCash.Enabled = false;
+
+            productManager = new ProductManager(productRepository);
+
+            // suggestions hidden by default
+            lstboxSuggestion.Visible = false;
+
+            // events
+            txtSearchbar.TextChanged += txtSearchbar_TextChanged;
+            lstboxSuggestion.DoubleClick += lstboxSuggestion_DoubleClick;
+
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
@@ -143,9 +153,12 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
             if (e.KeyCode == Keys.Enter)
             {
+                lstboxSuggestion.Visible = false;
+
                 string barcode = txtBarcode.Text.Trim();
                 LoadProductByBarcode(barcode);
-                e.SuppressKeyPress = true; // prevents beep
+
+                e.SuppressKeyPress = true;
             }
         }
 
@@ -374,6 +387,63 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             txtBarcode.Focus();
         }
 
-       
+
+        //==========================PRODUCT SEARCHING DIRI=============================================
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)//btnEnterQuantity ni
+        {
+            
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)//txtSearchbar ni
+        {
+            
+        }
+        
+        private void txtSearchbar_TextChanged(object sender, EventArgs e)
+        {
+            string keyword = txtSearchbar.Text.Trim();
+
+            if (keyword.Length < 2)
+            {
+                lstboxSuggestion.Visible = false;
+                return;
+            }
+
+            var results = productManager.SearchProducts(keyword);
+
+            if (results.Count == 0)
+            {
+                lstboxSuggestion.Visible = false;
+                return;
+            }
+
+            lstboxSuggestion.DataSource = results;
+            lstboxSuggestion.DisplayMember = "productName";
+            lstboxSuggestion.ValueMember = "productBarcode";
+            lstboxSuggestion.Visible = true;
+        }
+        
+        private void lstboxSuggestion_DoubleClick(object sender, EventArgs e)
+        {
+            if (lstboxSuggestion.SelectedItem is Product product)
+            {
+                AddProductToGrid(
+                    product.productBarcode,
+                    product.productName,
+                    product.unitPrice
+                );
+
+                txtSearchbar.Clear();
+                lstboxSuggestion.Visible = false;
+            }
+        }
+
+
+
     }
 }

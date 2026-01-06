@@ -15,6 +15,14 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
         { 
             this._repo = productRepo;
         }
+        // ================= BUSINESS LAYER =================
+        public List<Product> SearchProducts(string keyword)
+        {
+            if (string.IsNullOrWhiteSpace(keyword))
+                return new List<Product>();
+
+            return _repo.SearchProductsByName(keyword);
+        }
 
         public bool IsProductAvailable(Product product)
         {

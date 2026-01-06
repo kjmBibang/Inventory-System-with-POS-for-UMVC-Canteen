@@ -15,6 +15,38 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
     public class SQLProductRepository : IProductRepository
     {
         IServerHelper serverHelper = new SQLHelper();
+        // ================= DATA LAYER =================
+        public List<Product> SearchProductsByName(string keyword)
+        {
+            var products = new List<Product>();
+
+            using (SqlConnection conn = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                string query = @"
+            SELECT TOP 10 *
+            FROM Products
+            WHERE productName LIKE @keyword
+              AND stock > 0";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    products.Add(new Product(
+                        reader["Barcode"].ToString(),
+                        reader["productName"].ToString(),
+                        Convert.ToDecimal(reader["Price"]),
+                        Convert.ToInt32(reader["stock"])
+                    ));
+                }
+            }
+
+            return products;
+        }
 
         public Product GetProduct(string id)
         {

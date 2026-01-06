@@ -71,6 +71,10 @@
             this.btnAdmin = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.lblTransactionIDPlaceholder = new System.Windows.Forms.Label();
+            this.btnEnterQuantity = new System.Windows.Forms.Button();
+            this.lblSearchProduct = new System.Windows.Forms.Label();
+            this.txtSearchbar = new System.Windows.Forms.TextBox();
+            this.lstboxSuggestion = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.picboxUMLOGO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxUSER)).BeginInit();
@@ -179,10 +183,10 @@
             // 
             this.txtQuantity.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantity.Location = new System.Drawing.Point(993, 223);
+            this.txtQuantity.Location = new System.Drawing.Point(992, 385);
             this.txtQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(340, 49);
+            this.txtQuantity.Size = new System.Drawing.Size(207, 49);
             this.txtQuantity.TabIndex = 14;
             this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
@@ -195,7 +199,7 @@
             this.lblTotal.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.lblTotal.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.White;
-            this.lblTotal.Location = new System.Drawing.Point(993, 279);
+            this.lblTotal.Location = new System.Drawing.Point(992, 441);
             this.lblTotal.Margin = new System.Windows.Forms.Padding(4);
             this.lblTotal.Multiline = true;
             this.lblTotal.Name = "lblTotal";
@@ -226,7 +230,7 @@
             this.lblQuantity.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.lblQuantity.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQuantity.ForeColor = System.Drawing.Color.White;
-            this.lblQuantity.Location = new System.Drawing.Point(993, 178);
+            this.lblQuantity.Location = new System.Drawing.Point(992, 340);
             this.lblQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.lblQuantity.Multiline = true;
             this.lblQuantity.Name = "lblQuantity";
@@ -241,7 +245,7 @@
             // 
             this.txtTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(993, 321);
+            this.txtTotal.Location = new System.Drawing.Point(992, 483);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(340, 49);
@@ -257,7 +261,7 @@
             this.lblCash.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.lblCash.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCash.ForeColor = System.Drawing.Color.White;
-            this.lblCash.Location = new System.Drawing.Point(993, 378);
+            this.lblCash.Location = new System.Drawing.Point(992, 540);
             this.lblCash.Margin = new System.Windows.Forms.Padding(4);
             this.lblCash.Multiline = true;
             this.lblCash.Name = "lblCash";
@@ -272,7 +276,7 @@
             // 
             this.txtCash.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCash.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCash.Location = new System.Drawing.Point(993, 418);
+            this.txtCash.Location = new System.Drawing.Point(992, 580);
             this.txtCash.Margin = new System.Windows.Forms.Padding(4);
             this.txtCash.Name = "txtCash";
             this.txtCash.Size = new System.Drawing.Size(340, 49);
@@ -284,7 +288,7 @@
             // 
             this.txtChange.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtChange.Location = new System.Drawing.Point(993, 516);
+            this.txtChange.Location = new System.Drawing.Point(992, 678);
             this.txtChange.Margin = new System.Windows.Forms.Padding(4);
             this.txtChange.Name = "txtChange";
             this.txtChange.Size = new System.Drawing.Size(340, 49);
@@ -300,7 +304,7 @@
             this.lblChange.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.lblChange.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChange.ForeColor = System.Drawing.Color.White;
-            this.lblChange.Location = new System.Drawing.Point(993, 475);
+            this.lblChange.Location = new System.Drawing.Point(992, 637);
             this.lblChange.Margin = new System.Windows.Forms.Padding(4);
             this.lblChange.Multiline = true;
             this.lblChange.Name = "lblChange";
@@ -631,7 +635,7 @@
             this.CashierOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CashierOut.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CashierOut.ForeColor = System.Drawing.Color.Black;
-            this.CashierOut.Location = new System.Drawing.Point(1103, 612);
+            this.CashierOut.Location = new System.Drawing.Point(1102, 774);
             this.CashierOut.Margin = new System.Windows.Forms.Padding(4);
             this.CashierOut.Name = "CashierOut";
             this.CashierOut.Size = new System.Drawing.Size(120, 65);
@@ -646,13 +650,14 @@
             this.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdmin.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdmin.ForeColor = System.Drawing.Color.Black;
-            this.btnAdmin.Location = new System.Drawing.Point(1231, 612);
+            this.btnAdmin.Location = new System.Drawing.Point(1230, 774);
             this.btnAdmin.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(120, 65);
             this.btnAdmin.TabIndex = 60;
-            this.btnAdmin.Text = "Admin";
+            this.btnAdmin.Text = "Admin Permission";
             this.btnAdmin.UseVisualStyleBackColor = false;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
             // btnBack
             // 
@@ -661,7 +666,7 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.Color.Black;
-            this.btnBack.Location = new System.Drawing.Point(975, 612);
+            this.btnBack.Location = new System.Drawing.Point(974, 774);
             this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(120, 65);
@@ -682,12 +687,54 @@
             this.lblTransactionIDPlaceholder.Text = "label1";
             this.lblTransactionIDPlaceholder.Click += new System.EventHandler(this.lblTransactionIDPlaceholder_Click);
             // 
+            // btnEnterQuantity
+            // 
+            this.btnEnterQuantity.Location = new System.Drawing.Point(1207, 385);
+            this.btnEnterQuantity.Name = "btnEnterQuantity";
+            this.btnEnterQuantity.Size = new System.Drawing.Size(125, 49);
+            this.btnEnterQuantity.TabIndex = 67;
+            this.btnEnterQuantity.Text = "Enter Quantity";
+            this.btnEnterQuantity.UseVisualStyleBackColor = true;
+            this.btnEnterQuantity.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lblSearchProduct
+            // 
+            this.lblSearchProduct.AutoSize = true;
+            this.lblSearchProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearchProduct.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblSearchProduct.Location = new System.Drawing.Point(992, 141);
+            this.lblSearchProduct.Name = "lblSearchProduct";
+            this.lblSearchProduct.Size = new System.Drawing.Size(130, 20);
+            this.lblSearchProduct.TabIndex = 68;
+            this.lblSearchProduct.Text = "Search Product:";
+            // 
+            // txtSearchbar
+            // 
+            this.txtSearchbar.Location = new System.Drawing.Point(992, 165);
+            this.txtSearchbar.Name = "txtSearchbar";
+            this.txtSearchbar.Size = new System.Drawing.Size(340, 22);
+            this.txtSearchbar.TabIndex = 69;
+            this.txtSearchbar.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // lstboxSuggestion
+            // 
+            this.lstboxSuggestion.FormattingEnabled = true;
+            this.lstboxSuggestion.ItemHeight = 16;
+            this.lstboxSuggestion.Location = new System.Drawing.Point(992, 217);
+            this.lstboxSuggestion.Name = "lstboxSuggestion";
+            this.lstboxSuggestion.Size = new System.Drawing.Size(340, 116);
+            this.lstboxSuggestion.TabIndex = 70;
+            // 
             // POSform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
             this.ClientSize = new System.Drawing.Size(1827, 922);
+            this.Controls.Add(this.lstboxSuggestion);
+            this.Controls.Add(this.txtSearchbar);
+            this.Controls.Add(this.lblSearchProduct);
+            this.Controls.Add(this.btnEnterQuantity);
             this.Controls.Add(this.lblTransactionIDPlaceholder);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAdmin);
@@ -783,5 +830,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotalColumn;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lblTransactionIDPlaceholder;
+        private System.Windows.Forms.Button btnEnterQuantity;
+        private System.Windows.Forms.Label lblSearchProduct;
+        private System.Windows.Forms.TextBox txtSearchbar;
+        private System.Windows.Forms.ListBox lstboxSuggestion;
     }
 }

@@ -25,6 +25,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
             throw new NotImplementedException();
         }
 
+        public List<Product> SearchProductsByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdateStock(string id)
         {
 
