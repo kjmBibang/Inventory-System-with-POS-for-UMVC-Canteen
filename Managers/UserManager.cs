@@ -22,5 +22,18 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
         {
             return _repo.AuthenticateUser(username, password);
         }
+
+        public Admin AuthorizeAdmin(string username, string password)
+        {
+            User user = _repo.AuthenticateUser(username, password);
+
+            if (user == null)
+                return null;
+
+            if (user.roleID != 1)
+                return null;
+
+            return user as Admin;
+        }
     }
 }
