@@ -17,6 +17,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         LoginForm loginForm = new LoginForm();
         UserManagementForm userManagementForm;
         POSform posForm;
+        InventoryManagementForm inventoryManagementForm;
         public AdminForm(Admin admin)
         {
             InitializeComponent();
@@ -52,7 +53,9 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
         private void btnInventory_Click(object sender, EventArgs e)
         {
-
+            inventoryManagementForm = new InventoryManagementForm(admin);
+            inventoryManagementForm.Show();
+            this.Hide();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

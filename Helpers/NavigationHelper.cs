@@ -10,7 +10,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Helpers
 {
     public static class NavigationHelper
     {
-        public static void GoBack(Form currentForm, User user)
+        public static void GoBackToDashboard(Form currentForm, User user)
         {
             if (user == null)
                 throw new ArgumentNullException(nameof(user));
@@ -23,11 +23,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Helpers
             {
                 case 1: // admin
                     var admin = new Admin(user.userID, user.username, user.roleID);
-                    nextForm = new AdminForm(admin);
+                    nextForm = new Dashboard(admin);
                     break;
                 case 2: // cashier
                     var cashier = new Cashier(user.userID, user.username, user.roleID);
-                    nextForm = new CashierForm(cashier);
+                    nextForm = new Dashboard(cashier);
                     break;
                 default:
                     MessageBox.Show("Unknown role. Cannot navigate back.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -38,5 +38,24 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Helpers
             nextForm.FormClosed += (s, args) => currentForm.Close();
             nextForm.Show();
         }
+
+        public static void NavigateToInventory(Form currentForm, User user)
+        {
+            var form = new InventoryManagementForm(user);
+            form.Show();
+            currentForm.Hide();
+        }
+        public static void NavigateToUserManagement(Form currentForm, User user)
+        {
+            var form = new UserManagementForm(user);
+            form.Show();
+            currentForm.Hide();
+        }
+        /*public static void NavigateToReports(Form currentForm, User user)
+        {
+            var form = new ReportsForm(user);
+            form.Show();
+            currentForm.Hide();
+        }*/
     }
 }
