@@ -69,18 +69,6 @@
     <Compile Include="AdminAuthorizationForm.Designer.cs">
       <DependentUpon>AdminAuthorizationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminForm.Designer.cs">
-      <DependentUpon>AdminForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CashierForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CashierForm.Designer.cs">
-      <DependentUpon>CashierForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,12 +141,6 @@
     </Compile>
     <EmbeddedResource Include="AdminAuthorizationForm.resx">
       <DependentUpon>AdminAuthorizationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdminForm.resx">
-      <DependentUpon>AdminForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CashierForm.resx">
-      <DependentUpon>CashierForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
