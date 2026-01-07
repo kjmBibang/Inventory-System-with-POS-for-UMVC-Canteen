@@ -726,5 +726,125 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             ResetPOS();
         }
 
+
+        //========================================Reciept Printing============================================
+
+        private void btnPrintReceipt_Click(object sender, EventArgs e)
+        {
+            if (currentTransaction == null || currentTransaction.transactionID == 0)
+            {
+                MessageBox.Show("No completed transaction to print.", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Option 1: Show in dialog
+                ShowReceiptDialog();
+
+                // Option 2: Copy to clipboard (uncomment if needed)
+                // Clipboard.SetText(GenerateReceiptString());
+                // MessageBox.Show("Receipt copied to clipboard!", "Success");
+
+                // Option 3: Save to file (uncomment if needed)
+                // string filePath = $"Receipt_{currentTransaction.transactionID}_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
+                // File.WriteAllText(filePath, GenerateReceiptString());
+                // MessageBox.Show($"Receipt saved to: {filePath}", "Success");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error generating receipt: {ex.Message}", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private string GenerateReceiptString()
+        {
+            StringBuilder receipt = new StringBuilder();
+
+            // Header
+            receipt.AppendLine("========================================");
+            receipt.AppendLine("     UMVC CANTEEN - RECEIPT");
+            receipt.AppendLine("========================================");
+            receipt.AppendLine();
+
+            // Transaction Details
+            receipt.AppendLine($"Transaction ID: {currentTransaction.transactionID}");
+            receipt.AppendLine($"Date: {currentTransaction.transactionDate:yyyy-MM-dd HH:mm:ss}");
+            receipt.AppendLine($"Cashier: {lblCashierName.Text}");
+
+            // Admin approval if applicable
+            if (adminAuthorized && approvingAdmin != null && currentUser.roleID == 2)
+            {
+                receipt.AppendLine($"Approved by: {approvingAdmin.username}");
+            }
+
+            receipt.AppendLine("========================================");
+            receipt.AppendLine();
+
+            // Items Header
+            receipt.AppendLine("ITEMS:");
+            receipt.AppendLine("----------------------------------------");
+            receipt.AppendLine(string.Format("{0,-25} {1,5} {2,8}", "Product", "Qty", "Amount"));
+            receipt.AppendLine("----------------------------------------");
+
+            // Items List
+            foreach (var item in currentTransaction.items)
+            {
+                string productName = item.productName.Length > 25
+                    ? item.productName.Substring(0, 22) + "..."
+                    : item.productName;
+
+                receipt.AppendLine(string.Format("{0,-25} x{1,3} {2,8:F2}",
+                    productName,
+                    item.quantity,
+                    item.subTotal));
+            }
+
+            receipt.AppendLine("----------------------------------------");
+            receipt.AppendLine();
+
+            // Totals
+            decimal total = currentTransaction.totalAmount;
+            decimal cash = cashReceived;
+            decimal change = cash - total;
+
+            receipt.AppendLine(string.Format("{0,-30} {1,8:F2}", "SUBTOTAL:", total));
+            receipt.AppendLine(string.Format("{0,-30} {1,8:F2}", "TOTAL:", total));
+            receipt.AppendLine();
+            receipt.AppendLine(string.Format("{0,-30} {1,8:F2}", "CASH:", cash));
+            receipt.AppendLine(string.Format("{0,-30} {1,8:F2}", "CHANGE:", change));
+
+            receipt.AppendLine();
+            receipt.AppendLine("========================================");
+            receipt.AppendLine("       Thank you for your purchase!");
+            receipt.AppendLine("========================================");
+
+            return receipt.ToString();
+        }
+
+        // Optional: Method to display receipt in a dialog
+        private void ShowReceiptDialog()
+        {
+            string receiptText = GenerateReceiptString();
+
+            Form receiptForm = new Form();
+            receiptForm.Text = "Receipt Preview";
+            receiptForm.Size = new Size(500, 600);
+            receiptForm.StartPosition = FormStartPosition.CenterParent;
+
+            TextBox receiptTextBox = new TextBox();
+            receiptTextBox.Multiline = true;
+            receiptTextBox.ScrollBars = ScrollBars.Vertical;
+            receiptTextBox.Font = new Font("Courier New", 10);
+            receiptTextBox.Text = receiptText;
+            receiptTextBox.ReadOnly = true;
+            receiptTextBox.Dock = DockStyle.Fill;
+
+            receiptForm.Controls.Add(receiptTextBox);
+            receiptForm.ShowDialog();
+        }
+        
+
     }
 }
