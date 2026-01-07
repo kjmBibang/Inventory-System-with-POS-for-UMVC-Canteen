@@ -82,8 +82,33 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
         }
         public Transaction StoreTransaction(Transaction transaction) 
         {
-            return null;
+            UpdateTransactionStatus(transaction.transactionID, transaction.status, transaction.approvedBy);
+            return transaction;
 
         }
+        public void UpdateTransactionStatus(int transactionId, TransactionStatus status, string approvedBy)
+        {
+            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                string query = @"
+            UPDATE Transactions
+            SET TransactionStatusID = @Status,
+                ApprovedBy = @ApprovedBy,
+                StatusChangedAt = @Now
+            WHERE TransactionID = @TransactionID";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@TransactionID", transactionId);
+                    cmd.Parameters.AddWithValue("@Status", (int)status);
+                    cmd.Parameters.AddWithValue("@ApprovedBy", approvedBy ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Now", DateTime.Now);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }

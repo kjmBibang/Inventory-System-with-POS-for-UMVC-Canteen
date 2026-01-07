@@ -534,6 +534,7 @@
             this.btnRefund.TabIndex = 60;
             this.btnRefund.Text = "Refund Transaction";
             this.btnRefund.UseVisualStyleBackColor = false;
+            this.btnRefund.Click += new System.EventHandler(this.btnRefund_Click);
             // 
             // btnPrintReceipt
             // 
@@ -748,8 +749,9 @@
             this.btnVoidTransaction.Name = "btnVoidTransaction";
             this.btnVoidTransaction.Size = new System.Drawing.Size(120, 65);
             this.btnVoidTransaction.TabIndex = 71;
-            this.btnVoidTransaction.Text = "Void Transaction";
+            this.btnVoidTransaction.Text = "Clear Cart";
             this.btnVoidTransaction.UseVisualStyleBackColor = false;
+            this.btnVoidTransaction.Click += new System.EventHandler(this.btnVoidTransaction_Click);
             // 
             // POSform
             // 

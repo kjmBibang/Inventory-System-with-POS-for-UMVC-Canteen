@@ -88,6 +88,7 @@
     <Compile Include="InventoryManagementForm.Designer.cs">
       <DependentUpon>InventoryManagementForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\TransactionStatus.cs" />
     <Compile Include="POSform.cs">
       <SubType>Form</SubType>
     </Compile>

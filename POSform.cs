@@ -20,11 +20,13 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
     public partial class POSform : Form
     {
         private TextBox _activeTextBox;
-        private IProductRepository productRepository = new MockDBProductRepository();//kung i change nimo ang repo i change pud sa ubos
-        ITransactionRepository transactionRepository = new MockDBTransactionRepository();//kini i change pud, hand in hand sila
+        private IProductRepository productRepository = new SQLProductRepository();//kung i change nimo ang repo i change pud sa ubos
+        ITransactionRepository transactionRepository = new SQLTransactionRepository();//kini i change pud, hand in hand sila
         private ProductManager productManager;
         private User currentUser;
         private bool adminAuthorized = false; // per-transaction admin approval
+        private Transaction currentTransaction; // tracks the current transaction in memory
+        private User approvingAdmin = null; // store admin user who authorized this transaction
 
 
         TransactionManager manager;
@@ -44,7 +46,17 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             this.WindowState = FormWindowState.Maximized;
             txtBarcode.KeyDown += txtBarcode_KeyDown; //mao ni need for txtBarcode_keydown()
 
-            
+            // instantiate manager once for the form lifetime
+            manager = new TransactionManager(transactionRepository, productRepository);
+
+            // initialize an empty in-memory transaction for the new session
+            currentTransaction = new Transaction(
+                transactionID: 0,
+                transactionDate: DateTime.Now,
+                totalAmount: 0m,
+                items: new List<TransactionItem>(),
+                cashierName: user?.username ?? string.Empty
+            );
 
             txtBarcode.Enter += TextBox_Enter;
             txtQuantity.Enter += TextBox_Enter;
@@ -197,6 +209,18 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             // Reduce stock in DB
             productRepository.ReduceStock(barcode, quantity);
 
+            // ADD TO currentTransaction
+            currentTransaction.items.Add(new TransactionItem(
+                transactionItemID: 0,
+                transactionID: 0,
+                productID: 0,
+                unitPrice: price,
+                quantity: quantity,
+                subTotal: subtotal,
+                barcode: barcode,
+                productName: productName
+            ));
+
             UpdateTotal();
         }
 
@@ -342,6 +366,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         // REPLACE your existing btnPay_Click with this
         private void btnPay_Click(object sender, EventArgs e)
         {
+            
             // Safety check #1: Must checkout first
             if (!isCheckedOut)
             {
@@ -362,12 +387,13 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             // Process the transaction
             try
             {
-                Transaction transaction = BuildTransactionFromGrid();
+                currentTransaction = BuildTransactionFromGrid();
+                manager = new TransactionManager(transactionRepository, productRepository);
+                int transactionId = manager.ProcessTransaction(currentTransaction);
+                currentTransaction.transactionID = transactionId; // store ID for void/refund
 
-                manager = new TransactionManager(transactionRepository);
 
-                int transactionId = manager.ProcessTransaction(transaction);
-
+                
                 decimal change = cashReceived - total;
 
                 MessageBox.Show($"Transaction #{transactionId} completed!\n\n" +
@@ -377,7 +403,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                                "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Reset everything for next customer
-                ResetPOS();
+                //ResetPOS();
             }
             catch (Exception ex)
             {
@@ -406,6 +432,15 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             adminAuthorized = (currentUser.roleID == 1);
             UpdateAdminUI();
 
+            // Recreate a fresh empty transaction for next customer
+            currentTransaction = new Transaction(
+                transactionID: 0,
+                transactionDate: DateTime.Now,
+                totalAmount: 0m,
+                items: new List<TransactionItem>(),
+                cashierName: lblCashierName.Text
+            );
+
             txtBarcode.Focus();
         }
 
@@ -424,10 +459,10 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                 {
                     if (authForm.ShowDialog() == DialogResult.OK)
                     {
-                        if (authForm.AuthorizedAdmin != null &&
-                            authForm.AuthorizedAdmin.roleID == 1)
+                        if (authForm.AuthorizedAdmin != null && authForm.AuthorizedAdmin.roleID == 1)
                         {
                             adminAuthorized = true;
+                            approvingAdmin = authForm.AuthorizedAdmin; // <-- store admin user
                             UpdateAdminUI();
 
                             MessageBox.Show(
@@ -437,7 +472,9 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                                 MessageBoxIcon.Information
                             );
                         }
-                        else
+
+                    }
+                    else
                         {
                             MessageBox.Show(
                                 "Invalid admin credentials.",
@@ -448,7 +485,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                         }
                     }
                 }
-            }
+            
 
         }
 
@@ -542,10 +579,9 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
             if (diff != 0)
             {
-                // Update stock
+                // Check if enough stock is available
                 if (diff > 0)
                 {
-                    // Check if enough stock is available
                     Product product = productRepository.LoadProductByBarcode(barcode);
                     if (product.stock < diff)
                     {
@@ -559,6 +595,14 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
                 // Update row Tag
                 dgvSales.CurrentRow.Tag = newQty;
+
+                // Update currentTransaction item
+                var item = currentTransaction.items.FirstOrDefault(i => i.barcode == barcode);
+                if (item != null)
+                {
+                    item.quantity = newQty;
+                    item.subTotal = newQty * item.unitPrice;
+                }
             }
 
             // Update quantity cell
@@ -583,8 +627,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         //nasa line 412 ang btnAdmin_Click()
         private void InitializeAdminState()
         {
-            // If logged-in user is admin, auto-authorize
-            adminAuthorized = (currentUser.roleID == 1);
+            if (currentUser.roleID == 1)
+            {
+                adminAuthorized = true;
+                approvingAdmin = currentUser; // <-- auto store
+            }
             UpdateAdminUI();
         }
         private void UpdateAdminUI()
@@ -611,7 +658,73 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         
         private void btnVoidItem_Click(object sender, EventArgs e)
         {
+            if (!adminAuthorized)
+            {
+                MessageBox.Show("Admin approval required.", "Unauthorized", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            if (dgvSales.CurrentRow == null || dgvSales.CurrentRow.IsNewRow) return;
+
+            string barcode = dgvSales.CurrentRow.Cells["barcodeColumn"].Value.ToString();
+            var item = currentTransaction.items.FirstOrDefault(i => i.barcode == barcode);
+
+            if (item != null)
+            {
+                manager.VoidItem(currentTransaction, item, approvingAdmin);
+
+                dgvSales.Rows.Remove(dgvSales.CurrentRow);
+                UpdateTotal();
+
+                MessageBox.Show($"Item {item.productName} voided.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
+        private void btnRefund_Click(object sender, EventArgs e)
+        {
+            if (!adminAuthorized)
+            {
+                MessageBox.Show("Admin approval required.", "Unauthorized", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (currentTransaction == null)
+            {
+                MessageBox.Show("No transaction to refund.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            manager.RefundTransaction(currentTransaction, approvingAdmin);
+
+            dgvSales.Rows.Clear();
+            UpdateTotal();
+
+            MessageBox.Show("Transaction refunded.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ResetPOS();
+        }
+
+        private void btnVoidTransaction_Click(object sender, EventArgs e)
+        {
+            if (!adminAuthorized)
+            {
+                MessageBox.Show("Admin approval required.", "Unauthorized", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (currentTransaction == null)
+            {
+                MessageBox.Show("No transaction to void.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            manager.VoidTransaction(currentTransaction, approvingAdmin);
+
+            dgvSales.Rows.Clear();
+            UpdateTotal();
+
+            MessageBox.Show("Transaction voided.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ResetPOS();
+        }
+
     }
 }
