@@ -161,5 +161,15 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
             manager.LoadInventory();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
