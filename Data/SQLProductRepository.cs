@@ -36,12 +36,13 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
 
                 while (reader.Read())
                 {
-                    products.Add(new Product(
-                        reader["Barcode"].ToString(),
-                        reader["productName"].ToString(),
-                        Convert.ToDecimal(reader["Price"]),
-                        Convert.ToInt32(reader["stock"])
-                    ));
+                    products.Add(new Product
+                    {
+                        productBarcode = reader["Barcode"].ToString(),
+                        productName = reader["productName"].ToString(),
+                        unitPrice = Convert.ToDecimal(reader["Price"]),
+                        stock = Convert.ToInt32(reader["stock"])
+                    });
                 }
             }
 
@@ -113,12 +114,13 @@ WHERE Barcode = @Barcode";
                     {
                         if (reader.Read())
                         {
-                            return new Product(
-                                reader["Barcode"].ToString(),
-                                reader["ProductName"].ToString(),
-                                Convert.ToDecimal(reader["Price"]),
-                                Convert.ToInt32(reader["Stock"])
-);
+                            return new Product
+                            {
+                                productBarcode = reader["Barcode"].ToString(),
+                                productName = reader["ProductName"].ToString(),
+                                unitPrice = Convert.ToDecimal(reader["Price"]),
+                                stock = Convert.ToInt32(reader["Stock"])
+                            };
                         }
                         else
                         {
@@ -150,12 +152,12 @@ WHERE Barcode = @Barcode";
                     while (reader.Read())
                     {
 
-                        products.Add(new Product(
-                            reader["Barcode"].ToString(),
-                            reader["ProductName"].ToString(),
-                            (decimal)reader["Price"],
-                            (int)reader["Stock"])
+                        products.Add(new Product
                         {
+                            productBarcode = reader["Barcode"].ToString(),
+                            productName = reader["ProductName"].ToString(),
+                            unitPrice = (decimal)reader["Price"],
+                            stock = (int)reader["Stock"],
                             productID = (int)reader["ProductID"],
                             unitCost = (decimal)reader["CostPrice"],
                             categoryName = reader["CategoryName"].ToString()
@@ -186,7 +188,13 @@ WHERE Barcode = @Barcode";
                     {
                         while (reader.Read())
                         {
-                            list.Add(new Product("barcode", reader["ProductName"].ToString(), 0, Convert.ToInt32(reader["Stock"])));
+                            list.Add(new Product
+                            {
+                                productBarcode = "barcode",
+                                productName = reader["ProductName"].ToString(),
+                                unitPrice = 0,
+                                stock = Convert.ToInt32(reader["Stock"])
+                            });
                             
                         }
                     }
@@ -195,6 +203,68 @@ WHERE Barcode = @Barcode";
 
             return list;
         }
+        public int GetOrCreateCategory(string categoryName)
+        {
+            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                con.Open();
 
-    }
+                string trimmedName = categoryName.Trim();
+
+                // 1. Check if category exists (case-insensitive)
+                string selectQuery = @"
+            SELECT CategoryID
+            FROM Categories
+            WHERE LOWER(LTRIM(RTRIM(CategoryName))) = LOWER(@Name)";
+
+                using (SqlCommand selectCmd = new SqlCommand(selectQuery, con))
+                {
+                    selectCmd.Parameters.AddWithValue("@Name", trimmedName);
+                    object result = selectCmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        return Convert.ToInt32(result); // existing category
+                    }
+                }
+
+                // 2. Insert new category if not exists
+                string insertQuery = @"
+            INSERT INTO Categories (CategoryName)
+            VALUES (@Name);
+            SELECT CAST(SCOPE_IDENTITY() AS INT);";
+
+                using (SqlCommand insertCmd = new SqlCommand(insertQuery, con))
+                {
+                    insertCmd.Parameters.AddWithValue("@Name", trimmedName);
+                    int newId = (int)insertCmd.ExecuteScalar();
+                    return newId;
+                }
+            }
+        }
+        public void AddProduct(Product product)
+        {
+            string query = @"
+        INSERT INTO Products
+        (ProductName, Barcode, Price, CostPrice, Stock, CategoryID)
+        VALUES
+        (@ProductName, @Barcode, @Price, @CostPrice, @Stock, @CategoryID)";
+
+            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@ProductName", product.productName);
+                cmd.Parameters.AddWithValue("@Barcode", product.productBarcode);
+                cmd.Parameters.AddWithValue("@Price", product.unitPrice);
+                cmd.Parameters.AddWithValue("@CostPrice", product.unitCost);
+                cmd.Parameters.AddWithValue("@Stock", product.stock);
+                cmd.Parameters.AddWithValue("@CategoryID", product.categoryID);
+                MessageBox.Show($"Inserting Product: {product.productName}, CategoryID: {product.categoryID}");
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        }
+
+    
 }

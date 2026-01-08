@@ -17,5 +17,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Interfaces
         List<Product> SearchProductsByName(string name);
          List<Product> GetAllProductsWithCategory();
         List<Product> GetCriticalStockProducts(int threshold);
+        int GetOrCreateCategory(string categoryName);
+        void AddProduct(Product product);
     }
 }

@@ -52,6 +52,14 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
         {
             return _repo.GetCriticalStockProducts(threshold);
         }
+        public void AddProduct(Product product)
+        {
+            _repo.AddProduct(product);
+        }
+        public int GetOrCreateCategory(string categoryName)
+        {
+            return _repo.GetOrCreateCategory(categoryName);
+        }
 
     }
 }

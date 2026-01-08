@@ -81,5 +81,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
 
         }
+
+        private void btnAddNewProduct_Click(object sender, EventArgs e)
+        {
+            AddProductForm addProductForm = new AddProductForm();
+            addProductForm.Show();
+        }
     }
 }
