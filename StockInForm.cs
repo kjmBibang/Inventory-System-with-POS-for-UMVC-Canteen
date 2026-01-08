@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Inventory_System_with_POS_for_UMVC_Canteen
 {
-    public partial class Form1 : Form
+    public partial class StockInForm : Form
     {
-        public Form1()
+        public StockInForm()
         {
             InitializeComponent();
         }
