@@ -200,6 +200,7 @@
             this.btnStockIn.TabIndex = 14;
             this.btnStockIn.Text = "Stock In";
             this.btnStockIn.UseVisualStyleBackColor = true;
+            this.btnStockIn.Click += new System.EventHandler(this.btnStockIn_Click);
             // 
             // btnStockOut
             // 
@@ -265,6 +266,7 @@
             this.dgvStockMovement.RowTemplate.Height = 24;
             this.dgvStockMovement.Size = new System.Drawing.Size(915, 487);
             this.dgvStockMovement.TabIndex = 19;
+            this.dgvStockMovement.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStockMovement_CellContentClick);
             // 
             // stockMovementIDColumn
             // 

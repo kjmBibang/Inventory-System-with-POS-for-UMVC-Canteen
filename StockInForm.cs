@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Inventory_System_with_POS_for_UMVC_Canteen.Helpers;
+using Inventory_System_with_POS_for_UMVC_Canteen.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,26 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 {
     public partial class StockInForm : Form
     {
-        public StockInForm()
+        User currentUser;
+        public StockInForm(User user)
         {
             InitializeComponent();
+            currentUser = user;
+        }
+
+        private void StockInForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
