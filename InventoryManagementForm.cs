@@ -118,8 +118,47 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
         private void btnAddNewProduct_Click(object sender, EventArgs e)
         {
-            AddProductForm addProductForm = new AddProductForm();
-            addProductForm.Show();
+            using (AddProductForm addProductForm = new AddProductForm())
+            {
+                addProductForm.ShowDialog(); // BLOCKS until closed
+            }
+
+            LoadInventory();
+            LoadCriticalStock();
+        }
+
+        private void btnUpdateProduct_Click(object sender, EventArgs e)
+        {
+            if (dgvInventory.CurrentRow == null)
+            {
+                MessageBox.Show("Please select a product to update.");
+                return;
+            }
+
+            DataGridViewRow row = dgvInventory.CurrentRow;
+
+            Product product = new Product
+            {
+                productID = Convert.ToInt32(row.Cells["productIDColumn"].Value),
+                productName = row.Cells["productNameColumn"].Value.ToString(),
+                productBarcode = row.Cells["barcodeColumn"].Value.ToString(),
+                unitPrice = Convert.ToDecimal(row.Cells["priceColumn"].Value),
+                unitCost = Convert.ToDecimal(row.Cells["costPriceColumn"].Value),
+                stock = Convert.ToInt32(row.Cells["stockColumn"].Value),
+                categoryName = row.Cells["categoryColumn"].Value.ToString()
+            };
+
+            UpdateProductForm form = new UpdateProductForm(product);
+            form.ShowDialog();
+
+            // refresh after update
+            LoadInventory();
+            LoadCriticalStock();
+        }
+
+        private void btnReloadProducts_Click(object sender, EventArgs e)
+        {
+            manager.LoadInventory();
         }
     }
 }

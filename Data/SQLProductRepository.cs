@@ -279,6 +279,31 @@ WHERE Barcode = @Barcode";
                 }
             }
         }
+        public void UpdateProduct(Product product)
+        {
+            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                string query = @"
+            UPDATE Products SET
+                ProductName = @ProductName,
+                Barcode = @Barcode,
+                Price = @Price,
+                CostPrice = @CostPrice,
+                CategoryID = @CategoryID
+            WHERE ProductID = @ProductID";
 
+                SqlCommand cmd = new SqlCommand(query, con);
+
+                cmd.Parameters.AddWithValue("@ProductID", product.productID);
+                cmd.Parameters.AddWithValue("@ProductName", product.productName);
+                cmd.Parameters.AddWithValue("@Barcode", product.productBarcode);
+                cmd.Parameters.AddWithValue("@Price", product.unitPrice);
+                cmd.Parameters.AddWithValue("@CostPrice", product.unitCost);
+                cmd.Parameters.AddWithValue("@CategoryID", product.categoryID);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
