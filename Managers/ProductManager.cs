@@ -44,5 +44,29 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
         {
             return null;
         }*/
+        public List<Product> LoadInventory()
+        {
+            return _repo.GetAllProductsWithCategory();
+        }
+        public List<Product> GetCriticalStock(int threshold = 20)
+        {
+            return _repo.GetCriticalStockProducts(threshold);
+        }
+        public void AddProduct(Product product)
+        {
+            _repo.AddProduct(product);
+        }
+        public int GetOrCreateCategory(string categoryName)
+        {
+            return _repo.GetOrCreateCategory(categoryName);
+        }
+        public void DeleteProduct(int productId)
+        {
+            _repo.DeleteProduct(productId);
+        }
+        public void UpdateProduct(Product product)
+        {
+            _repo.UpdateProduct(product);
+        }
     }
 }

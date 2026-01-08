@@ -49,15 +49,15 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             {
                 if (user is Admin admin)
                 {
-                    AdminForm adminform = new AdminForm(admin);
-                    adminform.Show();
+                    Dashboard dashboard = new Dashboard(admin);
+                    dashboard.Show();
                     
                     this.Hide();
                 }
                 else if (user is Cashier cashier)
                 {
-                    CashierForm cashierForm = new CashierForm(cashier);
-                    cashierForm.Show();
+                    Dashboard dashboard = new Dashboard(cashier);
+                    dashboard.Show();
                     this.Hide();
                 }
                 else

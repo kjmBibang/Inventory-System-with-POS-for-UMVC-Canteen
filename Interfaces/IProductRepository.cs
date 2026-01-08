@@ -11,8 +11,15 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Interfaces
     {
         Product GetProduct(string id);
         Product LoadProductByBarcode(string barcode);
-        void ReduceStock(string barcode,int quantity);
+        void ReduceStock(string barcode, int quantity);
+        void AddStock(string barcode, int quantity);
         void UpdateStock(string id);
         List<Product> SearchProductsByName(string name);
+         List<Product> GetAllProductsWithCategory();
+        List<Product> GetCriticalStockProducts(int threshold);
+        int GetOrCreateCategory(string categoryName);
+        void AddProduct(Product product);
+        void DeleteProduct(int productId);
+        void UpdateProduct(Product product);
     }
 }

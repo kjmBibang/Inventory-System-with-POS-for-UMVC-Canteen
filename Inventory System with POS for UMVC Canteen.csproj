@@ -63,23 +63,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UpdateProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateProductForm.Designer.cs">
+      <DependentUpon>UpdateProductForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddProductForm.Designer.cs">
+      <DependentUpon>AddProductForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminAuthorizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminAuthorizationForm.Designer.cs">
       <DependentUpon>AdminAuthorizationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminForm.cs">
+    <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminForm.Designer.cs">
-      <DependentUpon>AdminForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CashierForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CashierForm.Designer.cs">
-      <DependentUpon>CashierForm.cs</DependentUpon>
+    <Compile Include="Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\NavigationHelper.cs" />
     <Compile Include="InventoryManagementForm.cs">
@@ -88,6 +94,11 @@
     <Compile Include="InventoryManagementForm.Designer.cs">
       <DependentUpon>InventoryManagementForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\PurchaseOrder.cs" />
+    <Compile Include="Models\PurchaseOrderStatus.cs" />
+    <Compile Include="Models\StockMovement.cs" />
+    <Compile Include="Models\StockMovementType.cs" />
+    <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\TransactionStatus.cs" />
     <Compile Include="POSform.cs">
       <SubType>Form</SubType>
@@ -145,14 +156,17 @@
     <Compile Include="UserManagementForm.Designer.cs">
       <DependentUpon>UserManagementForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UpdateProductForm.resx">
+      <DependentUpon>UpdateProductForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddProductForm.resx">
+      <DependentUpon>AddProductForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminAuthorizationForm.resx">
       <DependentUpon>AdminAuthorizationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminForm.resx">
-      <DependentUpon>AdminForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CashierForm.resx">
-      <DependentUpon>CashierForm.cs</DependentUpon>
+    <EmbeddedResource Include="Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryManagementForm.resx">
       <DependentUpon>InventoryManagementForm.cs</DependentUpon>
