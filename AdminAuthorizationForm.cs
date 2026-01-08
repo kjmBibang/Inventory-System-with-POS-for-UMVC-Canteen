@@ -1,4 +1,5 @@
 ﻿using Inventory_System_with_POS_for_UMVC_Canteen.Data;
+using Inventory_System_with_POS_for_UMVC_Canteen.Factories;
 using Inventory_System_with_POS_for_UMVC_Canteen.Models;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         public AdminAuthorizationForm()
         {
             InitializeComponent();
-            IUserRepository repo = new SQLUserRepository();
+            IUserRepository repo = RepositoryFactory.CreateUserRepository();
             userManager = new UserManager(repo);
 
         }

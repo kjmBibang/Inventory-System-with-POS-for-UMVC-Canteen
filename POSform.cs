@@ -14,14 +14,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Inventory_System_with_POS_for_UMVC_Canteen.Factories;
 
 namespace Inventory_System_with_POS_for_UMVC_Canteen
 {
     public partial class POSform : Form
     {
         private TextBox _activeTextBox;
-        private IProductRepository productRepository = new SQLProductRepository();//kung i change nimo ang repo i change pud sa ubos
-        ITransactionRepository transactionRepository = new SQLTransactionRepository();//kini i change pud, hand in hand sila
+        private IProductRepository productRepository = RepositoryFactory.CreateProductRepository();//kung i change nimo ang repo i change pud sa ubos
+        ITransactionRepository transactionRepository = RepositoryFactory.CreateTransactionRepository();//kini i change pud, hand in hand sila
         private ProductManager productManager;
         private User currentUser;
         private bool adminAuthorized = false; // per-transaction admin approval

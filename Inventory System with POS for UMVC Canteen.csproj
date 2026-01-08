@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\RepositoryFactory.cs" />
     <Compile Include="UpdateProductForm.cs">
       <SubType>Form</SubType>
     </Compile>

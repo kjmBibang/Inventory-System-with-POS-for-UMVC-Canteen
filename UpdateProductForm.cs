@@ -1,4 +1,5 @@
 ﻿using Inventory_System_with_POS_for_UMVC_Canteen.Data;
+using Inventory_System_with_POS_for_UMVC_Canteen.Factories;
 using Inventory_System_with_POS_for_UMVC_Canteen.Interfaces;
 using Inventory_System_with_POS_for_UMVC_Canteen.Managers;
 using Inventory_System_with_POS_for_UMVC_Canteen.Models;
@@ -24,7 +25,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
             InitializeComponent();
             _product = product;
-            productRepository = new SQLProductRepository();
+            productRepository = RepositoryFactory.CreateProductRepository();
             productManager = new ProductManager(productRepository);
         }
 
