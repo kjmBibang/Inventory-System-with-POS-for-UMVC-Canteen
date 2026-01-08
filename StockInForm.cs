@@ -22,14 +22,15 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         IStockRepository stockRepo;
         StockManager stockManager;
         int _productID;
+        IProductRepository productRepository;
         public StockInForm(int productID, User user)
         {
             InitializeComponent();
 
             var stockRepo = RepositoryFactory.CreateStockRepository();
             var supplierRepo = RepositoryFactory.CreateSupplierRepository();
-
-            stockManager = new StockManager(stockRepo, supplierRepo);
+            productRepository = RepositoryFactory.CreateProductRepository();
+            stockManager = new StockManager(stockRepo, supplierRepo,productRepository);
 
             _productID = productID;
             _currentUser = user;

@@ -14,5 +14,6 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Interfaces
         List<StockMovement> GetAllStockMovements();
         void ReduceStockByBarcode(string barcode,int quantity);
         void AddStockByBarcode(string barcode, int quantity);
+        void ReduceStockByProductID(int productID, int quantity);
     }
 }

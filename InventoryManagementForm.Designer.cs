@@ -205,6 +205,7 @@
             this.btnStockOut.TabIndex = 15;
             this.btnStockOut.Text = "Stock Out";
             this.btnStockOut.UseVisualStyleBackColor = true;
+            this.btnStockOut.Click += new System.EventHandler(this.btnStockOut_Click);
             // 
             // btnStockAdjustment
             // 

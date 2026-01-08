@@ -49,8 +49,44 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
             return products;
         }
 
-        public Product GetProduct(string id)
+        public Product GetProductByID(int id)
         {
+            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                con.Open();
+
+                string query;
+                SqlCommand cmd;
+
+                // Fix: Determine if 'id' is a barcode (string) or ProductID (int)
+                // Since the method signature uses 'int id', assume it's always ProductID.
+                query = @"
+            SELECT ProductID, Barcode, ProductName, Price, CostPrice, Stock, CategoryID
+            FROM Products
+            WHERE ProductID = @Id";
+                cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        var product = new Product
+                        {
+                            productID = reader["ProductID"] != DBNull.Value ? Convert.ToInt32(reader["ProductID"]) : 0,
+                            productBarcode = reader["Barcode"] != DBNull.Value ? reader["Barcode"].ToString() : null,
+                            productName = reader["ProductName"] != DBNull.Value ? reader["ProductName"].ToString() : null,
+                            unitPrice = reader["Price"] != DBNull.Value ? Convert.ToDecimal(reader["Price"]) : 0m,
+                            unitCost = reader["CostPrice"] != DBNull.Value ? Convert.ToDecimal(reader["CostPrice"]) : 0m,
+                            stock = reader["Stock"] != DBNull.Value ? Convert.ToInt32(reader["Stock"]) : 0,
+                            categoryID = reader["CategoryID"] != DBNull.Value ? Convert.ToInt32(reader["CategoryID"]) : 0
+                        };
+
+                        return product;
+                    }
+                }
+            }
+
             return null;
         }
         
@@ -266,6 +302,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
                 con.Open();
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        public Product GetProduct(string id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

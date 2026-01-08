@@ -135,9 +135,23 @@ WHERE Barcode = @Barcode";
             }
         }
 
-        public void ReduceStockByBarcode(string barcode)
+        public void ReduceStockByProductID(int productID, int quantity)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                string query = @"
+UPDATE Products
+SET Stock = Stock - @Quantity
+WHERE productID = @ProductID";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@ProductId", productID);
+                    cmd.Parameters.AddWithValue("@Quantity", quantity);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

@@ -70,5 +70,6 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
         {
             _repo.UpdateProduct(product);
         }
+        
     }
 }
