@@ -56,6 +56,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
         {
 
         }
+        //====================this should be on stock repo===================
         public void ReduceStock(string barcode, int quantity)
         {
             using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
@@ -92,7 +93,7 @@ WHERE Barcode = @Barcode";
                 }
             }
         }
-
+        //=============================^^^^^^^^^^^^^^^^ that should be in stock repo========================
 
         public Product LoadProductByBarcode(string barcode)
         {
@@ -128,5 +129,72 @@ WHERE Barcode = @Barcode";
                 }
             }
         }
+        public List<Product> GetAllProductsWithCategory()
+        {
+            List<Product> products = new List<Product>();
+
+            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                con.Open();
+
+                string query = @"
+        SELECT p.ProductID, p.ProductName, p.Barcode,
+               p.Price, p.CostPrice, p.Stock,
+               c.CategoryName
+        FROM Products p
+        INNER JOIN Categories c ON p.CategoryID = c.CategoryID";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        products.Add(new Product(
+                            reader["Barcode"].ToString(),
+                            reader["ProductName"].ToString(),
+                            (decimal)reader["Price"],
+                            (int)reader["Stock"])
+                        {
+                            productID = (int)reader["ProductID"],
+                            unitCost = (decimal)reader["CostPrice"],
+                            categoryName = reader["CategoryName"].ToString()
+                        });
+                    }
+                }
+            }
+            return products;
+        }
+        public List<Product> GetCriticalStockProducts(int threshold)
+        {
+            var list = new List<Product>();
+
+            using (SqlConnection conn = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                string query = @"
+            SELECT ProductName, Stock
+            FROM Products
+            WHERE Stock < @Threshold
+            ORDER BY Stock ASC";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Threshold", threshold);
+
+                    conn.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            list.Add(new Product("barcode", reader["ProductName"].ToString(), 0, Convert.ToInt32(reader["Stock"])));
+                            
+                        }
+                    }
+                }
+            }
+
+            return list;
+        }
+
     }
 }

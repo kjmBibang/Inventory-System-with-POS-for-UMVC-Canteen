@@ -82,5 +82,15 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
                 if (product.stock < 0) product.stock = 0; // mimic SQL safety
             }
         }
+
+        public List<Product> GetAllProductsWithCategory()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Product> GetCriticalStockProducts(int threshold)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
