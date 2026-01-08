@@ -1,4 +1,5 @@
 ﻿using Inventory_System_with_POS_for_UMVC_Canteen.Data;
+using Inventory_System_with_POS_for_UMVC_Canteen.Factories;
 using Inventory_System_with_POS_for_UMVC_Canteen.Helpers;
 using Inventory_System_with_POS_for_UMVC_Canteen.Interfaces;
 using Inventory_System_with_POS_for_UMVC_Canteen.Managers;
@@ -25,7 +26,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
             InitializeComponent();
             currentUser = user;
-            productRepository = new SQLProductRepository();
+            productRepository = RepositoryFactory.CreateProductRepository();
             manager = new ProductManager(productRepository);
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
