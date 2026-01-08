@@ -37,9 +37,9 @@
             // 
             // btnInventory
             // 
-            this.btnInventory.Location = new System.Drawing.Point(37, 896);
+            this.btnInventory.Location = new System.Drawing.Point(37, 862);
             this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Size = new System.Drawing.Size(161, 58);
+            this.btnInventory.Size = new System.Drawing.Size(208, 92);
             this.btnInventory.TabIndex = 0;
             this.btnInventory.Text = "Inventory";
             this.btnInventory.UseVisualStyleBackColor = true;
@@ -47,9 +47,9 @@
             // 
             // btnUsers
             // 
-            this.btnUsers.Location = new System.Drawing.Point(37, 972);
+            this.btnUsers.Location = new System.Drawing.Point(37, 960);
             this.btnUsers.Name = "btnUsers";
-            this.btnUsers.Size = new System.Drawing.Size(161, 58);
+            this.btnUsers.Size = new System.Drawing.Size(208, 70);
             this.btnUsers.TabIndex = 1;
             this.btnUsers.Text = "Users";
             this.btnUsers.UseVisualStyleBackColor = true;
@@ -57,9 +57,9 @@
             // 
             // btnPOS
             // 
-            this.btnPOS.Location = new System.Drawing.Point(263, 972);
+            this.btnPOS.Location = new System.Drawing.Point(263, 960);
             this.btnPOS.Name = "btnPOS";
-            this.btnPOS.Size = new System.Drawing.Size(161, 58);
+            this.btnPOS.Size = new System.Drawing.Size(230, 70);
             this.btnPOS.TabIndex = 2;
             this.btnPOS.Text = "Open POS";
             this.btnPOS.UseVisualStyleBackColor = true;
@@ -67,9 +67,9 @@
             // 
             // btnReports
             // 
-            this.btnReports.Location = new System.Drawing.Point(263, 896);
+            this.btnReports.Location = new System.Drawing.Point(263, 862);
             this.btnReports.Name = "btnReports";
-            this.btnReports.Size = new System.Drawing.Size(161, 58);
+            this.btnReports.Size = new System.Drawing.Size(230, 92);
             this.btnReports.TabIndex = 3;
             this.btnReports.Text = "Reports";
             this.btnReports.UseVisualStyleBackColor = true;
@@ -88,12 +88,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Maroon;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnReports);
             this.Controls.Add(this.btnPOS);
             this.Controls.Add(this.btnUsers);
             this.Controls.Add(this.btnInventory);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "Dashboard";
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Dashboard_Load);
