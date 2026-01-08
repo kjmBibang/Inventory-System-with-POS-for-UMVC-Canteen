@@ -24,6 +24,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         private IProductRepository productRepository = RepositoryFactory.CreateProductRepository();//kung i change nimo ang repo i change pud sa ubos
         ITransactionRepository transactionRepository = RepositoryFactory.CreateTransactionRepository();//kini i change pud, hand in hand sila
         private ProductManager productManager;
+        IStockRepository stockRepository = RepositoryFactory.CreateStockRepository();
         private User currentUser;
         private bool adminAuthorized = false; // per-transaction admin approval
         private Transaction currentTransaction; // tracks the current transaction in memory
@@ -48,7 +49,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             txtBarcode.KeyDown += txtBarcode_KeyDown; //mao ni need for txtBarcode_keydown()
 
             // instantiate manager once for the form lifetime
-            manager = new TransactionManager(transactionRepository, productRepository);
+            manager = new TransactionManager(transactionRepository, productRepository,stockRepository);
 
             // initialize an empty in-memory transaction for the new session
             currentTransaction = new Transaction(
@@ -82,7 +83,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             btnPay.Enabled = false;
             txtCash.Enabled = false;
 
-            productManager = new ProductManager(productRepository);
+            productManager = new ProductManager(productRepository, stockRepository);
 
             // suggestions hidden by default
             lstboxSuggestion.Visible = false;
@@ -208,7 +209,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             dgvSales.Rows[rowIndex].Tag = quantity;
 
             // Reduce stock in DB
-            productRepository.ReduceStock(barcode, quantity);
+            stockRepository.ReduceStockByBarcode(barcode, quantity);
 
             // ADD TO currentTransaction
             currentTransaction.items.Add(new TransactionItem(
@@ -389,7 +390,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             try
             {
                 currentTransaction = BuildTransactionFromGrid();
-                manager = new TransactionManager(transactionRepository, productRepository);
+                manager = new TransactionManager(transactionRepository, productRepository,stockRepository);
                 int transactionId = manager.ProcessTransaction(currentTransaction);
                 currentTransaction.transactionID = transactionId; // store ID for void/refund
 
@@ -592,7 +593,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                 }
 
                 // Update DB stock
-                productRepository.ReduceStock(barcode, diff);
+                stockRepository.ReduceStockByBarcode(barcode, diff);
 
                 // Update row Tag
                 dgvSales.CurrentRow.Tag = newQty;

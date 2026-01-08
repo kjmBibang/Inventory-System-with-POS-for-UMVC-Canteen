@@ -31,7 +31,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             productRepository = RepositoryFactory.CreateProductRepository();
             stockRepository = RepositoryFactory.CreateStockRepository();
             supplierRepository = RepositoryFactory.CreateSupplierRepository();
-            manager = new ProductManager(productRepository);
+            manager = new ProductManager(productRepository,stockRepository);
             stockManager = new StockManager(stockRepository,supplierRepository);
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;

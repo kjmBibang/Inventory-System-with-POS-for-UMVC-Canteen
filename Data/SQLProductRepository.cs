@@ -53,47 +53,9 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
         {
             return null;
         }
-        public void UpdateStock(string id)
-        {
-
-        }
+        
         //====================this should be on stock repo===================
-        public void ReduceStock(string barcode, int quantity)
-        {
-            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
-            {
-                string query = @"
-UPDATE Products
-SET Stock = Stock - @Quantity
-WHERE Barcode = @Barcode";
-
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@Barcode", barcode);
-                    cmd.Parameters.AddWithValue("@Quantity", quantity);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
-        public void AddStock(string barcode, int quantity)
-        {
-            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
-            {
-                string query = @"
-UPDATE Products
-SET Stock = Stock + @Quantity
-WHERE Barcode = @Barcode";
-
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@Barcode", barcode);
-                    cmd.Parameters.AddWithValue("@Quantity", quantity);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
+        
         //=============================^^^^^^^^^^^^^^^^ that should be in stock repo========================
 
         public Product LoadProductByBarcode(string barcode)

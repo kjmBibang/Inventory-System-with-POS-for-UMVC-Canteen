@@ -98,5 +98,46 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
 
             return list;
         }
+        public void ReduceStockByBarcode(string barcode, int quantity)
+        {
+            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                string query = @"
+UPDATE Products
+SET Stock = Stock - @Quantity
+WHERE Barcode = @Barcode";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Barcode", barcode);
+                    cmd.Parameters.AddWithValue("@Quantity", quantity);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        public void AddStockByBarcode(string barcode, int quantity)
+        {
+            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                string query = @"
+UPDATE Products
+SET Stock = Stock + @Quantity
+WHERE Barcode = @Barcode";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Barcode", barcode);
+                    cmd.Parameters.AddWithValue("@Quantity", quantity);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void ReduceStockByBarcode(string barcode)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

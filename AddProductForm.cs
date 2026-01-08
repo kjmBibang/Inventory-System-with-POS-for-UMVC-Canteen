@@ -19,12 +19,14 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
     {
         private IProductRepository productRepository;
         private ProductManager productManager;
-
+        IStockRepository stockRepository;
         public AddProductForm()
         {
+
             InitializeComponent();
+            stockRepository = RepositoryFactory.CreateStockRepository();
             productRepository = RepositoryFactory.CreateProductRepository();
-            productManager = new ProductManager(productRepository);
+            productManager = new ProductManager(productRepository,stockRepository);
         }
 
         private void label4_Click(object sender, EventArgs e)

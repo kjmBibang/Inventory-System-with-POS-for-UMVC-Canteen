@@ -10,6 +10,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
 {
     public class MockDBStockRepository : IStockRepository
     {
+        public void AddStockByBarcode(string barcode, int quantity)
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddStockByProductId(int productId, int quantity)
         {
             throw new NotImplementedException();
@@ -21,6 +26,16 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
         }
 
         public List<StockMovement> GetAllStockMovements()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReduceStockByBarcode(string barcode)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReduceStockByBarcode(string barcode, int quantity)
         {
             throw new NotImplementedException();
         }
