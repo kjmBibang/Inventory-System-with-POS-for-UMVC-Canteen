@@ -46,7 +46,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
                 throw new UnauthorizedAccessException("Admin approval required.");
 
             // Restore stock
-            _productRepo.ReduceStock(item.barcode, -item.quantity); // negative reduces less → adds back
+            _productRepo.AddStock(item.barcode, item.quantity); // negative reduces less → adds back
 
             // Remove from transaction
             transaction.items.Remove(item);
@@ -63,7 +63,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
 
             // Restore stock for all items
             foreach (var item in transaction.items)
-                _productRepo.ReduceStock(item.barcode, -item.quantity);
+                _productRepo.AddStock(item.barcode, item.quantity);
 
             // Update status
             transaction.status = TransactionStatus.Voided;
@@ -81,7 +81,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
 
             // Restore stock
             foreach (var item in transaction.items)
-                _productRepo.ReduceStock(item.barcode, -item.quantity);
+                _productRepo.AddStock(item.barcode, item.quantity);
 
             transaction.status = TransactionStatus.Refunded;
             transaction.approvedBy = authorizedBy.username;

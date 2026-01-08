@@ -74,6 +74,24 @@ WHERE Barcode = @Barcode";
                 }
             }
         }
+        public void AddStock(string barcode, int quantity)
+        {
+            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                string query = @"
+UPDATE Products
+SET Stock = Stock + @Quantity
+WHERE Barcode = @Barcode";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Barcode", barcode);
+                    cmd.Parameters.AddWithValue("@Quantity", quantity);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
 
 
         public Product LoadProductByBarcode(string barcode)

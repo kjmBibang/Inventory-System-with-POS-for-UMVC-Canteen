@@ -72,5 +72,15 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
         {
             // Not used in POS grid, empty like SQL version
         }
+
+        public void AddStock(string barcode, int quantity)
+        {
+            var product = products.FirstOrDefault(p => p.productBarcode == barcode);
+            if (product != null)
+            {
+                product.stock += quantity;
+                if (product.stock < 0) product.stock = 0; // mimic SQL safety
+            }
+        }
     }
 }
