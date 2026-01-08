@@ -195,7 +195,7 @@ WHERE Barcode = @Barcode";
                                 unitPrice = 0,
                                 stock = Convert.ToInt32(reader["Stock"])
                             });
-                            
+
                         }
                     }
                 }
@@ -264,7 +264,21 @@ WHERE Barcode = @Barcode";
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public void DeleteProduct(int productId)
+        {
+            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                string query = @"DELETE FROM Products WHERE ProductID = @ProductID";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@ProductID", productId);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
-    
+    }
 }

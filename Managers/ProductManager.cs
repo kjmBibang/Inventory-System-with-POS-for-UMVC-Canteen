@@ -60,6 +60,10 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
         {
             return _repo.GetOrCreateCategory(categoryName);
         }
+        public void DeleteProduct(int productId)
+        {
+            _repo.DeleteProduct(productId);
+        }
 
     }
 }

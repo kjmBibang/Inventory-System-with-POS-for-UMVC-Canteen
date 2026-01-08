@@ -30,7 +30,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
         }
-
+        
         private void InventoryManagementForm_Load(object sender, EventArgs e)
         {
             dgvInventory.AutoGenerateColumns = false;
@@ -43,6 +43,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             categoryColumn.DataPropertyName = "CategoryName";
             criticalProductNameColumn.DataPropertyName = "ProductName";
             criticalStockColumn.DataPropertyName = "Stock";
+            dgvInventory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvInventory.MultiSelect = false;
 
 
             LoadInventory();
@@ -69,7 +71,39 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
+            if (dgvInventory.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a product to delete.");
+                return;
+            }
 
+            DataGridViewRow row = dgvInventory.SelectedRows[0];
+
+            int productId = Convert.ToInt32(row.Cells["productIDColumn"].Value);
+            string productName = row.Cells["productNameColumn"].Value.ToString();
+
+            DialogResult confirm = MessageBox.Show(
+                $"Are you sure you want to delete '{productName}'?\n\nThis action cannot be undone.",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirm != DialogResult.Yes)
+                return;
+
+            try
+            {
+                manager.DeleteProduct(productId);
+                MessageBox.Show("Product deleted successfully.");
+
+                // refresh inventory grid
+                dgvInventory.DataSource = manager.LoadInventory();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnStockAdjustment_Click(object sender, EventArgs e)
