@@ -4,113 +4,163 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
+public class MockDBProductRepository : IProductRepository
 {
-    public class MockDBProductRepository : IProductRepository
+    private static List<Product> _products = new List<Product>();
+    private static Dictionary<int, string> _categories = new Dictionary<int, string>();
+
+    private static int _nextProductId = 1;
+    private static int _nextCategoryId = 1;
+
+    // 👇 THIS RUNS ONCE
+    static MockDBProductRepository()
     {
-        private List<Product> products;
+        // Seed categories
+        int dairyId = AddCategoryInternal("Dairy");
+        int snacksId = AddCategoryInternal("Snacks");
+        int drinksId = AddCategoryInternal("Drinks");
 
-        public MockDBProductRepository()
+        // Seed products
+        _products.Add(new Product
         {
-            products = new List<Product>
-            {
-                new Product { productBarcode = "480001001", productName = "Coca-Cola 330ml", unitPrice = 20.00m, stock = 87 },
-                new Product { productBarcode = "480001002", productName = "Pepsi 330ml", unitPrice = 20.00m, stock = 100 },
-                new Product { productBarcode = "480001003", productName = "Bottled Water 500ml", unitPrice = 15.00m, stock = 161 },
-                new Product { productBarcode = "480001004", productName = "Orange Juice 1L", unitPrice = 85.00m, stock = 40 },
-                new Product { productBarcode = "480002001", productName = "Potato Chips", unitPrice = 35.00m, stock = 75 },
-                new Product { productBarcode = "480002002", productName = "Chocolate Bar", unitPrice = 25.00m, stock = 90 },
-                new Product { productBarcode = "480002003", productName = "Biscuits", unitPrice = 30.00m, stock = 60 },
-                new Product { productBarcode = "480002004", productName = "Cup Noodles", unitPrice = 28.00m, stock = 110 },
-                new Product { productBarcode = "480003001", productName = "Fresh Milk 1L", unitPrice = 95.00m, stock = 35 },
-                new Product { productBarcode = "480003002", productName = "Chocolate Milk 250ml", unitPrice = 28.00m, stock = 80 },
-                new Product { productBarcode = "480003003", productName = "Butter 200g", unitPrice = 120.00m, stock = 25 },
-                new Product { productBarcode = "480003004", productName = "Cheese Slices", unitPrice = 110.00m, stock = 30 },
-                new Product { productBarcode = "480004001", productName = "Canned Sardines", unitPrice = 32.00m, stock = 140 },
-                new Product { productBarcode = "480004002", productName = "Canned Tuna", unitPrice = 45.00m, stock = 95 },
-                new Product { productBarcode = "480004003", productName = "Canned Corn", unitPrice = 40.00m, stock = 70 },
-                new Product { productBarcode = "480004004", productName = "Canned Beans", unitPrice = 38.00m, stock = 65 },
-                new Product { productBarcode = "480005001", productName = "Shampoo Sachet", unitPrice = 8.00m, stock = 300 },
-                new Product { productBarcode = "480005002", productName = "Soap Bar", unitPrice = 28.00m, stock = 150 },
-                new Product { productBarcode = "480005003", productName = "Toothpaste 100g", unitPrice = 75.00m, stock = 45 },
-                new Product { productBarcode = "480005004", productName = "Facial Wash", unitPrice = 120.00m, stock = 35 }
-            };
-        }
+            productID = _nextProductId++,
+            productName = "Milk 1L",
+            productBarcode = "111111",
+            unitPrice = 65,
+            unitCost = 50,
+            stock = 25,
+            categoryID = dairyId
+        });
 
-        public List<Product> SearchProductsByName(string keyword)
+        _products.Add(new Product
         {
-            if (string.IsNullOrWhiteSpace(keyword)) return new List<Product>();
+            productID = _nextProductId++,
+            productName = "Cheese Slice",
+            productBarcode = "222222",
+            unitPrice = 20,
+            unitCost = 12,
+            stock = 8, // critical stock
+            categoryID = dairyId
+        });
 
-            return products
-                .Where(p => p.productName != null && p.productName.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0 && p.stock > 0)
-                .Take(10)
-                .ToList();
-        }
-
-        public Product LoadProductByBarcode(string barcode)
+        _products.Add(new Product
         {
-            return products.FirstOrDefault(p => p.productBarcode == barcode && p.stock > 0);
-        }
+            productID = _nextProductId++,
+            productName = "Potato Chips",
+            productBarcode = "333333",
+            unitPrice = 30,
+            unitCost = 18,
+            stock = 40,
+            categoryID = snacksId
+        });
 
-        public void ReduceStock(string barcode, int quantity)
+        _products.Add(new Product
         {
-            var product = products.FirstOrDefault(p => p.productBarcode == barcode);
-            if (product != null)
-            {
-                product.stock -= quantity;
-                if (product.stock < 0) product.stock = 0; // mimic SQL safety
-            }
-        }
-
-        public Product GetProduct(string id)
-        {
-            // Not used in POS grid, so return null like SQL version
-            return null;
-        }
-
-        public void UpdateStock(string id)
-        {
-            // Not used in POS grid, empty like SQL version
-        }
-
-        public void AddStock(string barcode, int quantity)
-        {
-            var product = products.FirstOrDefault(p => p.productBarcode == barcode);
-            if (product != null)
-            {
-                product.stock += quantity;
-                if (product.stock < 0) product.stock = 0; // mimic SQL safety
-            }
-        }
-
-        public List<Product> GetAllProductsWithCategory()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Product> GetCriticalStockProducts(int threshold)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int GetOrCreateCategory(string categoryName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddProduct(Product product)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteProduct(int productId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateProduct(Product product)
-        {
-            throw new NotImplementedException();
-        }
+            productID = _nextProductId++,
+            productName = "Cola Can",
+            productBarcode = "444444",
+            unitPrice = 35,
+            unitCost = 22,
+            stock = 15,
+            categoryID = drinksId
+        });
     }
+
+    // helper ONLY for seeding
+    private static int AddCategoryInternal(string name)
+    {
+        int id = _nextCategoryId++;
+        _categories[id] = name;
+        return id;
+    }
+
+    // ================= REPO METHODS =================
+
+    public List<Product> SearchProductsByName(string keyword)
+    {
+        return _products
+            .Where(p => p.productName != null
+                && p.productName
+                    .IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0
+                && p.stock > 0)
+            .Take(10)
+            .ToList();
+    }
+
+    public Product LoadProductByBarcode(string barcode)
+    {
+        return _products.FirstOrDefault(p => p.productBarcode == barcode);
+    }
+
+    public List<Product> GetAllProductsWithCategory()
+    {
+        return _products.Select(p =>
+        {
+            p.categoryName = _categories.TryGetValue(p.categoryID, out var name)
+                ? name
+                : "";
+            return p;
+        }).ToList();
+    }
+
+    public List<Product> GetCriticalStockProducts(int threshold)
+    {
+        return _products.Where(p => p.stock < threshold).ToList();
+    }
+
+    public int GetOrCreateCategory(string categoryName)
+    {
+        var existing = _categories
+            .FirstOrDefault(c => c.Value.Equals(categoryName, StringComparison.OrdinalIgnoreCase));
+
+        if (!existing.Equals(default(KeyValuePair<int, string>)))
+            return existing.Key;
+
+        int newId = _nextCategoryId++;
+        _categories[newId] = categoryName.Trim();
+        return newId;
+    }
+
+    public void AddProduct(Product product)
+    {
+        product.productID = _nextProductId++;
+        _products.Add(product);
+    }
+
+    public void DeleteProduct(int productId)
+    {
+        var product = _products.FirstOrDefault(p => p.productID == productId);
+        if (product != null)
+            _products.Remove(product);
+    }
+
+    public void UpdateProduct(Product product)
+    {
+        var existing = _products.FirstOrDefault(p => p.productID == product.productID);
+        if (existing == null) return;
+
+        existing.productName = product.productName;
+        existing.productBarcode = product.productBarcode;
+        existing.unitPrice = product.unitPrice;
+        existing.unitCost = product.unitCost;
+        existing.categoryID = product.categoryID;
+    }
+
+    public void ReduceStock(string barcode, int quantity)
+    {
+        var product = LoadProductByBarcode(barcode);
+        if (product != null)
+            product.stock -= quantity;
+    }
+
+    public void AddStock(string barcode, int quantity)
+    {
+        var product = LoadProductByBarcode(barcode);
+        if (product != null)
+            product.stock += quantity;
+    }
+
+    // required but unused
+    public Product GetProduct(string id) => null;
+    public void UpdateStock(string id) { }
 }
