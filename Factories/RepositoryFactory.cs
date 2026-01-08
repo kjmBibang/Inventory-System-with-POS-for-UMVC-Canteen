@@ -11,7 +11,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Factories
     public static class RepositoryFactory
     {
         // 🔁 CHANGE THIS ONE FLAG ONLY
-        public static bool UseMock = true;
+        public static bool UseMock = false;
 
         public static IProductRepository CreateProductRepository()
         {
@@ -35,6 +35,20 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Factories
                 return new MockDBUserRepository();
             else
                 return new SQLUserRepository();
+        }
+        public static IStockRepository CreateStockRepository()
+        {
+            if (UseMock)
+                return new MockDBStockRepository();
+            else
+                return new SQLStockRepository();
+        }
+        public static ISupplierRepository CreateSupplierRepository()
+        {
+            if (UseMock)
+                return new MockDBSupplierRepository();
+            else
+                return new SQLSupplierRepository();
         }
     }
 }

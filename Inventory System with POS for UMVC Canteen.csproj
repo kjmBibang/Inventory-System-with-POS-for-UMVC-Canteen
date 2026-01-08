@@ -63,7 +63,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\MockDBStockRepository.cs" />
+    <Compile Include="Data\MockDBSupplierRepository.cs" />
+    <Compile Include="Data\SQLStockRepository.cs" />
+    <Compile Include="Data\SQLSupplierRepository.cs" />
     <Compile Include="Factories\RepositoryFactory.cs" />
+    <Compile Include="Interfaces\IStockRepository.cs" />
+    <Compile Include="Interfaces\ISupplierRepository.cs" />
+    <Compile Include="Managers\StockManager.cs" />
     <Compile Include="UpdateProductForm.cs">
       <SubType>Form</SubType>
     </Compile>

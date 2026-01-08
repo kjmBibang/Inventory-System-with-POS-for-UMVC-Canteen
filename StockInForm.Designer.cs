@@ -119,6 +119,7 @@
             this.cmbSupplier.Name = "cmbSupplier";
             this.cmbSupplier.Size = new System.Drawing.Size(340, 39);
             this.cmbSupplier.TabIndex = 73;
+            this.cmbSupplier.SelectedIndexChanged += new System.EventHandler(this.cmbSupplier_SelectedIndexChanged);
             // 
             // btnSave
             // 

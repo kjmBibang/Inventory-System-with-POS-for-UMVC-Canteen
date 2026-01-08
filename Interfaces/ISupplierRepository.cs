@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace Inventory_System_with_POS_for_UMVC_Canteen.Interfaces
 {
-    public interface IStockRepository
+    public interface ISupplierRepository
     {
-        void AddStockMovement(StockMovement movement);
-        void AddStockByProductId(int productId, int quantity);
-        List<StockMovement> GetAllStockMovements();
+        List<Supplier> GetAllSuppliers();
     }
 }

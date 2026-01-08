@@ -47,13 +47,6 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.dgvStockMovement = new System.Windows.Forms.DataGridView();
-            this.stockMovementIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockMovementTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityChangeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reasonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdAtColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdByColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblCriticalStock = new System.Windows.Forms.Label();
@@ -252,14 +245,6 @@
             // dgvStockMovement
             // 
             this.dgvStockMovement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStockMovement.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.stockMovementIDColumn,
-            this.dataGridViewTextBoxColumn1,
-            this.stockMovementTypeColumn,
-            this.quantityChangeColumn,
-            this.reasonColumn,
-            this.createdAtColumn,
-            this.createdByColumn});
             this.dgvStockMovement.Location = new System.Drawing.Point(979, 58);
             this.dgvStockMovement.Name = "dgvStockMovement";
             this.dgvStockMovement.RowHeadersWidth = 51;
@@ -267,62 +252,6 @@
             this.dgvStockMovement.Size = new System.Drawing.Size(915, 487);
             this.dgvStockMovement.TabIndex = 19;
             this.dgvStockMovement.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStockMovement_CellContentClick);
-            // 
-            // stockMovementIDColumn
-            // 
-            this.stockMovementIDColumn.HeaderText = "StockMovID";
-            this.stockMovementIDColumn.MinimumWidth = 6;
-            this.stockMovementIDColumn.Name = "stockMovementIDColumn";
-            this.stockMovementIDColumn.ReadOnly = true;
-            this.stockMovementIDColumn.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "ProductID";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // stockMovementTypeColumn
-            // 
-            this.stockMovementTypeColumn.HeaderText = "Movement Type";
-            this.stockMovementTypeColumn.MinimumWidth = 6;
-            this.stockMovementTypeColumn.Name = "stockMovementTypeColumn";
-            this.stockMovementTypeColumn.ReadOnly = true;
-            this.stockMovementTypeColumn.Width = 125;
-            // 
-            // quantityChangeColumn
-            // 
-            this.quantityChangeColumn.HeaderText = "Quantity Change";
-            this.quantityChangeColumn.MinimumWidth = 6;
-            this.quantityChangeColumn.Name = "quantityChangeColumn";
-            this.quantityChangeColumn.ReadOnly = true;
-            this.quantityChangeColumn.Width = 125;
-            // 
-            // reasonColumn
-            // 
-            this.reasonColumn.HeaderText = "Reason";
-            this.reasonColumn.MinimumWidth = 6;
-            this.reasonColumn.Name = "reasonColumn";
-            this.reasonColumn.ReadOnly = true;
-            this.reasonColumn.Width = 125;
-            // 
-            // createdAtColumn
-            // 
-            this.createdAtColumn.HeaderText = "CreatedAt";
-            this.createdAtColumn.MinimumWidth = 6;
-            this.createdAtColumn.Name = "createdAtColumn";
-            this.createdAtColumn.ReadOnly = true;
-            this.createdAtColumn.Width = 125;
-            // 
-            // createdByColumn
-            // 
-            this.createdByColumn.HeaderText = "CreatedBy";
-            this.createdByColumn.MinimumWidth = 6;
-            this.createdByColumn.Name = "createdByColumn";
-            this.createdByColumn.ReadOnly = true;
-            this.createdByColumn.Width = 125;
             // 
             // label1
             // 
@@ -404,13 +333,6 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnDeleteProduct;
         private System.Windows.Forms.DataGridView dgvStockMovement;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stockMovementIDColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stockMovementTypeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityChangeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reasonColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createdAtColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createdByColumn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn productIDColumn;
