@@ -13,6 +13,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
             new Cashier("2", "cashier", 2,"")
         };
 
+        public void AddUser(User user, string plainPassword)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public User AuthenticateUser(string username, string password)
         {
             // mock = plaintext compare
@@ -20,6 +25,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
         }
 
         public List<User> GetUsers()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool UserIdExists(string userId)
         {
             throw new System.NotImplementedException();
         }

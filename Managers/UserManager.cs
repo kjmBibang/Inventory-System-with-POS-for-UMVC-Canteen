@@ -40,5 +40,20 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
         {
             return _repo.GetUsers();
         }
+        public void AddUser(string userId, string username, string password, int roleId)
+        {
+            if (_repo.UserIdExists(userId))
+                throw new Exception("UserID already exists.");
+
+            User user;
+
+            if (roleId == 1)
+                user = new Admin(userId, username, roleId,"Admin");
+            else
+                user = new Cashier(userId, username, roleId,"Cashier");
+
+            _repo.AddUser(user, password);
+        }
+
     }
 }

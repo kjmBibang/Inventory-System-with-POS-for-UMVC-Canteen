@@ -31,14 +31,14 @@
             this.gpBackGroundColor = new Inventory_System_with_POS_for_UMVC_Canteen.UIHelpers.Gradient_Panel();
             this.lblCriticalStock = new System.Windows.Forms.Label();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnUpdateUser = new System.Windows.Forms.Button();
-            this.btnAddUser = new System.Windows.Forms.Button();
             this.userIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usernameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnUpdateUser = new System.Windows.Forms.Button();
+            this.btnAddUser = new System.Windows.Forms.Button();
             this.gpBackGroundColor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
@@ -89,6 +89,42 @@
             this.dgvUsers.Size = new System.Drawing.Size(1429, 862);
             this.dgvUsers.TabIndex = 0;
             this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // userIDColumn
+            // 
+            this.userIDColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.userIDColumn.HeaderText = "User ID";
+            this.userIDColumn.MinimumWidth = 6;
+            this.userIDColumn.Name = "userIDColumn";
+            this.userIDColumn.ReadOnly = true;
+            this.userIDColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // usernameColumn
+            // 
+            this.usernameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.usernameColumn.HeaderText = "Username";
+            this.usernameColumn.MinimumWidth = 6;
+            this.usernameColumn.Name = "usernameColumn";
+            this.usernameColumn.ReadOnly = true;
+            this.usernameColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // passwordColumn
+            // 
+            this.passwordColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.passwordColumn.HeaderText = "Password";
+            this.passwordColumn.MinimumWidth = 6;
+            this.passwordColumn.Name = "passwordColumn";
+            this.passwordColumn.ReadOnly = true;
+            this.passwordColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // roleColumn
+            // 
+            this.roleColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.roleColumn.HeaderText = "Role";
+            this.roleColumn.MinimumWidth = 6;
+            this.roleColumn.Name = "roleColumn";
+            this.roleColumn.ReadOnly = true;
+            this.roleColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // btnBack
             // 
@@ -146,42 +182,7 @@
             this.btnAddUser.TabIndex = 13;
             this.btnAddUser.Text = "Add User";
             this.btnAddUser.UseVisualStyleBackColor = false;
-            // 
-            // userIDColumn
-            // 
-            this.userIDColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.userIDColumn.HeaderText = "User ID";
-            this.userIDColumn.MinimumWidth = 6;
-            this.userIDColumn.Name = "userIDColumn";
-            this.userIDColumn.ReadOnly = true;
-            this.userIDColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // usernameColumn
-            // 
-            this.usernameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.usernameColumn.HeaderText = "Username";
-            this.usernameColumn.MinimumWidth = 6;
-            this.usernameColumn.Name = "usernameColumn";
-            this.usernameColumn.ReadOnly = true;
-            this.usernameColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // passwordColumn
-            // 
-            this.passwordColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.passwordColumn.HeaderText = "Password";
-            this.passwordColumn.MinimumWidth = 6;
-            this.passwordColumn.Name = "passwordColumn";
-            this.passwordColumn.ReadOnly = true;
-            this.passwordColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // roleColumn
-            // 
-            this.roleColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.roleColumn.HeaderText = "Role";
-            this.roleColumn.MinimumWidth = 6;
-            this.roleColumn.Name = "roleColumn";
-            this.roleColumn.ReadOnly = true;
-            this.roleColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // UserManagementForm
             // 
@@ -191,7 +192,7 @@
             this.ClientSize = new System.Drawing.Size(1848, 970);
             this.Controls.Add(this.gpBackGroundColor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserManagementForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserManagementForm";

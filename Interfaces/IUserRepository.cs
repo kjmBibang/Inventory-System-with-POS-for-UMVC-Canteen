@@ -15,6 +15,9 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
     {
         User AuthenticateUser(string username, string password);
         List<User> GetUsers();
+        void AddUser(User user, string plainPassword);
+        bool UserIdExists(string userId);
+
     }
 
 }

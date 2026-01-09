@@ -118,5 +118,44 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
 
             return users;
         }
+        public bool UserIdExists(string userId)
+        {
+            using (SqlConnection conn = new SqlConnection(SQLhelper.GetConnectionString()))
+            {
+                conn.Open();
+                string query = "SELECT COUNT(*) FROM Users WHERE UserID = @UserID";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@UserID", userId);
+                    return (int)cmd.ExecuteScalar() > 0;
+                }
+            }
+        }
+        public void AddUser(User user, string plainPassword)
+        {
+            string hashedPassword = bcryptHelper.HashPassword(plainPassword);
+
+            using (SqlConnection conn = new SqlConnection(SQLhelper.GetConnectionString()))
+            {
+                conn.Open();
+
+                string query = @"
+            INSERT INTO Users (UserID, Username, PasswordHash, RoleID)
+            VALUES (@UserID, @Username, @PasswordHash, @RoleID)
+        ";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@UserID", user.userID);
+                    cmd.Parameters.AddWithValue("@Username", user.username);
+                    cmd.Parameters.AddWithValue("@PasswordHash", hashedPassword);
+                    cmd.Parameters.AddWithValue("@RoleID", user.roleID);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }
