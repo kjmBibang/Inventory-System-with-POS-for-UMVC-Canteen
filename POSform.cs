@@ -857,8 +857,10 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             receiptForm.Controls.Add(receiptTextBox);
             receiptForm.ShowDialog();
         }
-        
 
-        
+        private void lblInvertory_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
