@@ -50,5 +50,12 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Factories
             else
                 return new SQLSupplierRepository();
         }
+        public static IReportRepository CreateReportRepository()
+        {
+            if (UseMock)
+                return new MockDBReportRepository();
+            else
+                return new SQLReportRepository();
+        }
     }
 }

@@ -69,12 +69,22 @@
     <Compile Include="AddUserForm.Designer.cs">
       <DependentUpon>AddUserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\MockDBReportRepository.cs" />
     <Compile Include="Data\MockDBStockRepository.cs" />
     <Compile Include="Data\MockDBSupplierRepository.cs" />
+    <Compile Include="Data\SQLReportRepository.cs" />
     <Compile Include="Data\SQLStockRepository.cs" />
     <Compile Include="Data\SQLSupplierRepository.cs" />
     <Compile Include="Factories\RepositoryFactory.cs" />
+    <Compile Include="Interfaces\IReportRepository.cs" />
     <Compile Include="Managers\ReportManager.cs" />
+    <Compile Include="Models\ProductSalesReportItem.cs" />
+    <Compile Include="ReportsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportsForm.Designer.cs">
+      <DependentUpon>ReportsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StockAdjustmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +198,9 @@
     </Compile>
     <EmbeddedResource Include="AddUserForm.resx">
       <DependentUpon>AddUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportsForm.resx">
+      <DependentUpon>ReportsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StockAdjustmentForm.resx">
       <DependentUpon>StockAdjustmentForm.cs</DependentUpon>
