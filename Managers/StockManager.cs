@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
 {
@@ -30,6 +31,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
 
         public void StockIn(int productID, int quantity, int supplierId, string createdBy, string reason)
         {
+            
+
             _stockRepository.AddStockByProductId(productID, quantity);
 
             _stockRepository.AddStockMovement(new StockMovement
@@ -84,5 +87,61 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
                 createdBy = createdBy
             });
         }
+        public void LogSale(Transaction transaction)
+        {
+            foreach (var item in transaction.items)
+            {
+                // 1) update Products.Stock
+                // prefer reducing by product ID (safer than barcode if available)
+                _stockRepository.ReduceStockByProductID(item.productID, item.quantity);
+
+                // 2) log the stock movement (negative quantity)
+                _stockRepository.AddStockMovement(new StockMovement
+                {
+                    productID = item.productID,
+                    quantityChange = -item.quantity,
+                    movementType = StockMovementType.Sale,
+                    reason = $"Sale TX#{transaction.transactionID}",
+                    createdAt = DateTime.Now,
+                    createdBy = transaction.cashierName
+                });
+            }
+        }
+
+        public void VoidItem(Transaction transaction, TransactionItem item, User admin)
+        {
+            _stockRepository.AddStockByBarcode(item.barcode, item.quantity);
+
+            _stockRepository.AddStockMovement(new StockMovement
+            {
+                productID = item.productID,
+                quantityChange = item.quantity,
+                movementType = StockMovementType.Refund,
+                reason = $"Void Item (TX#{transaction.transactionID})",
+                createdAt = DateTime.Now,
+                createdBy = admin.username
+            });
+
+            transaction.items.Remove(item);
+        }
+
+        public void RefundTransaction(Transaction transaction, User admin)
+        {
+            foreach (var item in transaction.items)
+            {
+                _stockRepository.AddStockByBarcode(item.barcode, item.quantity);
+
+                _stockRepository.AddStockMovement(new StockMovement
+                {
+                    productID = item.productID,
+                    quantityChange = item.quantity,
+                    movementType = StockMovementType.Refund,
+                    reason = $"Refund TX#{transaction.transactionID}",
+                    createdAt = DateTime.Now,
+                    createdBy = admin.username
+                });
+            }
+        }
+
     }
 }

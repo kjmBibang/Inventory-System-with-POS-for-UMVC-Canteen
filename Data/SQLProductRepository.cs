@@ -99,9 +99,9 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
             using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
             {
                 string query = @"
-        SELECT Barcode, ProductName, Price, Stock
-        FROM Products
-        WHERE Barcode = @Barcode";
+            SELECT ProductID, Barcode, ProductName, Price, Stock
+            FROM Products
+            WHERE Barcode = @Barcode";
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
@@ -114,17 +114,17 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
                         {
                             return new Product
                             {
-                                productBarcode = reader["Barcode"].ToString(),
-                                productName = reader["ProductName"].ToString(),
-                                unitPrice = Convert.ToDecimal(reader["Price"]),
-                                stock = Convert.ToInt32(reader["Stock"])
+                                productID = reader["ProductID"] != DBNull.Value ? Convert.ToInt32(reader["ProductID"]) : 0,
+                                productBarcode = reader["Barcode"]?.ToString(),
+                                productName = reader["ProductName"]?.ToString(),
+                                unitPrice = reader["Price"] != DBNull.Value ? Convert.ToDecimal(reader["Price"]) : 0m,
+                                stock = reader["Stock"] != DBNull.Value ? Convert.ToInt32(reader["Stock"]) : 0
                             };
                         }
                         else
                         {
                             return null;
                         }
-
                     }
                 }
             }
