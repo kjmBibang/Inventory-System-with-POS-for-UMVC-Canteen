@@ -44,6 +44,7 @@
             // gpColorBackground
             // 
             this.gpColorBackground.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.gpColorBackground.BackColor = System.Drawing.Color.Transparent;
             this.gpColorBackground.ColorBottom = System.Drawing.Color.Maroon;
             this.gpColorBackground.ColorTop = System.Drawing.Color.DarkOrange;
             this.gpColorBackground.Controls.Add(this.picboxUMLOGO);
@@ -71,7 +72,7 @@
             // 
             // btnReports
             // 
-            this.btnReports.BackColor = System.Drawing.Color.Maroon;
+            this.btnReports.BackColor = System.Drawing.Color.Transparent;
             this.btnReports.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReports.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -87,6 +88,7 @@
             // btnBack
             // 
             this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBack.BackColor = System.Drawing.Color.Transparent;
             this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -97,12 +99,12 @@
             this.btnBack.Size = new System.Drawing.Size(121, 47);
             this.btnBack.TabIndex = 4;
             this.btnBack.Text = "Logout";
-            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnPOS
             // 
-            this.btnPOS.BackColor = System.Drawing.Color.Maroon;
+            this.btnPOS.BackColor = System.Drawing.Color.Transparent;
             this.btnPOS.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPOS.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -118,6 +120,7 @@
             // 
             // btnUsers
             // 
+            this.btnUsers.BackColor = System.Drawing.Color.Transparent;
             this.btnUsers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsers.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -128,12 +131,12 @@
             this.btnUsers.Size = new System.Drawing.Size(172, 75);
             this.btnUsers.TabIndex = 1;
             this.btnUsers.Text = "Users";
-            this.btnUsers.UseVisualStyleBackColor = true;
+            this.btnUsers.UseVisualStyleBackColor = false;
             this.btnUsers.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnInventory
             // 
-            this.btnInventory.BackColor = System.Drawing.Color.Maroon;
+            this.btnInventory.BackColor = System.Drawing.Color.Transparent;
             this.btnInventory.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInventory.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

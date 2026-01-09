@@ -28,17 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.gpBackGroundColor = new Inventory_System_with_POS_for_UMVC_Canteen.UIHelpers.Gradient_Panel();
             this.lblAdminAuthorizationForm = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
             this.btnAuthorize = new System.Windows.Forms.Button();
-            this.gpBackGroundColor = new Inventory_System_with_POS_for_UMVC_Canteen.UIHelpers.Gradient_Panel();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             this.gpBackGroundColor.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // gpBackGroundColor
+            // 
+            this.gpBackGroundColor.BackColor = System.Drawing.Color.Transparent;
+            this.gpBackGroundColor.ColorBottom = System.Drawing.Color.Maroon;
+            this.gpBackGroundColor.ColorTop = System.Drawing.Color.DarkOrange;
+            this.gpBackGroundColor.Controls.Add(this.lblAdminAuthorizationForm);
+            this.gpBackGroundColor.Controls.Add(this.label1);
+            this.gpBackGroundColor.Controls.Add(this.btnAuthorize);
+            this.gpBackGroundColor.Controls.Add(this.txtPassword);
+            this.gpBackGroundColor.Controls.Add(this.lblPassword);
+            this.gpBackGroundColor.Controls.Add(this.btnCancel);
+            this.gpBackGroundColor.Controls.Add(this.lblUsername);
+            this.gpBackGroundColor.Controls.Add(this.txtUsername);
+            this.gpBackGroundColor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gpBackGroundColor.Location = new System.Drawing.Point(0, 0);
+            this.gpBackGroundColor.Name = "gpBackGroundColor";
+            this.gpBackGroundColor.Size = new System.Drawing.Size(348, 227);
+            this.gpBackGroundColor.TabIndex = 8;
             // 
             // lblAdminAuthorizationForm
             // 
@@ -67,6 +86,21 @@
             this.label1.Text = "Call an admin to log into thier account to \r\n        enable the void/refund proce" +
     "ss";
             // 
+            // btnAuthorize
+            // 
+            this.btnAuthorize.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAuthorize.BackColor = System.Drawing.Color.Transparent;
+            this.btnAuthorize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAuthorize.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAuthorize.ForeColor = System.Drawing.Color.White;
+            this.btnAuthorize.Location = new System.Drawing.Point(196, 174);
+            this.btnAuthorize.Name = "btnAuthorize";
+            this.btnAuthorize.Size = new System.Drawing.Size(95, 24);
+            this.btnAuthorize.TabIndex = 7;
+            this.btnAuthorize.Text = "Authorize";
+            this.btnAuthorize.UseVisualStyleBackColor = false;
+            this.btnAuthorize.Click += new System.EventHandler(this.btnAuthorize_Click_1);
+            // 
             // txtPassword
             // 
             this.txtPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -75,41 +109,6 @@
             this.txtPassword.Size = new System.Drawing.Size(206, 20);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtAuthorizationKey_TextChanged);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(85, 174);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(95, 24);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtUsername.Location = new System.Drawing.Point(85, 104);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(206, 20);
-            this.txtUsername.TabIndex = 4;
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.BackColor = System.Drawing.Color.Transparent;
-            this.lblUsername.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblUsername.Location = new System.Drawing.Point(12, 107);
-            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(68, 13);
-            this.lblUsername.TabIndex = 5;
-            this.lblUsername.Text = "USERNAME";
             // 
             // lblPassword
             // 
@@ -125,38 +124,41 @@
             this.lblPassword.TabIndex = 6;
             this.lblPassword.Text = "PASSWORD";
             // 
-            // btnAuthorize
+            // btnCancel
             // 
-            this.btnAuthorize.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAuthorize.BackColor = System.Drawing.Color.Maroon;
-            this.btnAuthorize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAuthorize.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAuthorize.ForeColor = System.Drawing.Color.White;
-            this.btnAuthorize.Location = new System.Drawing.Point(196, 174);
-            this.btnAuthorize.Name = "btnAuthorize";
-            this.btnAuthorize.Size = new System.Drawing.Size(95, 24);
-            this.btnAuthorize.TabIndex = 7;
-            this.btnAuthorize.Text = "Authorize";
-            this.btnAuthorize.UseVisualStyleBackColor = false;
-            this.btnAuthorize.Click += new System.EventHandler(this.btnAuthorize_Click_1);
+            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCancel.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(85, 174);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(95, 24);
+            this.btnCancel.TabIndex = 3;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // gpBackGroundColor
+            // lblUsername
             // 
-            this.gpBackGroundColor.ColorBottom = System.Drawing.Color.Maroon;
-            this.gpBackGroundColor.ColorTop = System.Drawing.Color.DarkOrange;
-            this.gpBackGroundColor.Controls.Add(this.lblAdminAuthorizationForm);
-            this.gpBackGroundColor.Controls.Add(this.label1);
-            this.gpBackGroundColor.Controls.Add(this.btnAuthorize);
-            this.gpBackGroundColor.Controls.Add(this.txtPassword);
-            this.gpBackGroundColor.Controls.Add(this.lblPassword);
-            this.gpBackGroundColor.Controls.Add(this.btnCancel);
-            this.gpBackGroundColor.Controls.Add(this.lblUsername);
-            this.gpBackGroundColor.Controls.Add(this.txtUsername);
-            this.gpBackGroundColor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gpBackGroundColor.Location = new System.Drawing.Point(0, 0);
-            this.gpBackGroundColor.Name = "gpBackGroundColor";
-            this.gpBackGroundColor.Size = new System.Drawing.Size(348, 227);
-            this.gpBackGroundColor.TabIndex = 8;
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.BackColor = System.Drawing.Color.Transparent;
+            this.lblUsername.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblUsername.Location = new System.Drawing.Point(12, 107);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(68, 13);
+            this.lblUsername.TabIndex = 5;
+            this.lblUsername.Text = "USERNAME";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtUsername.Location = new System.Drawing.Point(85, 104);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(206, 20);
+            this.txtUsername.TabIndex = 4;
             // 
             // AdminAuthorizationForm
             // 

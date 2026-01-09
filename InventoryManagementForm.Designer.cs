@@ -50,9 +50,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblCriticalStock = new System.Windows.Forms.Label();
+            this.gpBackGroundColor = new Inventory_System_with_POS_for_UMVC_Canteen.UIHelpers.Gradient_Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCriticalStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockMovement)).BeginInit();
+            this.gpBackGroundColor.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvInventory
@@ -66,11 +68,10 @@
             this.costPriceColumn,
             this.stockColumn,
             this.categoryColumn});
-            this.dgvInventory.Location = new System.Drawing.Point(16, 58);
-            this.dgvInventory.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvInventory.Location = new System.Drawing.Point(12, 54);
             this.dgvInventory.Name = "dgvInventory";
             this.dgvInventory.RowHeadersWidth = 51;
-            this.dgvInventory.Size = new System.Drawing.Size(924, 487);
+            this.dgvInventory.Size = new System.Drawing.Size(627, 396);
             this.dgvInventory.TabIndex = 0;
             this.dgvInventory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventory_CellContentClick);
             // 
@@ -136,11 +137,10 @@
             this.dgvCriticalStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.criticalProductNameColumn,
             this.criticalStockColumn});
-            this.dgvCriticalStock.Location = new System.Drawing.Point(1401, 610);
-            this.dgvCriticalStock.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvCriticalStock.Location = new System.Drawing.Point(1036, 492);
             this.dgvCriticalStock.Name = "dgvCriticalStock";
             this.dgvCriticalStock.RowHeadersWidth = 51;
-            this.dgvCriticalStock.Size = new System.Drawing.Size(452, 211);
+            this.dgvCriticalStock.Size = new System.Drawing.Size(339, 171);
             this.dgvCriticalStock.TabIndex = 4;
             // 
             // criticalProductNameColumn
@@ -161,107 +161,132 @@
             // 
             // btnAddNewProduct
             // 
-            this.btnAddNewProduct.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNewProduct.Location = new System.Drawing.Point(16, 557);
-            this.btnAddNewProduct.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddNewProduct.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddNewProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAddNewProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNewProduct.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNewProduct.ForeColor = System.Drawing.Color.White;
+            this.btnAddNewProduct.Location = new System.Drawing.Point(203, 465);
             this.btnAddNewProduct.Name = "btnAddNewProduct";
-            this.btnAddNewProduct.Size = new System.Drawing.Size(251, 96);
+            this.btnAddNewProduct.Size = new System.Drawing.Size(188, 78);
             this.btnAddNewProduct.TabIndex = 12;
             this.btnAddNewProduct.Text = "Add New Product";
-            this.btnAddNewProduct.UseVisualStyleBackColor = true;
+            this.btnAddNewProduct.UseVisualStyleBackColor = false;
             this.btnAddNewProduct.Click += new System.EventHandler(this.btnAddNewProduct_Click);
             // 
             // btnUpdateProduct
             // 
-            this.btnUpdateProduct.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateProduct.Location = new System.Drawing.Point(16, 672);
-            this.btnUpdateProduct.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdateProduct.BackColor = System.Drawing.Color.Transparent;
+            this.btnUpdateProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnUpdateProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateProduct.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateProduct.ForeColor = System.Drawing.Color.White;
+            this.btnUpdateProduct.Location = new System.Drawing.Point(203, 549);
             this.btnUpdateProduct.Name = "btnUpdateProduct";
-            this.btnUpdateProduct.Size = new System.Drawing.Size(251, 96);
+            this.btnUpdateProduct.Size = new System.Drawing.Size(188, 78);
             this.btnUpdateProduct.TabIndex = 13;
             this.btnUpdateProduct.Text = "Update Product";
-            this.btnUpdateProduct.UseVisualStyleBackColor = true;
+            this.btnUpdateProduct.UseVisualStyleBackColor = false;
             this.btnUpdateProduct.Click += new System.EventHandler(this.btnUpdateProduct_Click);
             // 
             // btnStockIn
             // 
-            this.btnStockIn.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockIn.Location = new System.Drawing.Point(1075, 557);
-            this.btnStockIn.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStockIn.BackColor = System.Drawing.Color.Transparent;
+            this.btnStockIn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnStockIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockIn.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockIn.ForeColor = System.Drawing.Color.White;
+            this.btnStockIn.Location = new System.Drawing.Point(756, 465);
             this.btnStockIn.Name = "btnStockIn";
-            this.btnStockIn.Size = new System.Drawing.Size(251, 96);
+            this.btnStockIn.Size = new System.Drawing.Size(188, 78);
             this.btnStockIn.TabIndex = 14;
             this.btnStockIn.Text = "Stock In";
-            this.btnStockIn.UseVisualStyleBackColor = true;
+            this.btnStockIn.UseVisualStyleBackColor = false;
             this.btnStockIn.Click += new System.EventHandler(this.btnStockIn_Click);
             // 
             // btnStockOut
             // 
-            this.btnStockOut.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockOut.Location = new System.Drawing.Point(1075, 672);
-            this.btnStockOut.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStockOut.BackColor = System.Drawing.Color.Transparent;
+            this.btnStockOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnStockOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockOut.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockOut.ForeColor = System.Drawing.Color.White;
+            this.btnStockOut.Location = new System.Drawing.Point(756, 549);
             this.btnStockOut.Name = "btnStockOut";
-            this.btnStockOut.Size = new System.Drawing.Size(251, 96);
+            this.btnStockOut.Size = new System.Drawing.Size(188, 78);
             this.btnStockOut.TabIndex = 15;
             this.btnStockOut.Text = "Stock Out";
-            this.btnStockOut.UseVisualStyleBackColor = true;
+            this.btnStockOut.UseVisualStyleBackColor = false;
             this.btnStockOut.Click += new System.EventHandler(this.btnStockOut_Click);
             // 
             // btnStockAdjustment
             // 
-            this.btnStockAdjustment.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockAdjustment.Location = new System.Drawing.Point(1075, 786);
-            this.btnStockAdjustment.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStockAdjustment.BackColor = System.Drawing.Color.Transparent;
+            this.btnStockAdjustment.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnStockAdjustment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockAdjustment.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockAdjustment.ForeColor = System.Drawing.Color.White;
+            this.btnStockAdjustment.Location = new System.Drawing.Point(756, 633);
             this.btnStockAdjustment.Name = "btnStockAdjustment";
-            this.btnStockAdjustment.Size = new System.Drawing.Size(251, 96);
+            this.btnStockAdjustment.Size = new System.Drawing.Size(188, 78);
             this.btnStockAdjustment.TabIndex = 16;
             this.btnStockAdjustment.Text = "Stock Adjustment";
-            this.btnStockAdjustment.UseVisualStyleBackColor = true;
+            this.btnStockAdjustment.UseVisualStyleBackColor = false;
             this.btnStockAdjustment.Click += new System.EventHandler(this.btnStockAdjustment_Click);
             // 
             // btnBack
             // 
-            this.btnBack.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(1680, 848);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBack.BackColor = System.Drawing.Color.Transparent;
+            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(1276, 726);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(132, 63);
+            this.btnBack.Size = new System.Drawing.Size(99, 51);
             this.btnBack.TabIndex = 17;
             this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnDeleteProduct
             // 
-            this.btnDeleteProduct.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteProduct.Location = new System.Drawing.Point(16, 786);
-            this.btnDeleteProduct.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteProduct.BackColor = System.Drawing.Color.Transparent;
+            this.btnDeleteProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnDeleteProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteProduct.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteProduct.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteProduct.Location = new System.Drawing.Point(203, 633);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
-            this.btnDeleteProduct.Size = new System.Drawing.Size(251, 96);
+            this.btnDeleteProduct.Size = new System.Drawing.Size(188, 78);
             this.btnDeleteProduct.TabIndex = 18;
             this.btnDeleteProduct.Text = "Delete Product";
-            this.btnDeleteProduct.UseVisualStyleBackColor = true;
+            this.btnDeleteProduct.UseVisualStyleBackColor = false;
             this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
             // dgvStockMovement
             // 
             this.dgvStockMovement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStockMovement.Location = new System.Drawing.Point(979, 58);
+            this.dgvStockMovement.Location = new System.Drawing.Point(670, 54);
+            this.dgvStockMovement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvStockMovement.Name = "dgvStockMovement";
             this.dgvStockMovement.RowHeadersWidth = 51;
             this.dgvStockMovement.RowTemplate.Height = 24;
-            this.dgvStockMovement.Size = new System.Drawing.Size(915, 487);
+            this.dgvStockMovement.Size = new System.Drawing.Size(705, 396);
             this.dgvStockMovement.TabIndex = 19;
             this.dgvStockMovement.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStockMovement_CellContentClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(327, 13);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(220, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(174, 36);
+            this.label1.Size = new System.Drawing.Size(171, 37);
             this.label1.TabIndex = 20;
             this.label1.Text = "Product List";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -269,11 +294,13 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(1327, 13);
+            this.label2.Location = new System.Drawing.Point(926, 15);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(235, 36);
+            this.label2.Size = new System.Drawing.Size(234, 37);
             this.label2.TabIndex = 21;
             this.label2.Text = "Stock Movement";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -281,34 +308,50 @@
             // lblCriticalStock
             // 
             this.lblCriticalStock.AutoSize = true;
-            this.lblCriticalStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCriticalStock.BackColor = System.Drawing.Color.Transparent;
+            this.lblCriticalStock.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCriticalStock.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblCriticalStock.Location = new System.Drawing.Point(1506, 557);
+            this.lblCriticalStock.Location = new System.Drawing.Point(1067, 452);
+            this.lblCriticalStock.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCriticalStock.Name = "lblCriticalStock";
-            this.lblCriticalStock.Size = new System.Drawing.Size(229, 29);
+            this.lblCriticalStock.Size = new System.Drawing.Size(271, 37);
             this.lblCriticalStock.TabIndex = 22;
             this.lblCriticalStock.Text = "Critical Stock Levels";
             // 
+            // gpBackGroundColor
+            // 
+            this.gpBackGroundColor.BackColor = System.Drawing.Color.Transparent;
+            this.gpBackGroundColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.gpBackGroundColor.ColorBottom = System.Drawing.Color.Maroon;
+            this.gpBackGroundColor.ColorTop = System.Drawing.Color.DarkOrange;
+            this.gpBackGroundColor.Controls.Add(this.lblCriticalStock);
+            this.gpBackGroundColor.Controls.Add(this.dgvInventory);
+            this.gpBackGroundColor.Controls.Add(this.label2);
+            this.gpBackGroundColor.Controls.Add(this.dgvCriticalStock);
+            this.gpBackGroundColor.Controls.Add(this.label1);
+            this.gpBackGroundColor.Controls.Add(this.btnAddNewProduct);
+            this.gpBackGroundColor.Controls.Add(this.dgvStockMovement);
+            this.gpBackGroundColor.Controls.Add(this.btnUpdateProduct);
+            this.gpBackGroundColor.Controls.Add(this.btnDeleteProduct);
+            this.gpBackGroundColor.Controls.Add(this.btnStockIn);
+            this.gpBackGroundColor.Controls.Add(this.btnBack);
+            this.gpBackGroundColor.Controls.Add(this.btnStockOut);
+            this.gpBackGroundColor.Controls.Add(this.btnStockAdjustment);
+            this.gpBackGroundColor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gpBackGroundColor.ForeColor = System.Drawing.Color.White;
+            this.gpBackGroundColor.Location = new System.Drawing.Point(0, 0);
+            this.gpBackGroundColor.Name = "gpBackGroundColor";
+            this.gpBackGroundColor.Size = new System.Drawing.Size(1386, 788);
+            this.gpBackGroundColor.TabIndex = 23;
+            // 
             // InventoryManagementForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
-            this.ClientSize = new System.Drawing.Size(1924, 922);
-            this.Controls.Add(this.lblCriticalStock);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgvStockMovement);
-            this.Controls.Add(this.btnDeleteProduct);
-            this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnStockAdjustment);
-            this.Controls.Add(this.btnStockOut);
-            this.Controls.Add(this.btnStockIn);
-            this.Controls.Add(this.btnUpdateProduct);
-            this.Controls.Add(this.btnAddNewProduct);
-            this.Controls.Add(this.dgvCriticalStock);
-            this.Controls.Add(this.dgvInventory);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.Controls.Add(this.gpBackGroundColor);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InventoryManagementForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InventoryManagementForm";
@@ -317,8 +360,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCriticalStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockMovement)).EndInit();
+            this.gpBackGroundColor.ResumeLayout(false);
+            this.gpBackGroundColor.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -346,5 +390,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn criticalProductNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn criticalStockColumn;
         private System.Windows.Forms.Label lblCriticalStock;
+        private UIHelpers.Gradient_Panel gpBackGroundColor;
     }
 }
