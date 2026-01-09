@@ -54,6 +54,28 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
 
             _repo.AddUser(user, password);
         }
+        // ✅ NEW: verify password
+        public bool VerifyCurrentPassword(string userID, string plainPassword)
+        {
+            return _repo.VerifyPassword(userID, plainPassword);
+        }
 
+        // ✅ NEW: update user (with optional password)
+        public void UpdateUser(
+            string userID,
+            string username,
+            int roleID,
+            string newPlainPassword // NULL = don't update password
+        )
+        {
+            string newPasswordHash = null;
+
+            if (!string.IsNullOrWhiteSpace(newPlainPassword))
+            {
+                newPasswordHash = BCrypt.Net.BCrypt.HashPassword(newPlainPassword);
+            }
+
+            _repo.UpdateUser(userID, username, roleID, newPasswordHash);
+        }
     }
 }

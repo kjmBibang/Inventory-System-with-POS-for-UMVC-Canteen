@@ -29,7 +29,17 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
             throw new System.NotImplementedException();
         }
 
+        public void UpdateUser(string userID, string username, int roleID, string newPasswordHash)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public bool UserIdExists(string userId)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool VerifyPassword(string userId, string plainPassword)
         {
             throw new System.NotImplementedException();
         }

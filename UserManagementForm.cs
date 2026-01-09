@@ -35,25 +35,17 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
             userIDColumn.DataPropertyName = "userID";
             usernameColumn.DataPropertyName = "username";
-            passwordColumn.DataPropertyName = "PasswordDisplay";
-            roleColumn.DataPropertyName = "RoleName";
-        
+            passwordColumn.DataPropertyName = "PasswordDisplay"; // computed property
+            roleColumn.DataPropertyName = "roleName";
+
+
             userManager = new UserManager(RepositoryFactory.CreateUserRepository());
 
             LoadUsers();
         }
         private void LoadUsers()
         {
-            var users = userManager.GetAllUsers()
-                .Select(u => new
-                {
-                    u.userID,
-                    u.username,
-                    PasswordDisplay = "********", // ← correct way
-                    RoleName = u.roleName
-                })
-                .ToList();
-
+            var users = userManager.GetAllUsers();
             dgvUsers.DataSource = users;
         }
 
@@ -74,6 +66,32 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                 addUserForm.ShowDialog();
             }
             LoadUsers();
+        }
+
+        private void btnUpdateUser_Click(object sender, EventArgs e)
+        {
+            if (dgvUsers.CurrentRow == null)
+            {
+                MessageBox.Show("Please select a user.");
+                return;
+            }
+
+            // 🔥 THIS is the clean way
+            User selectedUser = dgvUsers.CurrentRow.DataBoundItem as User;
+
+            if (selectedUser == null)
+            {
+                MessageBox.Show("Invalid selection.");
+                return;
+            }
+
+            using (UpdateUserForm form = new UpdateUserForm(selectedUser))
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    LoadUsers();
+                }
+            }
         }
     }
 }

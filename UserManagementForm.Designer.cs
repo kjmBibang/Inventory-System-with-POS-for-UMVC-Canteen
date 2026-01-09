@@ -168,6 +168,7 @@
             this.btnUpdateUser.TabIndex = 14;
             this.btnUpdateUser.Text = "Update User";
             this.btnUpdateUser.UseVisualStyleBackColor = false;
+            this.btnUpdateUser.Click += new System.EventHandler(this.btnUpdateUser_Click);
             // 
             // btnAddUser
             // 

@@ -156,6 +156,47 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
                 }
             }
         }
+        public bool VerifyPassword(string userId, string plainPassword)
+        {
+            using (SqlConnection conn = new SqlConnection(SQLhelper.GetConnectionString()))
+            {
+                conn.Open();
+                string sql = "SELECT PasswordHash FROM Users WHERE UserID = @UserID";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@UserID", userId);
+
+                    var hash = cmd.ExecuteScalar()?.ToString();
+                    if (hash == null) return false;
+
+                    return bcryptHelper.VerifyPassword(plainPassword, hash);
+                }
+            }
+        }
+        public void UpdateUser(string userID, string username, int roleID, string newPasswordHash)
+        {
+            using (SqlConnection conn = new SqlConnection(SQLhelper.GetConnectionString()))
+            {
+                conn.Open();
+
+                string sql = newPasswordHash == null
+                    ? @"UPDATE Users SET Username=@Username, RoleID=@RoleID WHERE UserID=@UserID"
+                    : @"UPDATE Users SET Username=@Username, RoleID=@RoleID, PasswordHash=@PasswordHash WHERE UserID=@UserID";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@UserID", userID);
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    cmd.Parameters.AddWithValue("@RoleID", roleID);
+
+                    if (newPasswordHash != null)
+                        cmd.Parameters.AddWithValue("@PasswordHash", newPasswordHash);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
 
     }
 }
