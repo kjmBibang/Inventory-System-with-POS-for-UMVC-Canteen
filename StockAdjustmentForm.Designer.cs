@@ -37,8 +37,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.gradient_Panel1 = new Inventory_System_with_POS_for_UMVC_Canteen.UIHelpers.Gradient_Panel();
-            this.gradient_Panel1.SuspendLayout();
+            this.gpBackGroundColor = new Inventory_System_with_POS_for_UMVC_Canteen.UIHelpers.Gradient_Panel();
+            this.gpBackGroundColor.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -111,7 +111,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             // 
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(135, 172);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -126,7 +126,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Transparent;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.Location = new System.Drawing.Point(233, 172);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -137,37 +137,37 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // gradient_Panel1
+            // gpBackGroundColor
             // 
-            this.gradient_Panel1.ColorBottom = System.Drawing.Color.Maroon;
-            this.gradient_Panel1.ColorTop = System.Drawing.Color.DarkOrange;
-            this.gradient_Panel1.Controls.Add(this.btnSave);
-            this.gradient_Panel1.Controls.Add(this.btnCancel);
-            this.gradient_Panel1.Controls.Add(this.label1);
-            this.gradient_Panel1.Controls.Add(this.lblProduct);
-            this.gradient_Panel1.Controls.Add(this.txtQuantity);
-            this.gradient_Panel1.Controls.Add(this.lblProductPlaceholder);
-            this.gradient_Panel1.Controls.Add(this.label3);
-            this.gradient_Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gradient_Panel1.Location = new System.Drawing.Point(0, 0);
-            this.gradient_Panel1.Name = "gradient_Panel1";
-            this.gradient_Panel1.Size = new System.Drawing.Size(416, 238);
-            this.gradient_Panel1.TabIndex = 7;
+            this.gpBackGroundColor.ColorBottom = System.Drawing.Color.Maroon;
+            this.gpBackGroundColor.ColorTop = System.Drawing.Color.DarkOrange;
+            this.gpBackGroundColor.Controls.Add(this.btnSave);
+            this.gpBackGroundColor.Controls.Add(this.btnCancel);
+            this.gpBackGroundColor.Controls.Add(this.label1);
+            this.gpBackGroundColor.Controls.Add(this.lblProduct);
+            this.gpBackGroundColor.Controls.Add(this.txtQuantity);
+            this.gpBackGroundColor.Controls.Add(this.lblProductPlaceholder);
+            this.gpBackGroundColor.Controls.Add(this.label3);
+            this.gpBackGroundColor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gpBackGroundColor.Location = new System.Drawing.Point(0, 0);
+            this.gpBackGroundColor.Name = "gpBackGroundColor";
+            this.gpBackGroundColor.Size = new System.Drawing.Size(416, 238);
+            this.gpBackGroundColor.TabIndex = 7;
             // 
             // StockAdjustmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(416, 238);
-            this.Controls.Add(this.gradient_Panel1);
+            this.Controls.Add(this.gpBackGroundColor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "StockAdjustmentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stock Adjustment Form";
             this.Load += new System.EventHandler(this.StockAdjustmentForm_Load);
-            this.gradient_Panel1.ResumeLayout(false);
-            this.gradient_Panel1.PerformLayout();
+            this.gpBackGroundColor.ResumeLayout(false);
+            this.gpBackGroundColor.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -196,6 +196,6 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private UIHelpers.Gradient_Panel gradient_Panel1;
+        private UIHelpers.Gradient_Panel gpBackGroundColor;
     }
 }
