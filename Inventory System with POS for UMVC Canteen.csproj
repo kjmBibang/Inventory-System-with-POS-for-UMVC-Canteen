@@ -63,11 +63,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddUsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddUsersForm.Designer.cs">
+      <DependentUpon>AddUsersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Factories\RepositoryFactory.cs" />
     <Compile Include="Data\MockDBStockRepository.cs" />
     <Compile Include="Data\MockDBSupplierRepository.cs" />
     <Compile Include="Data\SQLStockRepository.cs" />
     <Compile Include="Data\SQLSupplierRepository.cs" />
+    <Compile Include="Interfaces\UserInfo.cs" />
     <Compile Include="StockAdjustmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,12 +171,21 @@
     <Compile Include="StockOutForm.Designer.cs">
       <DependentUpon>StockOutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateUsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateUsersForm.Designer.cs">
+      <DependentUpon>UpdateUsersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserManagementForm.Designer.cs">
       <DependentUpon>UserManagementForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddUsersForm.resx">
+      <DependentUpon>AddUsersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StockAdjustmentForm.resx">
       <DependentUpon>StockAdjustmentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StockOutForm.resx">
       <DependentUpon>StockOutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateUsersForm.resx">
+      <DependentUpon>UpdateUsersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserManagementForm.resx">
       <DependentUpon>UserManagementForm.cs</DependentUpon>
