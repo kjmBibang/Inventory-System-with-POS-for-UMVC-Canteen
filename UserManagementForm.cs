@@ -93,5 +93,40 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                 }
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)//btnDeleteUser
+        {
+            if(dgvUsers.CurrentRow == null)
+    {
+                MessageBox.Show("Please select a user.");
+                return;
+            }
+
+            string userId = dgvUsers.CurrentRow.Cells["userIDColumn"].Value.ToString();
+            string username = dgvUsers.CurrentRow.Cells["usernameColumn"].Value.ToString();
+
+            DialogResult confirm = MessageBox.Show(
+                $"Are you sure you want to permanently delete user '{username}'?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirm != DialogResult.Yes)
+                return;
+
+            try
+            {
+                userManager.DeleteUser(userId);
+                MessageBox.Show("User deleted successfully.");
+                LoadUsers();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Delete Failed");
+            }
+        }
+
     }
 }
+

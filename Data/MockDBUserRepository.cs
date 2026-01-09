@@ -24,6 +24,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
             return _users.FirstOrDefault(u => u.username == username);
         }
 
+        public void DeleteUser(string userId)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public List<User> GetUsers()
         {
             throw new System.NotImplementedException();

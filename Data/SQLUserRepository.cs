@@ -197,6 +197,23 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
                 }
             }
         }
+        public void DeleteUser(string userId)
+        {
+            using (SqlConnection conn = new SqlConnection(SQLhelper.GetConnectionString()))
+            {
+                conn.Open();
+
+                string query = "DELETE FROM Users WHERE UserID = @UserID";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@UserID", userId);
+
+                    int rows = cmd.ExecuteNonQuery();
+                    if (rows == 0)
+                        throw new Exception("User not found.");
+                }
+            }
+        }
 
     }
 }

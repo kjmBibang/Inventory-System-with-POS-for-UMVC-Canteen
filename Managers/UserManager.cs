@@ -77,5 +77,13 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
 
             _repo.UpdateUser(userID, username, roleID, newPasswordHash);
         }
+        public void DeleteUser(string userId)
+        {
+            if (string.IsNullOrWhiteSpace(userId))
+                throw new Exception("Invalid user.");
+
+            _repo.DeleteUser(userId);
+        }
+
     }
 }

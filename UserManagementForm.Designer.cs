@@ -36,7 +36,7 @@
             this.passwordColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnBack = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDeleteUser = new System.Windows.Forms.Button();
             this.btnUpdateUser = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.gpBackGroundColor.SuspendLayout();
@@ -51,7 +51,7 @@
             this.gpBackGroundColor.Controls.Add(this.lblCriticalStock);
             this.gpBackGroundColor.Controls.Add(this.dgvUsers);
             this.gpBackGroundColor.Controls.Add(this.btnBack);
-            this.gpBackGroundColor.Controls.Add(this.button2);
+            this.gpBackGroundColor.Controls.Add(this.btnDeleteUser);
             this.gpBackGroundColor.Controls.Add(this.btnUpdateUser);
             this.gpBackGroundColor.Controls.Add(this.btnAddUser);
             this.gpBackGroundColor.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -141,19 +141,20 @@
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // button2
+            // btnDeleteUser
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Transparent;
-            this.button2.Location = new System.Drawing.Point(1563, 300);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(251, 96);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Delete User";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnDeleteUser.BackColor = System.Drawing.Color.Transparent;
+            this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteUser.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteUser.ForeColor = System.Drawing.Color.Transparent;
+            this.btnDeleteUser.Location = new System.Drawing.Point(1563, 300);
+            this.btnDeleteUser.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteUser.Name = "btnDeleteUser";
+            this.btnDeleteUser.Size = new System.Drawing.Size(251, 96);
+            this.btnDeleteUser.TabIndex = 15;
+            this.btnDeleteUser.Text = "Delete User";
+            this.btnDeleteUser.UseVisualStyleBackColor = false;
+            this.btnDeleteUser.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnUpdateUser
             // 
@@ -211,7 +212,7 @@
         private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.Button btnUpdateUser;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDeleteUser;
         private System.Windows.Forms.Button btnBack;
         private UIHelpers.Gradient_Panel gpBackGroundColor;
         private System.Windows.Forms.Label lblCriticalStock;

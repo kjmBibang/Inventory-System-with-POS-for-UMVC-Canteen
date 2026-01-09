@@ -19,6 +19,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
         bool UserIdExists(string userId);
         bool VerifyPassword(string userId, string plainPassword);
         void UpdateUser(string userID, string username, int roleID, string newPasswordHash);
+        void DeleteUser(string userId);
 
     }
 
