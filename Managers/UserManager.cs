@@ -1,11 +1,12 @@
-﻿using System;
-using System.Data.SqlClient;
-using System.Runtime.Versioning;
-using System.Windows.Forms;
-using BCrypt.Net;
+﻿using BCrypt.Net;
 using Inventory_System_with_POS_for_UMVC_Canteen.Data;
 using Inventory_System_with_POS_for_UMVC_Canteen.Helpers;
 using Inventory_System_with_POS_for_UMVC_Canteen.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Runtime.Versioning;
+using System.Windows.Forms;
 
 namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
 {
@@ -34,6 +35,10 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
                 return null;
 
             return user as Admin;
+        }
+        public List<User> GetAllUsers()
+        {
+            return _repo.GetUsers();
         }
     }
 }

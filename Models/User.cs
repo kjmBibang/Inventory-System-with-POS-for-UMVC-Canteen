@@ -7,14 +7,15 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
         public string userID { get; }
         public string username { get; }
         private string passwordHash { get; set; }
-        public int roleID { get; }
-
-        protected User(string userID, string username, int roleID)
+        public int roleID { get; set; }
+        public string roleName { get; set; }
+        protected User(string userID, string username, int roleID,string roleName)
         {
             this.userID = userID;
             this.username = username;
             this.passwordHash = passwordHash;
             this.roleID = roleID;
+            this.roleName = roleName;
         }
 
         

@@ -22,11 +22,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Helpers
             switch (user.roleID)
             {
                 case 1: // admin
-                    var admin = new Admin(user.userID, user.username, user.roleID);
+                    var admin = new Admin(user.userID, user.username, user.roleID, user.roleName);
                     nextForm = new Dashboard(admin);
                     break;
                 case 2: // cashier
-                    var cashier = new Cashier(user.userID, user.username, user.roleID);
+                    var cashier = new Cashier(user.userID, user.username, user.roleID, user.roleName);
                     nextForm = new Dashboard(cashier);
                     break;
                 default:

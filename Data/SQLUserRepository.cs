@@ -19,7 +19,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
             SQLhelper = new SQLHelper();
 
         }
-
+        
         public User AuthenticateUser(string username, string password)
         {
             using (SqlConnection conn = new SqlConnection(SQLhelper.GetConnectionString()))
@@ -55,14 +55,14 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
                                 {
 
 
-                                    return new Admin(userId, dbUsername, roleId);
+                                    return new Admin(userId, dbUsername, roleId, roleName);
                                 }
 
                                 else if (roleId == 2)
                                 {
 
 
-                                    return new Cashier(userId, dbUsername, roleId);
+                                    return new Cashier(userId, dbUsername, roleId, roleName);
                                 }
                             }
                         }
@@ -70,6 +70,53 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
                 }
             }
             return null; // Username not found OR password incorrect
+        }
+
+        public List<User> GetUsers()
+        {
+            List<User> users = new List<User>();
+
+            using (SqlConnection conn = new SqlConnection(SQLhelper.GetConnectionString()))
+            {
+                conn.Open();
+
+                string query = @"
+            SELECT 
+                u.UserID,
+                u.Username,
+                u.PasswordHash,
+                u.RoleID,
+                r.RoleName
+            FROM Users u
+            INNER JOIN Roles r ON u.RoleID = r.RoleID
+        ";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string userId = reader["UserID"].ToString();
+                        string username = reader["Username"].ToString();
+                        int roleId = Convert.ToInt32(reader["RoleID"]);
+                        string roleName = reader["RoleName"].ToString();
+
+                        User user;
+
+                        if (roleId == 1)
+                            user = new Admin(userId, username, roleId, roleName);
+                        else
+                            user = new Cashier(userId, username, roleId, roleName);
+
+                        // optional helper property if you have one
+                        user.roleName = roleName;
+
+                        users.Add(user);
+                    }
+                }
+            }
+
+            return users;
         }
     }
 }
