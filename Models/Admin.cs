@@ -8,8 +8,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
 {
     public class Admin : User
     {
-        public Admin(string userID, string username, int roleID)
-            : base(userID, username, roleID)
+        public Admin(string userID, string username, int roleID, string roleName)
+            : base(userID, username, roleID, roleName)
         {
         }
 

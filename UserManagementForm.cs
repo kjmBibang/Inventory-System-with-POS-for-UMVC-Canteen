@@ -1,4 +1,5 @@
-﻿using Inventory_System_with_POS_for_UMVC_Canteen.Helpers;
+﻿using Inventory_System_with_POS_for_UMVC_Canteen.Factories;
+using Inventory_System_with_POS_for_UMVC_Canteen.Helpers;
 using Inventory_System_with_POS_for_UMVC_Canteen.Models;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
     public partial class UserManagementForm : Form
     {
         User currentUser;
+        UserManager userManager;
         public UserManagementForm(User user)
         {
             InitializeComponent();
@@ -26,7 +28,25 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
         private void UserManagementForm_Load(object sender, EventArgs e)
         {
+            dgvUsers.AutoGenerateColumns = false;
+            dgvUsers.MultiSelect = false;
+            dgvUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUsers.ForeColor = Color.Black;
 
+            userIDColumn.DataPropertyName = "userID";
+            usernameColumn.DataPropertyName = "username";
+            passwordColumn.DataPropertyName = "PasswordDisplay"; // computed property
+            roleColumn.DataPropertyName = "roleName";
+
+
+            userManager = new UserManager(RepositoryFactory.CreateUserRepository());
+
+            LoadUsers();
+        }
+        private void LoadUsers()
+        {
+            var users = userManager.GetAllUsers();
+            dgvUsers.DataSource = users;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -38,5 +58,75 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
 
         }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            using (AddUserForm addUserForm = new AddUserForm())
+            {
+                addUserForm.ShowDialog();
+            }
+            LoadUsers();
+        }
+
+        private void btnUpdateUser_Click(object sender, EventArgs e)
+        {
+            if (dgvUsers.CurrentRow == null)
+            {
+                MessageBox.Show("Please select a user.");
+                return;
+            }
+
+            // 🔥 THIS is the clean way
+            User selectedUser = dgvUsers.CurrentRow.DataBoundItem as User;
+
+            if (selectedUser == null)
+            {
+                MessageBox.Show("Invalid selection.");
+                return;
+            }
+
+            using (UpdateUserForm form = new UpdateUserForm(selectedUser))
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    LoadUsers();
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)//btnDeleteUser
+        {
+            if(dgvUsers.CurrentRow == null)
+    {
+                MessageBox.Show("Please select a user.");
+                return;
+            }
+
+            string userId = dgvUsers.CurrentRow.Cells["userIDColumn"].Value.ToString();
+            string username = dgvUsers.CurrentRow.Cells["usernameColumn"].Value.ToString();
+
+            DialogResult confirm = MessageBox.Show(
+                $"Are you sure you want to permanently delete user '{username}'?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirm != DialogResult.Yes)
+                return;
+
+            try
+            {
+                userManager.DeleteUser(userId);
+                MessageBox.Show("User deleted successfully.");
+                LoadUsers();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Delete Failed");
+            }
+        }
+
     }
 }
+

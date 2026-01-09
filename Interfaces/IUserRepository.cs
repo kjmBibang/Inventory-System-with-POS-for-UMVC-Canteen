@@ -13,6 +13,14 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
 {
     public interface IUserRepository
     {
-        User AuthenticateUser(string username, string password);    
+        User AuthenticateUser(string username, string password);
+        List<User> GetUsers();
+        void AddUser(User user, string plainPassword);
+        bool UserIdExists(string userId);
+        bool VerifyPassword(string userId, string plainPassword);
+        void UpdateUser(string userID, string username, int roleID, string newPasswordHash);
+        void DeleteUser(string userId);
+
     }
+
 }
