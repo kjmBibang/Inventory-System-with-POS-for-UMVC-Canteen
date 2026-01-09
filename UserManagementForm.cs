@@ -37,7 +37,12 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             usernameColumn.DataPropertyName = "username";
             passwordColumn.DataPropertyName = "PasswordDisplay"; // computed property
             roleColumn.DataPropertyName = "roleName";
-
+            if (currentUser is Cashier)
+            {
+                btnAddUser.Enabled = false;
+                btnDeleteUser.Enabled = false;
+                btnUpdateUser.Enabled = false;
+            }
 
             userManager = new UserManager(RepositoryFactory.CreateUserRepository());
 
@@ -127,6 +132,10 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             }
         }
 
+        private void gpBackGroundColor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 

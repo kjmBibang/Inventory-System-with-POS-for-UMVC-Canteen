@@ -58,7 +58,15 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             dgvInventory.DefaultCellStyle.ForeColor = Color.Black;
             dgvStockMovement.DefaultCellStyle.ForeColor = Color.Black;
             dgvCriticalStock.DefaultCellStyle.ForeColor = Color.Black;
-
+            if(currentUser  is Cashier)
+            {
+                btnAddNewProduct.Enabled = false;
+                btnUpdateProduct.Enabled = false;
+                btnDeleteProduct.Enabled = false;
+                btnStockAdjustment.Enabled = false;
+                btnStockIn.Enabled = false;
+                btnStockOut.Enabled = false;
+            }
 
             LoadInventory();
             LoadCriticalStock();            

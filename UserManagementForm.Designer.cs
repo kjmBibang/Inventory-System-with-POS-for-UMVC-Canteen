@@ -61,6 +61,7 @@
             this.gpBackGroundColor.Name = "gpBackGroundColor";
             this.gpBackGroundColor.Size = new System.Drawing.Size(1848, 970);
             this.gpBackGroundColor.TabIndex = 19;
+            this.gpBackGroundColor.Paint += new System.Windows.Forms.PaintEventHandler(this.gpBackGroundColor_Paint);
             // 
             // lblCriticalStock
             // 
