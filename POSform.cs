@@ -23,7 +23,9 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         private TextBox _activeTextBox;
         private IProductRepository productRepository = RepositoryFactory.CreateProductRepository();//kung i change nimo ang repo i change pud sa ubos
         ITransactionRepository transactionRepository = RepositoryFactory.CreateTransactionRepository();//kini i change pud, hand in hand sila
+        ISupplierRepository supplierRepository = RepositoryFactory.CreateSupplierRepository();
         private ProductManager productManager;
+        IStockRepository stockRepository = RepositoryFactory.CreateStockRepository();
         private User currentUser;
         private bool adminAuthorized = false; // per-transaction admin approval
         private Transaction currentTransaction; // tracks the current transaction in memory
@@ -48,7 +50,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             txtBarcode.KeyDown += txtBarcode_KeyDown; //mao ni need for txtBarcode_keydown()
 
             // instantiate manager once for the form lifetime
-            manager = new TransactionManager(transactionRepository, productRepository);
+            manager = new TransactionManager(transactionRepository, productRepository,stockRepository);
 
             // initialize an empty in-memory transaction for the new session
             currentTransaction = new Transaction(
@@ -82,7 +84,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             btnPay.Enabled = false;
             txtCash.Enabled = false;
 
-            productManager = new ProductManager(productRepository);
+            productManager = new ProductManager(productRepository, stockRepository);
 
             // suggestions hidden by default
             lstboxSuggestion.Visible = false;
@@ -207,14 +209,14 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             // Store the quantity already deducted from stock in the Tag
             dgvSales.Rows[rowIndex].Tag = quantity;
 
-            // Reduce stock in DB
-            productRepository.ReduceStock(barcode, quantity);
+            // NOTE: Do NOT reduce DB stock here. Move stock mutation + movement logging to payment time.
+            // stockRepository.ReduceStockByBarcode(barcode, quantity);
 
             // ADD TO currentTransaction
             currentTransaction.items.Add(new TransactionItem(
                 transactionItemID: 0,
                 transactionID: 0,
-                productID: 0,
+                productID: productManager.GetIDFromBarcode(barcode),
                 unitPrice: price,
                 quantity: quantity,
                 subTotal: subtotal,
@@ -284,10 +286,13 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             {
                 if (row.IsNewRow) continue;
 
+                string barcode = row.Cells["barcodeColumn"].Value.ToString();
+                int pid = productManager.GetIDFromBarcode(barcode); // will throw/find real id
+
                 items.Add(new TransactionItem(
                     transactionItemID: 0,
                     transactionID: 0,
-                    productID: 0,
+                    productID: pid,
                     unitPrice: Convert.ToDecimal(row.Cells["unitPriceColumn"].Value),
                     quantity: Convert.ToInt32(row.Cells["quantityColumn"].Value),
                     subTotal: Convert.ToDecimal(row.Cells["subtotalColumn"].Value),
@@ -386,11 +391,14 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             }
 
             // Process the transaction
-            try
-            {
+            //try
+            //{
                 currentTransaction = BuildTransactionFromGrid();
-                manager = new TransactionManager(transactionRepository, productRepository);
+                manager = new TransactionManager(transactionRepository, productRepository,stockRepository);
                 int transactionId = manager.ProcessTransaction(currentTransaction);
+                var stockManager = new StockManager(stockRepository,supplierRepository,productRepository);
+                stockManager.LogSale(currentTransaction);
+
                 currentTransaction.transactionID = transactionId; // store ID for void/refund
 
 
@@ -405,12 +413,13 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
                 // Reset everything for next customer
                 //ResetPOS();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error saving transaction: {ex.Message}", "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show($"Error saving transaction: {ex.Message}", "Error",
+            //                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         // Helper method to reset the POS for next transaction
@@ -592,7 +601,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                 }
 
                 // Update DB stock
-                productRepository.ReduceStock(barcode, diff);
+                stockRepository.ReduceStockByBarcode(barcode, diff);
 
                 // Update row Tag
                 dgvSales.CurrentRow.Tag = newQty;
@@ -672,7 +681,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
             if (item != null)
             {
-                manager.VoidItem(currentTransaction, item, approvingAdmin);
+                var stockManager = new StockManager(stockRepository, supplierRepository, productRepository);
+                //stockManager.VoidItem(currentTransaction, item, approvingAdmin);
 
                 dgvSales.Rows.Remove(dgvSales.CurrentRow);
                 UpdateTotal();
@@ -695,7 +705,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                 return;
             }
 
-            manager.RefundTransaction(currentTransaction, approvingAdmin);
+            var stockManager = new StockManager(stockRepository, supplierRepository, productRepository);
+            stockManager.RefundTransaction(currentTransaction, approvingAdmin);
 
             dgvSales.Rows.Clear();
             UpdateTotal();

@@ -28,48 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
             this.txtStockIn = new System.Windows.Forms.TextBox();
             this.lblStockIn = new System.Windows.Forms.TextBox();
             this.lblSupplier = new System.Windows.Forms.TextBox();
-            this.ListBox = new System.Windows.Forms.ListBox();
-            this.panel1.SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbSupplier = new System.Windows.Forms.ComboBox();
+            this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.ForeColor = System.Drawing.SystemColors.Control;
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1107, 336);
-            this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel2.BackColor = System.Drawing.Color.Maroon;
-            this.panel2.ForeColor = System.Drawing.SystemColors.Control;
-            this.panel2.Location = new System.Drawing.Point(19, 14);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(517, 305);
-            this.panel2.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel3.BackColor = System.Drawing.Color.Maroon;
-            this.panel3.ForeColor = System.Drawing.SystemColors.Control;
-            this.panel3.Location = new System.Drawing.Point(572, 14);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(517, 305);
-            this.panel3.TabIndex = 2;
             // 
             // btnBack
             // 
@@ -78,20 +44,23 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.Color.Black;
-            this.btnBack.Location = new System.Drawing.Point(1058, 452);
+            this.btnBack.Location = new System.Drawing.Point(568, 303);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(61, 32);
+            this.btnBack.Size = new System.Drawing.Size(81, 39);
             this.btnBack.TabIndex = 62;
-            this.btnBack.Text = "Back";
+            this.btnBack.Text = "Close";
             this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // txtStockIn
             // 
             this.txtStockIn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtStockIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStockIn.Location = new System.Drawing.Point(439, 372);
+            this.txtStockIn.Location = new System.Drawing.Point(233, 108);
+            this.txtStockIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtStockIn.Name = "txtStockIn";
-            this.txtStockIn.Size = new System.Drawing.Size(256, 40);
+            this.txtStockIn.Size = new System.Drawing.Size(340, 49);
             this.txtStockIn.TabIndex = 63;
             this.txtStockIn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -103,11 +72,12 @@
             this.lblStockIn.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.lblStockIn.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStockIn.ForeColor = System.Drawing.Color.White;
-            this.lblStockIn.Location = new System.Drawing.Point(326, 382);
+            this.lblStockIn.Location = new System.Drawing.Point(59, 118);
+            this.lblStockIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblStockIn.Multiline = true;
             this.lblStockIn.Name = "lblStockIn";
             this.lblStockIn.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblStockIn.Size = new System.Drawing.Size(107, 27);
+            this.lblStockIn.Size = new System.Drawing.Size(143, 33);
             this.lblStockIn.TabIndex = 65;
             this.lblStockIn.TabStop = false;
             this.lblStockIn.Text = "STOCK IN:";
@@ -120,56 +90,76 @@
             this.lblSupplier.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.lblSupplier.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSupplier.ForeColor = System.Drawing.Color.White;
-            this.lblSupplier.Location = new System.Drawing.Point(326, 440);
+            this.lblSupplier.Location = new System.Drawing.Point(59, 179);
+            this.lblSupplier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblSupplier.Multiline = true;
             this.lblSupplier.Name = "lblSupplier";
             this.lblSupplier.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblSupplier.Size = new System.Drawing.Size(107, 27);
+            this.lblSupplier.Size = new System.Drawing.Size(143, 33);
             this.lblSupplier.TabIndex = 66;
             this.lblSupplier.TabStop = false;
             this.lblSupplier.Text = "SUPPLIER:";
             // 
-            // ListBox
+            // label1
             // 
-            this.ListBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListBox.FormattingEnabled = true;
-            this.ListBox.ItemHeight = 33;
-            this.ListBox.Location = new System.Drawing.Point(439, 434);
-            this.ListBox.Margin = new System.Windows.Forms.Padding(2);
-            this.ListBox.Name = "ListBox";
-            this.ListBox.Size = new System.Drawing.Size(256, 33);
-            this.ListBox.TabIndex = 71;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Snow;
+            this.label1.Location = new System.Drawing.Point(227, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(187, 32);
+            this.label1.TabIndex = 72;
+            this.label1.Text = "Stock In Form";
+            // 
+            // cmbSupplier
+            // 
+            this.cmbSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSupplier.FormattingEnabled = true;
+            this.cmbSupplier.Location = new System.Drawing.Point(233, 179);
+            this.cmbSupplier.Name = "cmbSupplier";
+            this.cmbSupplier.Size = new System.Drawing.Size(340, 39);
+            this.cmbSupplier.TabIndex = 73;
+            this.cmbSupplier.SelectedIndexChanged += new System.EventHandler(this.cmbSupplier_SelectedIndexChanged);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(273, 289);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(156, 53);
+            this.btnSave.TabIndex = 74;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // StockInForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
-            this.ClientSize = new System.Drawing.Size(1131, 496);
-            this.Controls.Add(this.ListBox);
+            this.ClientSize = new System.Drawing.Size(693, 367);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.cmbSupplier);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblSupplier);
             this.Controls.Add(this.lblStockIn);
             this.Controls.Add(this.txtStockIn);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "StockInForm";
-            this.panel1.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.StockInForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.TextBox txtStockIn;
         private System.Windows.Forms.TextBox lblStockIn;
         private System.Windows.Forms.TextBox lblSupplier;
-        private System.Windows.Forms.ListBox ListBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbSupplier;
+        private System.Windows.Forms.Button btnSave;
     }
 }

@@ -163,4 +163,14 @@ public class MockDBProductRepository : IProductRepository
     // required but unused
     public Product GetProduct(string id) => null;
     public void UpdateStock(string id) { }
+
+    public Product GetProductByID(string id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Product GetProductByID(int id)
+    {
+        throw new NotImplementedException();
+    }
 }

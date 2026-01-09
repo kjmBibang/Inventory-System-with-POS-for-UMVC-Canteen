@@ -13,7 +13,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
     {
         private readonly ITransactionRepository _transactionRepo;
         private readonly IProductRepository _productRepo;
-
+        IStockRepository stockRepository;
         public TransactionManager CreateTransaction() 
         {
             return null;
@@ -23,10 +23,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
             // Implementation to search for a transaction
             return null;
         }
-        public TransactionManager(ITransactionRepository transactionRepo, IProductRepository productRepo)
+        public TransactionManager(ITransactionRepository transactionRepo, IProductRepository productRepo, IStockRepository stockRepository)
         {
             _transactionRepo = transactionRepo;
             _productRepo = productRepo;
+            this.stockRepository = stockRepository;
         }
 
         public void ClearTransaction()
@@ -46,7 +47,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
                 throw new UnauthorizedAccessException("Admin approval required.");
 
             // Restore stock
-            _productRepo.AddStock(item.barcode, item.quantity); // negative reduces less → adds back
+            stockRepository.AddStockByBarcode(item.barcode, item.quantity); // negative reduces less → adds back
 
             // Remove from transaction
             transaction.items.Remove(item);
@@ -63,7 +64,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
 
             // Restore stock for all items
             foreach (var item in transaction.items)
-                _productRepo.AddStock(item.barcode, item.quantity);
+                stockRepository.AddStockByBarcode(item.barcode, item.quantity);
 
             // Update status
             transaction.status = TransactionStatus.Voided;
@@ -81,7 +82,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
 
             // Restore stock
             foreach (var item in transaction.items)
-                _productRepo.AddStock(item.barcode, item.quantity);
+                stockRepository.AddStockByBarcode(item.barcode, item.quantity);
 
             transaction.status = TransactionStatus.Refunded;
             transaction.approvedBy = authorizedBy.username;
