@@ -77,6 +77,9 @@
     <Compile Include="Interfaces\IStockRepository.cs" />
     <Compile Include="Interfaces\ISupplierRepository.cs" />
     <Compile Include="Managers\StockManager.cs" />
+    <Compile Include="UIHelpers\Gradient_Panel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UpdateProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +175,9 @@
     </Compile>
     <EmbeddedResource Include="StockAdjustmentForm.resx">
       <DependentUpon>StockAdjustmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIHelpers\Gradient_Panel.resx">
+      <DependentUpon>Gradient_Panel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateProductForm.resx">
       <DependentUpon>UpdateProductForm.cs</DependentUpon>

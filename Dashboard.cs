@@ -56,5 +56,10 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
 
         }
+
+        private void gpColorBackground_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

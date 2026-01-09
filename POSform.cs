@@ -97,7 +97,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             dgvSales.SelectionChanged += dgvSales_SelectionChanged;
             txtQuantity.KeyDown += txtQuantity_KeyDown;
             btnEnterQuantity.Click += btnEnterQuantity_Click;
-
+            dgvSales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSales.MultiSelect = false;
             InitializeAdminState();
 
         }
@@ -857,8 +858,15 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             receiptForm.Controls.Add(receiptTextBox);
             receiptForm.ShowDialog();
         }
-        
 
-        
+        private void lblInvertory_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gpBackgroundColor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

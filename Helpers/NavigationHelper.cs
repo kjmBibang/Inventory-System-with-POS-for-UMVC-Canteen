@@ -15,7 +15,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Helpers
             if (user == null)
                 throw new ArgumentNullException(nameof(user));
 
-            currentForm.Hide();
+            currentForm.Close();
 
             Form nextForm;
 
@@ -43,13 +43,13 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Helpers
         {
             var form = new InventoryManagementForm(user);
             form.Show();
-            currentForm.Hide();
+            currentForm.Close();
         }
         public static void NavigateToUserManagement(Form currentForm, User user)
         {
             var form = new UserManagementForm(user);
             form.Show();
-            currentForm.Hide();
+            currentForm.Close();
         }
         /*public static void NavigateToReports(Form currentForm, User user)
         {
