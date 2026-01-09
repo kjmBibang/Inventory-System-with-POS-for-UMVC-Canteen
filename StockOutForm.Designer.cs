@@ -43,9 +43,10 @@
             // 
             this.txtQuantity.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantity.Location = new System.Drawing.Point(72, 160);
+            this.txtQuantity.Location = new System.Drawing.Point(96, 197);
+            this.txtQuantity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(268, 35);
+            this.txtQuantity.Size = new System.Drawing.Size(356, 41);
             this.txtQuantity.TabIndex = 0;
             this.txtQuantity.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -55,10 +56,11 @@
             this.btnBack.BackColor = System.Drawing.Color.Transparent;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.ForeColor = System.Drawing.Color.Black;
-            this.btnBack.Location = new System.Drawing.Point(240, 224);
+            this.btnBack.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnBack.Location = new System.Drawing.Point(320, 276);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(100, 50);
+            this.btnBack.Size = new System.Drawing.Size(133, 62);
             this.btnBack.TabIndex = 61;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = false;
@@ -70,10 +72,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(90, 22);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(120, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(250, 37);
+            this.label2.Size = new System.Drawing.Size(314, 46);
             this.label2.TabIndex = 63;
             this.label2.Text = "STOCK OUT FORM";
             // 
@@ -81,11 +82,11 @@
             // 
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(72, 224);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSave.Location = new System.Drawing.Point(96, 276);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 50);
+            this.btnSave.Size = new System.Drawing.Size(133, 62);
             this.btnSave.TabIndex = 64;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -97,10 +98,9 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(67, 84);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(89, 103);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 30);
+            this.label1.Size = new System.Drawing.Size(152, 37);
             this.label1.TabIndex = 65;
             this.label1.Text = "PRODUCT:";
             // 
@@ -110,10 +110,9 @@
             this.lblProductPlaceholder.BackColor = System.Drawing.Color.Transparent;
             this.lblProductPlaceholder.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductPlaceholder.ForeColor = System.Drawing.Color.White;
-            this.lblProductPlaceholder.Location = new System.Drawing.Point(188, 84);
-            this.lblProductPlaceholder.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblProductPlaceholder.Location = new System.Drawing.Point(251, 103);
             this.lblProductPlaceholder.Name = "lblProductPlaceholder";
-            this.lblProductPlaceholder.Size = new System.Drawing.Size(117, 30);
+            this.lblProductPlaceholder.Size = new System.Drawing.Size(152, 37);
             this.lblProductPlaceholder.TabIndex = 66;
             this.lblProductPlaceholder.Text = "PRODUCT:";
             // 
@@ -133,8 +132,9 @@
             this.gpBackGroundColor.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpBackGroundColor.ForeColor = System.Drawing.Color.White;
             this.gpBackGroundColor.Location = new System.Drawing.Point(0, 0);
+            this.gpBackGroundColor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gpBackGroundColor.Name = "gpBackGroundColor";
-            this.gpBackGroundColor.Size = new System.Drawing.Size(396, 311);
+            this.gpBackGroundColor.Size = new System.Drawing.Size(528, 383);
             this.gpBackGroundColor.TabIndex = 67;
             // 
             // label3
@@ -143,22 +143,22 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(67, 127);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(89, 156);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(247, 30);
+            this.label3.Size = new System.Drawing.Size(315, 37);
             this.label3.TabIndex = 67;
             this.label3.Text = "STOCK OUT QUANTITY:";
             // 
             // StockOutForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
-            this.ClientSize = new System.Drawing.Size(396, 311);
+            this.ClientSize = new System.Drawing.Size(528, 383);
             this.Controls.Add(this.gpBackGroundColor);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "StockOutForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StockOut";
