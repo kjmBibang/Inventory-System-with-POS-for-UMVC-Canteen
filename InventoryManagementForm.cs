@@ -51,6 +51,13 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             criticalStockColumn.DataPropertyName = "Stock";
             dgvInventory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvInventory.MultiSelect = false;
+            dgvStockMovement.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvStockMovement.MultiSelect = false;
+            dgvCriticalStock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCriticalStock.MultiSelect = false;
+            dgvInventory.DefaultCellStyle.ForeColor = Color.Black;
+            dgvStockMovement.DefaultCellStyle.ForeColor = Color.Black;
+            dgvCriticalStock.DefaultCellStyle.ForeColor = Color.Black;
 
 
             LoadInventory();
@@ -235,5 +242,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             LoadCriticalStock();
             LoadInventory();
         }
+
+        private void gpBackGroundColor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
     }
 }
