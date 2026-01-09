@@ -17,8 +17,9 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
 
         public string barcode { get; set; }
         public string productName { get; set; }
+        public DateTime transactionDate { get; set; }
 
-        public TransactionItem(int transactionItemID, int transactionID, int productID, decimal unitPrice, int quantity, decimal subTotal, string barcode, string productName)
+        public TransactionItem(int transactionItemID, int transactionID, int productID, decimal unitPrice, int quantity, decimal subTotal, string barcode, string productName, DateTime transactionDate)
         {
             this.transactionItemID = transactionItemID;
             this.transactionID = transactionID;
@@ -28,6 +29,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
             this.subTotal = subTotal;
             this.barcode = barcode;
             this.productName = productName;
+            this.transactionDate = transactionDate;
+
         }
     }
 }

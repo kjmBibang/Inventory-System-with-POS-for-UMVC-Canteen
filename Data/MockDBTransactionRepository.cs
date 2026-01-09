@@ -44,5 +44,10 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
         {
             return null;
         }
+
+        public List<Transaction> GetAllTransactions()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

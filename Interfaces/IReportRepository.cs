@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace Inventory_System_with_POS_for_UMVC_Canteen.Interfaces
 {
-    public interface ITransactionRepository
+    public interface IReportRepository
     {
-         Transaction GetTransaction();
-         Transaction StoreTransaction(Transaction transaction);
-        List<Transaction> GetAllTransactions();
-        int CreateTransaction(Transaction transaction);
+        List<TransactionItem> GetSalesByProductToday();
+        List<TransactionItem> GetSalesByProduct(DateTime? startDate = null, DateTime? endDate = null);
     }
 }

@@ -42,14 +42,14 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
             posForm = new POSform(user);
             posForm.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             loginForm = new LoginForm();
             loginForm.Show();
-            this.Hide();
+            this.Close(); ;
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
@@ -60,6 +60,18 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         private void gpColorBackground_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnViewTransaction_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            ReportsForm report = new ReportsForm(user);
+            report.Show();
+            this.Close();
         }
     }
 }
