@@ -97,7 +97,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             dgvSales.SelectionChanged += dgvSales_SelectionChanged;
             txtQuantity.KeyDown += txtQuantity_KeyDown;
             btnEnterQuantity.Click += btnEnterQuantity_Click;
-
+            dgvSales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSales.MultiSelect = false;
             InitializeAdminState();
 
         }
