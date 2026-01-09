@@ -157,10 +157,10 @@
             // btnVoidTransaction
             // 
             this.btnVoidTransaction.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnVoidTransaction.BackColor = System.Drawing.Color.White;
+            this.btnVoidTransaction.BackColor = System.Drawing.Color.Maroon;
             this.btnVoidTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoidTransaction.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoidTransaction.ForeColor = System.Drawing.Color.Black;
+            this.btnVoidTransaction.ForeColor = System.Drawing.Color.White;
             this.btnVoidTransaction.Location = new System.Drawing.Point(1249, 546);
             this.btnVoidTransaction.Name = "btnVoidTransaction";
             this.btnVoidTransaction.Size = new System.Drawing.Size(90, 53);
@@ -277,10 +277,10 @@
             // btnBack
             // 
             this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnBack.BackColor = System.Drawing.Color.White;
+            this.btnBack.BackColor = System.Drawing.Color.Maroon;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.ForeColor = System.Drawing.Color.Black;
+            this.btnBack.ForeColor = System.Drawing.Color.White;
             this.btnBack.Location = new System.Drawing.Point(778, 607);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(90, 53);
@@ -303,10 +303,10 @@
             // btnAdmin
             // 
             this.btnAdmin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAdmin.BackColor = System.Drawing.Color.White;
+            this.btnAdmin.BackColor = System.Drawing.Color.Maroon;
             this.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdmin.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdmin.ForeColor = System.Drawing.Color.Black;
+            this.btnAdmin.ForeColor = System.Drawing.Color.White;
             this.btnAdmin.Location = new System.Drawing.Point(874, 607);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(90, 53);
@@ -329,10 +329,10 @@
             // btnCheckout
             // 
             this.btnCheckout.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCheckout.BackColor = System.Drawing.Color.White;
+            this.btnCheckout.BackColor = System.Drawing.Color.Maroon;
             this.btnCheckout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckout.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckout.ForeColor = System.Drawing.Color.Black;
+            this.btnCheckout.ForeColor = System.Drawing.Color.White;
             this.btnCheckout.Location = new System.Drawing.Point(1057, 546);
             this.btnCheckout.Name = "btnCheckout";
             this.btnCheckout.Size = new System.Drawing.Size(90, 53);
@@ -355,10 +355,10 @@
             // btnPrintReceipt
             // 
             this.btnPrintReceipt.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnPrintReceipt.BackColor = System.Drawing.Color.White;
+            this.btnPrintReceipt.BackColor = System.Drawing.Color.Maroon;
             this.btnPrintReceipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrintReceipt.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrintReceipt.ForeColor = System.Drawing.Color.Black;
+            this.btnPrintReceipt.ForeColor = System.Drawing.Color.White;
             this.btnPrintReceipt.Location = new System.Drawing.Point(1057, 607);
             this.btnPrintReceipt.Name = "btnPrintReceipt";
             this.btnPrintReceipt.Size = new System.Drawing.Size(282, 53);
@@ -370,10 +370,10 @@
             // btnRefund
             // 
             this.btnRefund.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRefund.BackColor = System.Drawing.Color.White;
+            this.btnRefund.BackColor = System.Drawing.Color.Maroon;
             this.btnRefund.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefund.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefund.ForeColor = System.Drawing.Color.Black;
+            this.btnRefund.ForeColor = System.Drawing.Color.White;
             this.btnRefund.Location = new System.Drawing.Point(1249, 487);
             this.btnRefund.Name = "btnRefund";
             this.btnRefund.Size = new System.Drawing.Size(90, 53);
@@ -396,10 +396,10 @@
             // btnVoidItem
             // 
             this.btnVoidItem.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnVoidItem.BackColor = System.Drawing.Color.White;
+            this.btnVoidItem.BackColor = System.Drawing.Color.Maroon;
             this.btnVoidItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoidItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoidItem.ForeColor = System.Drawing.Color.Black;
+            this.btnVoidItem.ForeColor = System.Drawing.Color.White;
             this.btnVoidItem.Location = new System.Drawing.Point(1153, 487);
             this.btnVoidItem.Name = "btnVoidItem";
             this.btnVoidItem.Size = new System.Drawing.Size(90, 53);
@@ -411,10 +411,10 @@
             // btnPay
             // 
             this.btnPay.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnPay.BackColor = System.Drawing.Color.White;
+            this.btnPay.BackColor = System.Drawing.Color.Maroon;
             this.btnPay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPay.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPay.ForeColor = System.Drawing.Color.Black;
+            this.btnPay.ForeColor = System.Drawing.Color.White;
             this.btnPay.Location = new System.Drawing.Point(1057, 487);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(90, 53);
