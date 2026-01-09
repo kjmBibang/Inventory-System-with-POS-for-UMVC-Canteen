@@ -156,43 +156,48 @@
             // 
             // txtProductName
             // 
+            this.txtProductName.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductName.Location = new System.Drawing.Point(165, 64);
             this.txtProductName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(396, 20);
+            this.txtProductName.Size = new System.Drawing.Size(396, 23);
             this.txtProductName.TabIndex = 8;
             // 
             // txtBarcode
             // 
+            this.txtBarcode.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBarcode.Location = new System.Drawing.Point(165, 108);
             this.txtBarcode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(396, 20);
+            this.txtBarcode.Size = new System.Drawing.Size(396, 23);
             this.txtBarcode.TabIndex = 9;
             // 
             // txtPrice
             // 
+            this.txtPrice.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrice.Location = new System.Drawing.Point(165, 158);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(396, 20);
+            this.txtPrice.Size = new System.Drawing.Size(396, 23);
             this.txtPrice.TabIndex = 10;
             this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
             // 
             // txtCost
             // 
+            this.txtCost.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCost.Location = new System.Drawing.Point(165, 211);
             this.txtCost.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCost.Name = "txtCost";
-            this.txtCost.Size = new System.Drawing.Size(396, 20);
+            this.txtCost.Size = new System.Drawing.Size(396, 23);
             this.txtCost.TabIndex = 11;
             // 
             // txtCategory
             // 
+            this.txtCategory.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCategory.Location = new System.Drawing.Point(165, 262);
             this.txtCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCategory.Name = "txtCategory";
-            this.txtCategory.Size = new System.Drawing.Size(396, 20);
+            this.txtCategory.Size = new System.Drawing.Size(396, 23);
             this.txtCategory.TabIndex = 12;
             // 
             // gpBackGroundColor
@@ -213,6 +218,7 @@
             this.gpBackGroundColor.Controls.Add(this.label6);
             this.gpBackGroundColor.Controls.Add(this.btnAddProduct);
             this.gpBackGroundColor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gpBackGroundColor.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpBackGroundColor.Location = new System.Drawing.Point(0, 0);
             this.gpBackGroundColor.Name = "gpBackGroundColor";
             this.gpBackGroundColor.Size = new System.Drawing.Size(600, 366);
