@@ -74,6 +74,7 @@
     <Compile Include="Data\SQLStockRepository.cs" />
     <Compile Include="Data\SQLSupplierRepository.cs" />
     <Compile Include="Factories\RepositoryFactory.cs" />
+    <Compile Include="Managers\ReportManager.cs" />
     <Compile Include="StockAdjustmentForm.cs">
       <SubType>Form</SubType>
     </Compile>

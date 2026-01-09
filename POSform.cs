@@ -658,7 +658,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             }
             else
             {
-                btnAdmin.ForeColor = Color.Red;
+                btnAdmin.ForeColor = Color.Yellow;
                 btnAdmin.Text = "ADMIN REQUIRED";
 
                 btnVoidItem.Enabled = false;
