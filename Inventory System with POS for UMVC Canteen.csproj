@@ -64,6 +64,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Factories\RepositoryFactory.cs" />
+    <Compile Include="Data\MockDBStockRepository.cs" />
+    <Compile Include="Data\MockDBSupplierRepository.cs" />
+    <Compile Include="Data\SQLStockRepository.cs" />
+    <Compile Include="Data\SQLSupplierRepository.cs" />
+    <Compile Include="StockAdjustmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockAdjustmentForm.Designer.cs">
+      <DependentUpon>StockAdjustmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IStockRepository.cs" />
+    <Compile Include="Interfaces\ISupplierRepository.cs" />
+    <Compile Include="Managers\StockManager.cs" />
     <Compile Include="UpdateProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +170,9 @@
     <Compile Include="UserManagementForm.Designer.cs">
       <DependentUpon>UserManagementForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="StockAdjustmentForm.resx">
+      <DependentUpon>StockAdjustmentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UpdateProductForm.resx">
       <DependentUpon>UpdateProductForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -8,27 +8,28 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Models
 {
     public class StockMovement
     {
-        public int StockMovementID { get; set; }
+        public int stockMovementID { get; set; }
 
-        public int ProductID { get; set; }
+        public int productID { get; set; }
 
         // Positive = add stock, Negative = reduce stock
-        public int QuantityChange { get; set; }
+        public int quantityChange { get; set; }
 
-        public StockMovementType MovementType { get; set; }
+        public StockMovementType movementType { get; set; }
 
         // Optional references
         //public int? TransactionID { get; set; }
         //public int? SupplierID { get; set; }
-
-        public string Reason { get; set; }
-
-        public DateTime CreatedAt { get; set; }
-        public string CreatedBy { get; set; }   // cashier/admin username
+        public int? supplierID { get; set; }
+        public string reason { get; set; }
+        public string productName { get; set; }
+        public string supplierName { get; set; }
+        public DateTime createdAt { get; set; }
+        public string createdBy { get; set; }   // cashier/admin username
 
         public StockMovement()
         {
-            CreatedAt = DateTime.Now;
+            createdAt = DateTime.Now;
         }
     }
 }

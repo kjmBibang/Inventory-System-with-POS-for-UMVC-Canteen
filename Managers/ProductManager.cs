@@ -11,9 +11,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
     public class ProductManager
     {
         IProductRepository _repo;
-        public ProductManager(IProductRepository productRepo) 
+        IStockRepository _stockRepository;
+        public ProductManager(IProductRepository productRepo, IStockRepository stockRepository) 
         { 
             this._repo = productRepo;
+            this._stockRepository = stockRepository;
         }
         // ================= BUSINESS LAYER =================
         public List<Product> SearchProducts(string keyword)
@@ -31,13 +33,15 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
 
         public void ReduceProductStock(string barcode, int quantity)
         {
-            _repo.ReduceStock(barcode,quantity);
+            _stockRepository.ReduceStockByBarcode(barcode,quantity);
         }
 
-        public string GetIDFromBarcode(string barcode)
+        public int GetIDFromBarcode(string barcode)
         {
-            Product product = _repo.LoadProductByBarcode(barcode);
-            return product?.productBarcode;
+            var product = _repo.LoadProductByBarcode(barcode);
+            if (product == null) throw new InvalidOperationException($"Product not found for barcode {barcode}");
+            if (product.productID <= 0) throw new InvalidOperationException($"Product returned without valid ProductID for barcode {barcode}");
+            return product.productID;
         }
 
         /*public TransactionItem ProductSnapshot(Product product, int quantity)
@@ -68,5 +72,6 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
         {
             _repo.UpdateProduct(product);
         }
+        
     }
 }

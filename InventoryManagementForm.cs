@@ -21,13 +21,18 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         User currentUser;
         IProductRepository productRepository;
         ProductManager manager;
-
+        StockManager stockManager;
+        IStockRepository stockRepository;
+        ISupplierRepository supplierRepository;
         public InventoryManagementForm(User user)
         {
             InitializeComponent();
             currentUser = user;
             productRepository = RepositoryFactory.CreateProductRepository();
-            manager = new ProductManager(productRepository);
+            stockRepository = RepositoryFactory.CreateStockRepository();
+            supplierRepository = RepositoryFactory.CreateSupplierRepository();
+            manager = new ProductManager(productRepository,stockRepository);
+            stockManager = new StockManager(stockRepository,supplierRepository,productRepository);
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
         }
@@ -50,6 +55,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
             LoadInventory();
             LoadCriticalStock();            
+            LoadStockMovements();
         }
         private void LoadCriticalStock()
         {
@@ -109,12 +115,19 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
         private void btnStockAdjustment_Click(object sender, EventArgs e)
         {
-
+            Product product = LoadProductFromSelectedRow();
+            using (StockAdjustmentForm stockAdjustmentForm = new StockAdjustmentForm(product, currentUser))
+            {
+                stockAdjustmentForm.ShowDialog();
+            }
+            LoadInventory();
+            LoadCriticalStock();
+            LoadStockMovements();
         }
 
         private void dgvInventory_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
 
         private void btnAddNewProduct_Click(object sender, EventArgs e)
@@ -136,18 +149,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                 return;
             }
 
-            DataGridViewRow row = dgvInventory.CurrentRow;
+            Product product = LoadProductFromSelectedRow();
 
-            Product product = new Product
-            {
-                productID = Convert.ToInt32(row.Cells["productIDColumn"].Value),
-                productName = row.Cells["productNameColumn"].Value.ToString(),
-                productBarcode = row.Cells["barcodeColumn"].Value.ToString(),
-                unitPrice = Convert.ToDecimal(row.Cells["priceColumn"].Value),
-                unitCost = Convert.ToDecimal(row.Cells["costPriceColumn"].Value),
-                stock = Convert.ToInt32(row.Cells["stockColumn"].Value),
-                categoryName = row.Cells["categoryColumn"].Value.ToString()
-            };
 
             UpdateProductForm form = new UpdateProductForm(product);
             form.ShowDialog();
@@ -160,6 +163,77 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         private void btnReloadProducts_Click(object sender, EventArgs e)
         {
             manager.LoadInventory();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvStockMovement_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnStockIn_Click(object sender, EventArgs e)
+        {
+            Product product = LoadProductFromSelectedRow();
+            using (StockInForm stockInForm = new StockInForm(product.productID, currentUser))
+            {
+                stockInForm.ShowDialog();
+            }
+            LoadStockMovements();
+            LoadCriticalStock();
+            LoadInventory();
+
+        }
+            private void LoadStockMovements()
+        {
+            var stockMovements = stockManager.GetAllStockMovements();
+
+            dgvStockMovement.DataSource = stockMovements.Select(sm => new
+            {
+                sm.stockMovementID,
+                sm.productID,
+                sm.productName,
+                sm.quantityChange,
+                MovementType = sm.movementType.ToString(),
+                sm.supplierName,
+                sm.reason,
+                sm.createdAt,
+                sm.createdBy
+            }).ToList();
+        }
+        private Product LoadProductFromSelectedRow()
+        {
+            DataGridViewRow row = dgvInventory.CurrentRow;
+            
+            return new Product
+            {
+                productID = Convert.ToInt32(row.Cells["productIDColumn"].Value),
+                productName = row.Cells["productNameColumn"].Value.ToString(),
+                productBarcode = row.Cells["barcodeColumn"].Value.ToString(),
+                unitPrice = Convert.ToDecimal(row.Cells["priceColumn"].Value),
+                unitCost = Convert.ToDecimal(row.Cells["costPriceColumn"].Value),
+                stock = Convert.ToInt32(row.Cells["stockColumn"].Value),
+                categoryName = row.Cells["categoryColumn"].Value.ToString()
+            };
+        }
+        private void btnStockOut_Click(object sender, EventArgs e)
+        {
+            Product product = LoadProductFromSelectedRow();
+            using (StockOutForm stockOutForm = new StockOutForm(product,currentUser))
+            {
+                stockOutForm.ShowDialog();
+            }
+            LoadStockMovements();
+            LoadCriticalStock();
+            LoadInventory();
         }
     }
 }
