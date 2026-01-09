@@ -40,5 +40,9 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
         {
             return reportRepo.GetSalesByProduct(startDate, endDate);
         }
+        public List<TransactionItem> GetSalesByProductToday()
+        {
+            return reportRepo.GetSalesByProductToday();
+        }
     }
 }

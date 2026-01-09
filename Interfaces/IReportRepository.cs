@@ -9,7 +9,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Interfaces
 {
     public interface IReportRepository
     {
-        
+        List<TransactionItem> GetSalesByProductToday();
         List<TransactionItem> GetSalesByProduct(DateTime? startDate = null, DateTime? endDate = null);
     }
 }

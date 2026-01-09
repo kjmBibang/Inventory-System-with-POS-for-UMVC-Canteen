@@ -33,14 +33,24 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dgvTodaySale = new System.Windows.Forms.DataGridView();
+            this.dgvTransactionHistory = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
             this.bpReportsForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesByProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTodaySale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTransactionHistory)).BeginInit();
             this.SuspendLayout();
             // 
             // bpReportsForm
             // 
             this.bpReportsForm.ColorBottom = System.Drawing.Color.Maroon;
             this.bpReportsForm.ColorTop = System.Drawing.Color.DarkOrange;
+            this.bpReportsForm.Controls.Add(this.label4);
+            this.bpReportsForm.Controls.Add(this.dgvTransactionHistory);
+            this.bpReportsForm.Controls.Add(this.dgvTodaySale);
+            this.bpReportsForm.Controls.Add(this.label3);
             this.bpReportsForm.Controls.Add(this.btnBack);
             this.bpReportsForm.Controls.Add(this.label2);
             this.bpReportsForm.Controls.Add(this.label1);
@@ -58,7 +68,7 @@
             this.dgvSalesByProduct.Name = "dgvSalesByProduct";
             this.dgvSalesByProduct.RowHeadersWidth = 51;
             this.dgvSalesByProduct.RowTemplate.Height = 24;
-            this.dgvSalesByProduct.Size = new System.Drawing.Size(775, 394);
+            this.dgvSalesByProduct.Size = new System.Drawing.Size(686, 390);
             this.dgvSalesByProduct.TabIndex = 0;
             this.dgvSalesByProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesByProduct_CellContentClick);
             // 
@@ -100,6 +110,52 @@
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Location = new System.Drawing.Point(38, 515);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(146, 28);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "TODAY\'S SALE";
+            // 
+            // dgvTodaySale
+            // 
+            this.dgvTodaySale.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTodaySale.Location = new System.Drawing.Point(43, 546);
+            this.dgvTodaySale.Name = "dgvTodaySale";
+            this.dgvTodaySale.RowHeadersWidth = 51;
+            this.dgvTodaySale.RowTemplate.Height = 24;
+            this.dgvTodaySale.Size = new System.Drawing.Size(686, 390);
+            this.dgvTodaySale.TabIndex = 5;
+            this.dgvTodaySale.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTodaySale_CellContentClick);
+            // 
+            // dgvTransactionHistory
+            // 
+            this.dgvTransactionHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTransactionHistory.Location = new System.Drawing.Point(811, 105);
+            this.dgvTransactionHistory.Name = "dgvTransactionHistory";
+            this.dgvTransactionHistory.RowHeadersWidth = 51;
+            this.dgvTransactionHistory.RowTemplate.Height = 24;
+            this.dgvTransactionHistory.Size = new System.Drawing.Size(1070, 390);
+            this.dgvTransactionHistory.TabIndex = 6;
+            this.dgvTransactionHistory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTransactionHistory_CellContentClick);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label4.Location = new System.Drawing.Point(806, 74);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(242, 28);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "TRANSACTION HISTORY";
+            // 
             // ReportsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -115,6 +171,8 @@
             this.bpReportsForm.ResumeLayout(false);
             this.bpReportsForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesByProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTodaySale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTransactionHistory)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -126,5 +184,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvSalesByProduct;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dgvTodaySale;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dgvTransactionHistory;
     }
 }

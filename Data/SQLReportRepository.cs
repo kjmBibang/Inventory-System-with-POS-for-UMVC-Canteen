@@ -53,7 +53,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
                         cmd.Parameters.AddWithValue("@StartDate", startDate.Value.Date);
                         cmd.Parameters.AddWithValue("@EndDate", endDate.Value.Date.AddDays(1).AddSeconds(-1)); // include full day
                     }
-
+                    
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -66,9 +66,50 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
                                 quantity: Convert.ToInt32(reader["TotalQuantity"]),
                                 subTotal: Convert.ToDecimal(reader["TotalSales"]),
                                 barcode: reader["Barcode"].ToString(),
-                                productName: reader["ProductName"].ToString()
+                                productName: reader["ProductName"].ToString(),
+                                transactionDate: DateTime.MinValue
                             ));
                         }
+                    }
+                }
+            }
+
+            return sales;
+        }
+        public List<TransactionItem> GetSalesByProductToday()
+        {
+            var sales = new List<TransactionItem>();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = @"
+            SELECT 
+                ti.ProductName,
+                ti.Barcode,
+                SUM(ti.Quantity) AS TotalQuantity,
+                SUM(ti.Subtotal) AS TotalSales,
+                CAST(t.TransactionDate AS DATE) AS SaleDate
+            FROM TransactionItems ti
+            INNER JOIN Transactions t ON ti.TransactionID = t.TransactionID
+            WHERE CAST(t.TransactionDate AS DATE) = CAST(GETDATE() AS DATE)
+            GROUP BY ti.ProductName, ti.Barcode, CAST(t.TransactionDate AS DATE)
+            ORDER BY TotalSales DESC";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        sales.Add(new TransactionItem(
+                            0, 0, 0, 0,
+                            Convert.ToInt32(reader["TotalQuantity"]),
+                            Convert.ToDecimal(reader["TotalSales"]),
+                            reader["Barcode"].ToString(),
+                            reader["ProductName"].ToString(),
+                            Convert.ToDateTime(reader["SaleDate"])
+                        ));
                     }
                 }
             }

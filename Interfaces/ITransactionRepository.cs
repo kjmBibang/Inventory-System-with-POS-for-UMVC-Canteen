@@ -11,7 +11,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Interfaces
     {
          Transaction GetTransaction();
          Transaction StoreTransaction(Transaction transaction);
-
-         int CreateTransaction(Transaction transaction);
+        List<Transaction> GetAllTransactions();
+        int CreateTransaction(Transaction transaction);
     }
 }

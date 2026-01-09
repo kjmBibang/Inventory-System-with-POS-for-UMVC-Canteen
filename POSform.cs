@@ -222,7 +222,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                 quantity: quantity,
                 subTotal: subtotal,
                 barcode: barcode,
-                productName: productName
+                productName: productName,
+                transactionDate: DateTime.MinValue
             ));
 
             UpdateTotal();
@@ -298,7 +299,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
                     quantity: Convert.ToInt32(row.Cells["quantityColumn"].Value),
                     subTotal: Convert.ToDecimal(row.Cells["subtotalColumn"].Value),
                     barcode: row.Cells["barcodeColumn"].Value.ToString(),
-                    productName: row.Cells["productNameColumn"].Value.ToString()
+                    productName: row.Cells["productNameColumn"].Value.ToString(),
+                    transactionDate: DateTime.MinValue
                 ));
             }
 

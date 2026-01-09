@@ -109,6 +109,62 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
                 }
             }
         }
+        public List<Transaction> GetAllTransactions()
+        {
+            var transactions = new List<Transaction>();
 
+            using (SqlConnection conn = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                conn.Open();
+
+                string query = @"
+                SELECT 
+                    TransactionID,
+                    TransactionDate,
+                    TotalAmount,
+                    CashierName,
+                    TransactionStatusID,
+                    ApprovedBy,
+                    StatusChangedAt
+                FROM Transactions
+                ORDER BY TransactionDate DESC";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["StatusChangedAt"] == DBNull.Value)
+                        {
+                            transactions.Add(new Transaction(
+                            transactionID: Convert.ToInt32(reader["TransactionID"]),
+                            transactionDate: Convert.ToDateTime(reader["TransactionDate"]),
+                            totalAmount: Convert.ToDecimal(reader["TotalAmount"]),
+                            items: null, // NOT needed for history grid
+                            cashierName: reader["CashierName"].ToString(),
+                            status: (TransactionStatus)Convert.ToInt32(reader["TransactionStatusID"]),
+                            approvedBy: reader["ApprovedBy"] == DBNull.Value ? null : reader["ApprovedBy"].ToString(),
+                            statusChangedAt: null
+                        ));
+                        }
+                        else
+                        {
+                            transactions.Add(new Transaction(
+                            transactionID: Convert.ToInt32(reader["TransactionID"]),
+                            transactionDate: Convert.ToDateTime(reader["TransactionDate"]),
+                            totalAmount: Convert.ToDecimal(reader["TotalAmount"]),
+                            items: null, // NOT needed for history grid
+                            cashierName: reader["CashierName"].ToString(),
+                            status: (TransactionStatus)Convert.ToInt32(reader["TransactionStatusID"]),
+                            approvedBy: reader["ApprovedBy"] == DBNull.Value ? null : reader["ApprovedBy"].ToString(),
+                            statusChangedAt: Convert.ToDateTime(reader["StatusChangedAt"])
+                        ));
+                        }
+                    }
+                }
+            }
+
+            return transactions;
+        }
     }
 }

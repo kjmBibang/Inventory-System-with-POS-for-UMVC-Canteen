@@ -14,5 +14,10 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
         {
             throw new NotImplementedException();
         }
+
+        public List<TransactionItem> GetSalesByProductToday()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
