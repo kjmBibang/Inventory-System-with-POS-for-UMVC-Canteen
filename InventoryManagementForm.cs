@@ -121,6 +121,9 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
                 // refresh inventory grid
                 dgvInventory.DataSource = manager.LoadInventory();
+                LoadCriticalStock();
+                
+                LoadStockMovements();
             }
             catch (Exception ex)
             {

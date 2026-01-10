@@ -26,7 +26,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
             SELECT TOP 10 *
             FROM Products
             WHERE productName LIKE @keyword
-              AND stock > 0";
+              AND stock > 0 AND isActive=1";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
@@ -63,7 +63,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
                 query = @"
             SELECT ProductID, Barcode, ProductName, Price, CostPrice, Stock, CategoryID
             FROM Products
-            WHERE ProductID = @Id";
+            WHERE ProductID = @Id AND IsActive = 1
+";
                 cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@Id", id);
 
@@ -101,7 +102,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
                 string query = @"
             SELECT ProductID, Barcode, ProductName, Price, Stock
             FROM Products
-            WHERE Barcode = @Barcode";
+            WHERE Barcode = @Barcode AND IsActive = 1
+";
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
@@ -141,8 +143,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
         SELECT p.ProductID, p.ProductName, p.Barcode,
                p.Price, p.CostPrice, p.Stock,
                c.CategoryName
-        FROM Products p
-        INNER JOIN Categories c ON p.CategoryID = c.CategoryID";
+        FROM Products p 
+        INNER JOIN Categories c ON p.CategoryID = c.CategoryID WHERE p.IsActive = 1";
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -174,7 +176,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
                 string query = @"
             SELECT ProductName, Stock
             FROM Products
-            WHERE Stock < @Threshold
+            WHERE Stock < @Threshold AND IsActive = 1
+
             ORDER BY Stock ASC";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -267,7 +270,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
         {
             using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
             {
-                string query = @"DELETE FROM Products WHERE ProductID = @ProductID";
+                string query = @"DELETE FROM Products WHERE ProductID = @ProductID AND IsActive = 1
+";
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
@@ -277,6 +281,24 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Data
                 }
             }
         }
+        public void SoftDeleteProduct(int productId)
+        {
+            using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))
+            {
+                string query = @"
+            UPDATE Products
+            SET IsActive = 0
+            WHERE ProductID = @ProductID";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@ProductID", productId);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         public void UpdateProduct(Product product)
         {
             using (SqlConnection con = new SqlConnection(serverHelper.GetConnectionString()))

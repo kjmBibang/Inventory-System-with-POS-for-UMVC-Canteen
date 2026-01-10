@@ -66,7 +66,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Managers
         }
         public void DeleteProduct(int productId)
         {
-            _repo.DeleteProduct(productId);
+            _repo.SoftDeleteProduct(productId);
         }
         public void UpdateProduct(Product product)
         {

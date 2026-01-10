@@ -750,6 +750,13 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
             var stockManager = new StockManager(stockRepository, supplierRepository, productRepository);
             stockManager.RefundTransaction(currentTransaction, approvingAdmin);
+            var transactionManager = new TransactionManager(
+    transactionRepository,
+    productRepository,
+    stockRepository
+);
+
+            transactionManager.RefundTransaction(currentTransaction, approvingAdmin);
 
             dgvSales.Rows.Clear();
             UpdateTotal();

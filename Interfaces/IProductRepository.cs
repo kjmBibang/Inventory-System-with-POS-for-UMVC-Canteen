@@ -19,5 +19,6 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen.Interfaces
         void AddProduct(Product product);
         void DeleteProduct(int productId);
         void UpdateProduct(Product product);
+        void SoftDeleteProduct(int productId);
     }
 }

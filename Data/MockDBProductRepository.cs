@@ -173,4 +173,9 @@ public class MockDBProductRepository : IProductRepository
     {
         throw new NotImplementedException();
     }
+
+    public void SoftDeleteProduct(int productId)
+    {
+        throw new NotImplementedException();
+    }
 }

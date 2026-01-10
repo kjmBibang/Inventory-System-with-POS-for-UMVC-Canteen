@@ -264,5 +264,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Documentation\Entity Relationship Diagram.jpg" />
+    <Content Include="Documentation\UML CLass Diagram.jpg" />
+    <Content Include="Documentation\Use Case Diagram.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
