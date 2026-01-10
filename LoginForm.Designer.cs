@@ -39,9 +39,10 @@
             // 
             this.picboxUSER.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.picboxUSER.Image = ((System.Drawing.Image)(resources.GetObject("picboxUSER.Image")));
-            this.picboxUSER.Location = new System.Drawing.Point(308, 165);
+            this.picboxUSER.Location = new System.Drawing.Point(411, 203);
+            this.picboxUSER.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.picboxUSER.Name = "picboxUSER";
-            this.picboxUSER.Size = new System.Drawing.Size(25, 21);
+            this.picboxUSER.Size = new System.Drawing.Size(33, 26);
             this.picboxUSER.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picboxUSER.TabIndex = 9;
             this.picboxUSER.TabStop = false;
@@ -49,17 +50,20 @@
             // txtUsername
             // 
             this.txtUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUsername.Location = new System.Drawing.Point(339, 166);
+            this.txtUsername.Location = new System.Drawing.Point(452, 204);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(249, 20);
+            this.txtUsername.Size = new System.Drawing.Size(331, 22);
             this.txtUsername.TabIndex = 6;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged_1);
             // 
             // txtPassword
             // 
             this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPassword.Location = new System.Drawing.Point(339, 216);
+            this.txtPassword.Location = new System.Drawing.Point(452, 266);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(249, 20);
+            this.txtPassword.Size = new System.Drawing.Size(331, 22);
             this.txtPassword.TabIndex = 7;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
@@ -67,9 +71,10 @@
             // 
             this.picboxPASS.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.picboxPASS.Image = ((System.Drawing.Image)(resources.GetObject("picboxPASS.Image")));
-            this.picboxPASS.Location = new System.Drawing.Point(308, 216);
+            this.picboxPASS.Location = new System.Drawing.Point(411, 266);
+            this.picboxPASS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.picboxPASS.Name = "picboxPASS";
-            this.picboxPASS.Size = new System.Drawing.Size(25, 20);
+            this.picboxPASS.Size = new System.Drawing.Size(33, 25);
             this.picboxPASS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picboxPASS.TabIndex = 8;
             this.picboxPASS.TabStop = false;
@@ -80,9 +85,10 @@
             this.lblLogin.BackColor = System.Drawing.Color.White;
             this.lblLogin.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold);
             this.lblLogin.ForeColor = System.Drawing.Color.Black;
-            this.lblLogin.Location = new System.Drawing.Point(354, 104);
+            this.lblLogin.Location = new System.Drawing.Point(472, 128);
+            this.lblLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLogin.Name = "lblLogin";
-            this.lblLogin.Size = new System.Drawing.Size(210, 26);
+            this.lblLogin.Size = new System.Drawing.Size(280, 32);
             this.lblLogin.TabIndex = 3;
             this.lblLogin.Text = "Login to your account";
             this.lblLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -94,9 +100,10 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(404, 259);
+            this.btnLogin.Location = new System.Drawing.Point(539, 319);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(98, 53);
+            this.btnLogin.Size = new System.Drawing.Size(131, 65);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -106,9 +113,10 @@
             // 
             this.lblUsername.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.lblUsername.Location = new System.Drawing.Point(339, 145);
+            this.lblUsername.Location = new System.Drawing.Point(452, 178);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(83, 15);
+            this.lblUsername.Size = new System.Drawing.Size(111, 18);
             this.lblUsername.TabIndex = 1;
             this.lblUsername.Text = "USERNAME";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -117,9 +125,10 @@
             // 
             this.lblPassword.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.lblPassword.Location = new System.Drawing.Point(339, 195);
+            this.lblPassword.Location = new System.Drawing.Point(452, 240);
+            this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(83, 15);
+            this.lblPassword.Size = new System.Drawing.Size(111, 18);
             this.lblPassword.TabIndex = 0;
             this.lblPassword.Text = "PASSWORD";
             this.lblPassword.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,9 +140,10 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(533, 12);
+            this.button1.Location = new System.Drawing.Point(711, 15);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(55, 29);
+            this.button1.Size = new System.Drawing.Size(73, 36);
             this.button1.TabIndex = 10;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = false;
@@ -147,17 +157,19 @@
             this.gradient_Panel1.Controls.Add(this.lblDeveloperName);
             this.gradient_Panel1.Controls.Add(this.lblWelcome);
             this.gradient_Panel1.Location = new System.Drawing.Point(0, 0);
+            this.gradient_Panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gradient_Panel1.Name = "gradient_Panel1";
-            this.gradient_Panel1.Size = new System.Drawing.Size(302, 370);
+            this.gradient_Panel1.Size = new System.Drawing.Size(403, 455);
             this.gradient_Panel1.TabIndex = 0;
             // 
             // picboxUMLOGO
             // 
             this.picboxUMLOGO.BackColor = System.Drawing.Color.Transparent;
             this.picboxUMLOGO.Image = ((System.Drawing.Image)(resources.GetObject("picboxUMLOGO.Image")));
-            this.picboxUMLOGO.Location = new System.Drawing.Point(78, 33);
+            this.picboxUMLOGO.Location = new System.Drawing.Point(104, 41);
+            this.picboxUMLOGO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.picboxUMLOGO.Name = "picboxUMLOGO";
-            this.picboxUMLOGO.Size = new System.Drawing.Size(138, 117);
+            this.picboxUMLOGO.Size = new System.Drawing.Size(184, 144);
             this.picboxUMLOGO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picboxUMLOGO.TabIndex = 2;
             this.picboxUMLOGO.TabStop = false;
@@ -168,9 +180,10 @@
             this.lblDeveloperName.BackColor = System.Drawing.Color.Transparent;
             this.lblDeveloperName.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDeveloperName.ForeColor = System.Drawing.Color.White;
-            this.lblDeveloperName.Location = new System.Drawing.Point(183, 302);
+            this.lblDeveloperName.Location = new System.Drawing.Point(244, 372);
+            this.lblDeveloperName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDeveloperName.Name = "lblDeveloperName";
-            this.lblDeveloperName.Size = new System.Drawing.Size(116, 55);
+            this.lblDeveloperName.Size = new System.Drawing.Size(155, 68);
             this.lblDeveloperName.TabIndex = 0;
             this.lblDeveloperName.Text = "Developed by: Monkey Development";
             this.lblDeveloperName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -182,9 +195,10 @@
             this.lblWelcome.BackColor = System.Drawing.Color.Transparent;
             this.lblWelcome.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWelcome.ForeColor = System.Drawing.Color.White;
-            this.lblWelcome.Location = new System.Drawing.Point(-1, 154);
+            this.lblWelcome.Location = new System.Drawing.Point(-1, 190);
+            this.lblWelcome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(300, 129);
+            this.lblWelcome.Size = new System.Drawing.Size(400, 159);
             this.lblWelcome.TabIndex = 1;
             this.lblWelcome.Text = "Welcome to the Inventory System UMVC Canteen";
             this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -192,10 +206,10 @@
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.gradient_Panel1);
             this.Controls.Add(this.lblPassword);
@@ -207,6 +221,7 @@
             this.Controls.Add(this.picboxPASS);
             this.Controls.Add(this.picboxUSER);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoginForm";

@@ -27,8 +27,12 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             this.user = user;
             reportManager = new ReportManager(RepositoryFactory.CreateReportRepository());
             transactionManager = new TransactionManager(RepositoryFactory.CreateTransactionRepository(),RepositoryFactory.CreateProductRepository(),RepositoryFactory.CreateStockRepository());
-
-
+            dgvSalesByProduct.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvTodaySale.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvTransactionHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSalesByProduct.ReadOnly = true;
+            dgvTodaySale.ReadOnly = true;
+            dgvTransactionHistory.ReadOnly = true;
         }
 
         private void ReportsForm_Load(object sender, EventArgs e)

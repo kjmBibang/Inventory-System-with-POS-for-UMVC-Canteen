@@ -66,6 +66,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             txtTotal.Enter += TextBox_Enter;
             txtCash.Enter += TextBox_Enter;
             txtChange.Enter += TextBox_Enter;
+            txtCash.KeyDown += txtCash_KeyDown;
 
             btnNumber0.Click += NumberButton_Click;
             btnNumber1.Click += NumberButton_Click;
@@ -105,12 +106,13 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            txtBarcode.Text = "0";
-            txtQuantity.Text = "0";
-            txtTotal.Text = "0";
-            txtCash.Text = "0";
-            txtChange.Text = "0";
-
+            txtBarcode.Text = "";
+            txtQuantity.Text = "";
+            txtTotal.Text = "";
+            txtCash.Text = "";
+            txtChange.Text = "";
+            txtBarcode.Focus();
+            txtBarcode.TabIndex = 0;
         }
         private void NumberButton_Click(object sender, EventArgs e)
         {
@@ -175,7 +177,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         {
             NavigationHelper.GoBackToDashboard(this, currentUser);
         }
-
+        //dgvSales_SelectionChanged
         private void btnClear_Click(object sender, EventArgs e)
         {
 
@@ -194,9 +196,37 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
                 string barcode = txtBarcode.Text.Trim();
                 LoadProductByBarcode(barcode);
-
+                txtBarcode.Text = "";
+                
                 e.SuppressKeyPress = true;
             }
+        }
+        private void MoveDgvSalesFocusDown()
+        {
+            if (dgvSales.Rows.Count == 0)
+                return;
+
+            int currentRowIndex = dgvSales.CurrentCell?.RowIndex ?? -1;
+
+            // If no current row is selected, start at the first row
+            if (currentRowIndex == -1 && dgvSales.Rows.Count > 0)
+            {
+                dgvSales.CurrentCell = dgvSales.Rows[0].Cells[0];
+                return;
+            }
+
+            // Move down one row if not at the last row
+            if (currentRowIndex < dgvSales.Rows.Count - 1)
+            {
+                dgvSales.CurrentCell = dgvSales.Rows[currentRowIndex + 1].Cells[0];
+            }
+            else
+            {
+                // Optionally, stay at the last row or wrap to first row
+                dgvSales.CurrentCell = dgvSales.Rows[dgvSales.Rows.Count - 1].Cells[0];
+            }
+
+            dgvSales.Focus(); // ensure focus is on the grid
         }
 
         // In AddProductToGrid, initialize row Tag with the quantity
@@ -227,6 +257,12 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             ));
 
             UpdateTotal();
+            // --- NEW: automatically select the new row and focus quantity ---
+            dgvSales.ClearSelection();
+            dgvSales.Rows[rowIndex].Selected = true;
+            dgvSales.CurrentCell = dgvSales.Rows[rowIndex].Cells["quantityColumn"];
+            txtQuantity.Text = quantity.ToString();
+            txtQuantity.Focus();
         }
 
 
@@ -557,6 +593,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             if (dgvSales.CurrentRow != null && !dgvSales.CurrentRow.IsNewRow)
             {
                 txtQuantity.Text = dgvSales.CurrentRow.Cells["quantityColumn"].Value.ToString();
+                //MoveDgvSalesFocusDown();
                 txtQuantity.Focus();
             }
         }
@@ -564,6 +601,8 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         private void btnEnterQuantity_Click(object sender, EventArgs e)
         {
             UpdateSelectedRowQuantity();
+            MoveDgvSalesFocusDown();
+            txtBarcode.Focus();
         }
         // [UI] – Enter key in txtQuantity updates quantity
         private void txtQuantity_KeyDown(object sender, KeyEventArgs e)
@@ -571,6 +610,7 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
             if (e.KeyCode == Keys.Enter)
             {
                 UpdateSelectedRowQuantity();
+                txtBarcode.Focus();
                 e.SuppressKeyPress = true; // prevent beep
             }
         }
@@ -864,6 +904,17 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         private void lblInvertory_TextChanged(object sender, EventArgs e)
         {
 
+        }
+        private void txtCash_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (btnPay.Enabled) // only trigger if cash is enough
+                {
+                    btnPay.PerformClick(); // calls btnPay_Click()
+                }
+                e.SuppressKeyPress = true; // prevent beep
+            }
         }
 
         private void gpBackgroundColor_Paint(object sender, PaintEventArgs e)

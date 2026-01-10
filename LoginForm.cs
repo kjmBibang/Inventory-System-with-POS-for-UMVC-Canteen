@@ -24,8 +24,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
             InitializeComponent();
             userManager = new UserManager(userRepository);
-        }
 
+            // Attach KeyDown events here
+            txtUsername.KeyDown += TxtUsername_KeyDown;
+            txtPassword.KeyDown += TxtPassword_KeyDown;
+        }
         private void picboxPASS_Click(object sender, EventArgs e)
         {
 
@@ -39,9 +42,42 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-
+            this.ActiveControl = txtUsername;
         }
 
+        private void TxtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPassword.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        // Press Enter in password -> login
+        private void TxtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Login();
+                e.SuppressKeyPress = true;
+            }
+        }
+        private void Login()
+        {
+            User user = userManager.Login(txtUsername.Text.Trim(), txtPassword.Text.Trim());
+            if (user != null)
+            {
+                Dashboard dashboard = new Dashboard(user);
+                dashboard.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsername.Focus();
+            }
+        }
         private void btnLogin_Click(object sender, EventArgs e)
         {
             
@@ -102,6 +138,11 @@ namespace Inventory_System_with_POS_for_UMVC_Canteen
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtUsername_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
